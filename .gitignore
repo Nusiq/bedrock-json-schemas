@@ -1,0 +1,13 @@
+**/.vscode/**
+**/__pycache__/**
+**/.mypy_cache/**
+*.zip
+site/**
+*~
+*.swp
+*.swo
+.tmp/**
+.tox/**
+packs/**
+draft.ipynb
+result/**
