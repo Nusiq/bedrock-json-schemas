@@ -1,7 +1,7 @@
 '''
 Functions related to generating json schemas
 '''
-import json_paths
+import json_paths as jp
 import typing as tp
 from collections import namedtuple
 from enum import Enum
@@ -54,6 +54,11 @@ class DefinitionItem(object):
         elif isinstance(value, str):
             if 'string' not in self.definition_item['type']:
                 self.definition_item['type'].append('string')
+            # Add string example
+            # if 'examples' not in self.definition_item:
+            #     self.definition_item['examples'] = []
+            # if value not in self.definition_item['examples']:
+            #     self.definition_item['examples'].append(value)
         elif isinstance(value, list):
             if 'array' not in self.definition_item['type']:
                 self.definition_item['type'].append('array')
@@ -131,7 +136,8 @@ class SchemaDict(object):
 
 def create_schema_definitions(
     source: tp.Any, target: tp.Dict,
-    define_objects: tp.Dict[str, tp.List[json_paths.JsonPathPattern]]
+    define_objects: tp.Dict[str, tp.List[jp.JsonPathPattern]],
+    blacklist: tp.List[tp.List[jp.JsonPathPattern]]
 ):
     '''
     Creates JSON schema for given source. The schema is saved in target
@@ -152,10 +158,10 @@ def create_schema_definitions(
     class DefinitionMatch(tp.NamedTuple):
         name: str
         i: int
-        pattern: json_paths.JsonPathPattern
+        pattern: jp.JsonPathPattern
 
     def get_definition_match(
-        path: json_paths.JsonPath
+        path: jp.JsonPath
     ) -> tp.Optional[DefinitionMatch]:
         '''
         Tries to find a match in define_objects dict. Returns the name and
@@ -163,13 +169,22 @@ def create_schema_definitions(
         '''
         for k, v in define_objects.items():
             for i, pattern in enumerate(v):
-                if json_paths.match(path, pattern):
+                if jp.match(path, pattern):
                     return DefinitionMatch(k, i, pattern)
         return None
 
+    def is_blacklisted(path: jp.JsonPath):
+        '''
+        Checks if path is on the blacklist.
+        '''
+        for pattern in blacklist:
+            if jp.match(path, pattern, full_match=False):
+                return True
+        return False
+
     match_stack: tp.List[DefinitionMatch] = []
     first_loop = False
-    for obj, path in json_paths.walk(source):
+    for obj, path in jp.walk(source):
         if not first_loop:
             definition_match = get_definition_match(path)
             assert definition_match is not None
@@ -177,8 +192,11 @@ def create_schema_definitions(
             schema.add_definition(definition_match.name)
             first_loop = True
         else:
+            # Check for blacklist
+            if is_blacklisted(path):
+                continue
             # Remove from stack if current match isn't valid anymore
-            while not json_paths.match(
+            while not jp.match(
                 path, match_stack[-1].pattern, full_match=False
             ):
                 match_stack.pop()
@@ -191,7 +209,7 @@ def create_schema_definitions(
                 for i in definition_match.pattern:
                     if isinstance(i, int):
                         def_item_path.append(DefItemPathWildcard.ANY_ITEM)
-                    elif i == json_paths.Wildcard.ANY_PARAMETER:
+                    elif i == jp.Wildcard.ANY_PARAMETER:
                         def_item_path.append(
                             DefItemPathWildcard.ADDITIONAL_PROPERTY
                         )

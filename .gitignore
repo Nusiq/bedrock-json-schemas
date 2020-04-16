@@ -10,4 +10,3 @@ site/**
 .tox/**
 packs/**
 draft.ipynb
-result/**
