@@ -4,6 +4,129 @@ Functions related to generating json schemas
 import json_paths
 import typing as tp
 from collections import namedtuple
+from enum import Enum
+
+
+class DefItemPathWildcard(Enum):
+    ANY_ITEM = 0
+    ADDITIONAL_PROPERTY = 1
+
+
+DefinitionItemPath = tp.List[tp.Union[str, int, DefItemPathWildcard]]
+
+
+class ReferenceItem(object):
+    '''
+    Represents a reference in schema
+    '''
+    def __init__(self, target: str):
+        self.target = f'#/definitions/{target}'
+
+
+class DefinitionItem(object):
+    '''
+    Wrapper class for dictionaries derived from the properties in the schema
+    dictionary.
+    '''
+    def __init__(self, definition_item: tp.Dict):
+        self.definition_item = definition_item
+
+    def set_definition(self, value: tp.Any):
+        # Define the newly added object
+        if (
+            'type' not in self.definition_item and
+            not isinstance(value, ReferenceItem)
+        ):
+            self.definition_item['type'] = []
+
+        if isinstance(value, type(None)):
+            if 'null' not in self.definition_item['type']:
+                self.definition_item['type'].append('null')
+        elif isinstance(value, bool):
+            if 'boolean' not in self.definition_item['type']:
+                self.definition_item['type'].append('boolean')
+        elif isinstance(value, int):
+            if 'integer' not in self.definition_item['type']:
+                self.definition_item['type'].append('integer')
+        elif isinstance(value, float):
+            if 'number' not in self.definition_item['type']:
+                self.definition_item['type'].append('number')
+        elif isinstance(value, str):
+            if 'string' not in self.definition_item['type']:
+                self.definition_item['type'].append('string')
+        elif isinstance(value, list):
+            if 'array' not in self.definition_item['type']:
+                self.definition_item['type'].append('array')
+        elif isinstance(value, dict):
+            if 'object' not in self.definition_item['type']:
+                self.definition_item['type'].append('object')
+        elif isinstance(value, ReferenceItem):
+            self.definition_item['$ref'] = value.target
+            # TODO - check if there are other properties? References shouldn't
+            # have any (like 'type' or 'additionalProperties' etc.)
+        else:
+            raise ValueError(f'Invalid object type: {type(value)}')
+
+
+class SchemaDict(object):
+    '''
+    Wraper class around a dictionary with schema data. Provide easy access
+    to schema properties.
+    '''
+    def __init__(self, schema_dict: tp.Dict):
+        self.schema_dict = schema_dict
+
+        if 'definitions' not in self.schema_dict:
+            self.schema_dict['definitions'] = {}
+
+    def get_definition(self, definition: str):
+        return self.schema_dict['definitions'][definition]
+
+    def add_definition(self, name: str):
+        '''
+        Adds a diefinition to schema if it doesn't already exist
+        '''
+        if name not in self.schema_dict['definitions']:
+            self.schema_dict['definitions'][name] = {}
+
+    def get_definition_item(
+        self, definition_name: str,
+        relative_path: DefinitionItemPath
+    ) -> DefinitionItem:
+        '''
+        Serches through schemas_dict (the dictionary with schema data). Starts
+        in the root_name definition and goes through the relative_path. Returns
+        the object reached after going through the path.
+        '''
+        def_item =  self.schema_dict['definitions'][definition_name]
+        path = relative_path.copy()
+        while len(path) > 0:  # Go through path until the last item
+            key = path.pop(0)
+            if isinstance(key, str):
+                if 'properties' not in def_item:
+                    def_item['properties'] = {}
+                if key not in def_item['properties']:
+                    def_item['properties'][key] = {}
+                def_item = def_item['properties'][key]  # object
+            elif isinstance(key, int):
+                if 'items' not in def_item:
+                    def_item['items'] = []
+                if (
+                    not isinstance(def_item['items'], list) or
+                    len(def_item['items']) != key+1
+                ):
+                    raise ValueError('Invalid list index for the item')
+                def_item.append(def_item['items'])
+            elif key == DefItemPathWildcard.ANY_ITEM:
+                if 'items' not in def_item:
+                    def_item['items'] = {}
+                def_item = def_item['items']  # array
+            elif key == DefItemPathWildcard.ADDITIONAL_PROPERTY:
+                if 'additionalProperties' not in def_item:
+                    def_item['additionalProperties'] = {}
+                def_item = def_item['additionalProperties']
+
+        return DefinitionItem(def_item)
 
 
 def create_schema_definitions(
@@ -21,18 +144,15 @@ def create_schema_definitions(
     separate object in the pattern. The object name is defined by the
     key value of the define_objects dictionary.
     '''
+    schema = SchemaDict(target)
+
     # The definitions dictionary always must have root
     define_objects['root'] = [[]]
-
-    # Make sure that there is definitions property
-    if 'definitions' not in target:
-        target['definitions'] = {}
-    definitions = target['definitions']
 
     class DefinitionMatch(tp.NamedTuple):
         name: str
         i: int
-        match_pattern: json_paths.JsonPathPattern
+        pattern: json_paths.JsonPathPattern
 
     def get_definition_match(
         path: json_paths.JsonPath
@@ -47,82 +167,53 @@ def create_schema_definitions(
                     return DefinitionMatch(k, i, pattern)
         return None
 
-    def add_to_definition(
-        curr_def: tp.Dict, relative_path: json_paths.JsonPath, value: tp.Any
-    ):
-        '''
-        Takes curr_def (one of the definitions in "definitions"), relative_path
-        to a child of the defined object and the value and adds new child to
-        the definition.
-        '''
-        path = relative_path.copy()
-        if len(path) > 0:
-            while len(path) > 1:  # Go through path until the last item
-                key = path.pop(0)
-                if isinstance(key, str):  # return object with current key
-                    curr_def = curr_def['properties'][key]
-                elif isinstance(key, int):  # index value doesn't matter in array
-                    curr_def = curr_def['items']
-            # Last object reached add properties/items to it if necessary
-            key = path.pop(0)
-            if isinstance(key, str):
-                if 'properties' not in curr_def:
-                    curr_def['properties'] = {
-                        key: {}
-                    }
-                elif key not in curr_def['properties']:
-                    curr_def['properties'][key] = {}
-                curr_def = curr_def['properties'][key]
-            elif isinstance(key, int):
-                if 'items' not in curr_def:
-                    curr_def['items'] = {}
-                curr_def = curr_def['items']
-        # Define the newly added object
-        if 'type' not in curr_def:
-            curr_def['type'] = []
-
-        def _add_type(type_str: str):  # less boilerplate code...
-            if type_str not in curr_def['type']:
-                curr_def['type'].append(type_str)
-
-        if isinstance(value, type(None)):
-            _add_type('null')
-        elif isinstance(value, bool):
-            _add_type('boolean')
-        elif isinstance(value, int):
-            _add_type('integer')
-        elif isinstance(value, float):
-            _add_type('number')
-        elif isinstance(value, str):
-            _add_type('string')
-        elif isinstance(value, list):
-            _add_type('array')
-        elif isinstance(value, dict):
-            _add_type('object')
-        else:
-            raise ValueError(f'Invalid object type: {type(value)}')
-
     match_stack: tp.List[DefinitionMatch] = []
+    first_loop = False
     for obj, path in json_paths.walk(source):
-        # Add to stack if new match is detected
-        definition_match = get_definition_match(path)
-        if definition_match is not None:
-            # Set new curr_pattern and append it to the stack
-            curr_pattern = definition_match.match_pattern
+        if not first_loop:
+            definition_match = get_definition_match(path)
+            assert definition_match is not None
             match_stack.append(definition_match)
-            # Add item to the target definitions
-            if definition_match.name not in definitions:
-                definitions[definition_match.name] = {}
+            schema.add_definition(definition_match.name)
+            first_loop = True
+        else:
+            # Remove from stack if current match isn't valid anymore
+            while not json_paths.match(
+                path, match_stack[-1].pattern, full_match=False
+            ):
+                match_stack.pop()
+            
+            # Add to stack
+            definition_match = get_definition_match(path)
+            if definition_match is not None:
+                # Add reference
+                def_item_path: DefinitionItemPath=[]
+                for i in definition_match.pattern:
+                    if isinstance(i, int):
+                        def_item_path.append(DefItemPathWildcard.ANY_ITEM)
+                    elif i == json_paths.Wildcard.ANY_PARAMETER:
+                        def_item_path.append(
+                            DefItemPathWildcard.ADDITIONAL_PROPERTY
+                        )
+                    else:
+                        def_item_path.append(i)
+                schema.get_definition_item(
+                    definition_name=match_stack[-1].name,
+                    relative_path=def_item_path
+                ).set_definition(ReferenceItem(definition_match.name))
+                # Setn new value in match_stack
+                match_stack.append(definition_match)
+                schema.add_definition(definition_match.name)
 
-        # Remove from stack if current match isn't valid anymore
-        while not json_paths.match(path, curr_pattern, full_match=False):
-            match_stack.pop()
-            curr_pattern = match_stack[-1].match_pattern
-
-        # Set path to current definition in target file
-        curr_def = definitions[match_stack[-1].name]
-        add_to_definition(
-            curr_def=curr_def,
-            relative_path=path[len(curr_pattern):],
-            value=obj
-        )
+        # Create def_item_path
+        def_item_path=[]
+        for i in path[len(match_stack[-1].pattern):]:
+            if isinstance(i, int):
+                def_item_path.append(DefItemPathWildcard.ANY_ITEM)
+            else:
+                def_item_path.append(i)
+        # Add new item definition
+        schema.get_definition_item(
+            definition_name=match_stack[-1].name,
+            relative_path=def_item_path
+        ).set_definition(obj)
