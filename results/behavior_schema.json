@@ -125,32 +125,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"operator": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"boolean",
-													"number"
-												]
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"cause": {
 										"type": [
@@ -480,15 +455,6 @@
 							"type": [
 								"number"
 							]
-						}
-					}
-				},
-				"minecraft:entity": {
-					"properties": {
-						"component_groups": {
-							"additionalProperties": {
-								"$ref": "#/definitions/component_group"
-							}
 						}
 					}
 				},
@@ -1404,26 +1370,7 @@
 							]
 						},
 						"filters": {
-							"type": [
-								"object"
-							],
-							"properties": {
-								"test": {
-									"type": [
-										"string"
-									]
-								},
-								"operator": {
-									"type": [
-										"string"
-									]
-								},
-								"value": {
-									"type": [
-										"boolean"
-									]
-								}
-							}
+							"$ref": "#/definitions/filter"
 						}
 					}
 				},
@@ -1792,88 +1739,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"boolean",
-																"string"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														},
-														"any_of": {
-															"type": [
-																"array"
-															],
-															"items": {
-																"type": [
-																	"object"
-																],
-																"properties": {
-																	"test": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"value": {
-																		"type": [
-																			"boolean",
-																			"string"
-																		]
-																	},
-																	"operator": {
-																		"type": [
-																			"string"
-																		]
-																	}
-																}
-															}
-														}
-													}
-												}
-											},
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string",
-													"boolean"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"operator": {
-												"type": [
-													"string"
-												]
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"event": {
 										"type": [
@@ -1884,65 +1750,7 @@
 							},
 							"properties": {
 								"filters": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"test": {
-											"type": [
-												"string"
-											]
-										},
-										"subject": {
-											"type": [
-												"string"
-											]
-										},
-										"operator": {
-											"type": [
-												"string"
-											]
-										},
-										"value": {
-											"type": [
-												"boolean",
-												"number"
-											]
-										},
-										"all_of": {
-											"type": [
-												"array"
-											],
-											"items": {
-												"type": [
-													"object"
-												],
-												"properties": {
-													"test": {
-														"type": [
-															"string"
-														]
-													},
-													"subject": {
-														"type": [
-															"string"
-														]
-													},
-													"value": {
-														"type": [
-															"string",
-															"boolean"
-														]
-													},
-													"operator": {
-														"type": [
-															"string"
-														]
-													}
-												}
-											}
-										}
-									}
+									"$ref": "#/definitions/filter"
 								},
 								"event": {
 									"type": [
@@ -1988,59 +1796,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											},
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string",
-																"boolean"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"max_dist": {
 										"type": [
@@ -2373,86 +2129,7 @@
 										],
 										"properties": {
 											"filters": {
-												"type": [
-													"object"
-												],
-												"properties": {
-													"test": {
-														"type": [
-															"string"
-														]
-													},
-													"subject": {
-														"type": [
-															"string"
-														]
-													},
-													"value": {
-														"type": [
-															"string"
-														]
-													},
-													"any_of": {
-														"type": [
-															"array"
-														],
-														"items": {
-															"type": [
-																"object"
-															],
-															"properties": {
-																"test": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"subject": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"value": {
-																	"type": [
-																		"string"
-																	]
-																}
-															}
-														}
-													},
-													"all_of": {
-														"type": [
-															"array"
-														],
-														"items": {
-															"type": [
-																"object"
-															],
-															"properties": {
-																"test": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"value": {
-																	"type": [
-																		"string",
-																		"integer"
-																	]
-																},
-																"subject": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"operator": {
-																	"type": [
-																		"string"
-																	]
-																}
-															}
-														}
-													}
-												}
+												"$ref": "#/definitions/filter"
 											},
 											"event": {
 												"type": [
@@ -2495,59 +2172,7 @@
 									],
 									"properties": {
 										"filters": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"test": {
-													"type": [
-														"string"
-													]
-												},
-												"subject": {
-													"type": [
-														"string"
-													]
-												},
-												"value": {
-													"type": [
-														"string",
-														"boolean"
-													]
-												},
-												"all_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"string"
-																]
-															},
-															"subject": {
-																"type": [
-																	"string"
-																]
-															}
-														}
-													}
-												},
-												"other_with_families": {
-													"type": [
-														"string"
-													]
-												}
-											}
+											"$ref": "#/definitions/filter"
 										},
 										"event": {
 											"type": [
@@ -2590,91 +2215,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"any_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"all_of": {
-															"type": [
-																"array"
-															],
-															"items": {
-																"type": [
-																	"object"
-																],
-																"properties": {
-																	"test": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"subject": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"value": {
-																		"type": [
-																			"string",
-																			"boolean"
-																		]
-																	},
-																	"operator": {
-																		"type": [
-																			"string"
-																		]
-																	}
-																}
-															}
-														},
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											},
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											},
-											"operator": {
-												"type": [
-													"string"
-												]
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"max_dist": {
 										"type": [
@@ -2961,85 +2502,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"array",
-											"object"
-										],
-										"items": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"test": {
-													"type": [
-														"string"
-													]
-												},
-												"value": {
-													"type": [
-														"boolean"
-													]
-												}
-											}
-										},
-										"properties": {
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"boolean",
-																"integer"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														},
-														"any_of": {
-															"type": [
-																"array"
-															],
-															"items": {
-																"type": [
-																	"object"
-																],
-																"properties": {
-																	"test": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"value": {
-																		"type": [
-																			"boolean",
-																			"integer"
-																		]
-																	},
-																	"operator": {
-																		"type": [
-																			"string"
-																		]
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"event": {
 										"type": [
@@ -3716,26 +3179,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											}
-										}
+										"$ref": "#/definitions/filter"
 									}
 								}
 							}
@@ -3791,63 +3235,7 @@
 							],
 							"properties": {
 								"filters": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"test": {
-											"type": [
-												"string"
-											]
-										},
-										"subject": {
-											"type": [
-												"string"
-											]
-										},
-										"operator": {
-											"type": [
-												"string"
-											]
-										},
-										"value": {
-											"type": [
-												"string"
-											]
-										},
-										"all_of": {
-											"type": [
-												"array"
-											],
-											"items": {
-												"type": [
-													"object"
-												],
-												"properties": {
-													"test": {
-														"type": [
-															"string"
-														]
-													},
-													"subject": {
-														"type": [
-															"string"
-														]
-													},
-													"operator": {
-														"type": [
-															"string"
-														]
-													},
-													"value": {
-														"type": [
-															"string"
-														]
-													}
-												}
-											}
-										}
-									}
+									"$ref": "#/definitions/filter"
 								},
 								"max_dist": {
 									"type": [
@@ -4045,114 +3433,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											},
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"any_of": {
-															"type": [
-																"array"
-															],
-															"items": {
-																"type": [
-																	"object"
-																],
-																"properties": {
-																	"test": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"subject": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"value": {
-																		"type": [
-																			"string",
-																			"boolean"
-																		]
-																	}
-																}
-															}
-														},
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string",
-																"boolean"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											},
-											"any_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"max_dist": {
 										"type": [
@@ -4178,26 +3459,7 @@
 							},
 							"properties": {
 								"filters": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"test": {
-											"type": [
-												"string"
-											]
-										},
-										"subject": {
-											"type": [
-												"string"
-											]
-										},
-										"value": {
-											"type": [
-												"string"
-											]
-										}
-									}
+									"$ref": "#/definitions/filter"
 								},
 								"max_dist": {
 									"type": [
@@ -4429,70 +3691,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"any_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											},
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"event": {
 										"type": [
@@ -4596,43 +3795,7 @@
 							]
 						},
 						"filters": {
-							"type": [
-								"object"
-							],
-							"properties": {
-								"all_of": {
-									"type": [
-										"array"
-									],
-									"items": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											},
-											"operator": {
-												"type": [
-													"string"
-												]
-											}
-										}
-									}
-								}
-							}
+							"$ref": "#/definitions/filter"
 						}
 					}
 				},
@@ -5073,43 +4236,7 @@
 							]
 						},
 						"filters": {
-							"type": [
-								"object"
-							],
-							"properties": {
-								"all_of": {
-									"type": [
-										"array"
-									],
-									"items": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											},
-											"operator": {
-												"type": [
-													"string"
-												]
-											}
-										}
-									}
-								}
-							}
+							"$ref": "#/definitions/filter"
 						}
 					}
 				},
@@ -5176,48 +4303,7 @@
 							]
 						},
 						"filters": {
-							"type": [
-								"object"
-							],
-							"properties": {
-								"all_of": {
-									"type": [
-										"array"
-									],
-									"items": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											},
-											"domain": {
-												"type": [
-													"string"
-												]
-											},
-											"operator": {
-												"type": [
-													"string"
-												]
-											}
-										}
-									}
-								}
-							}
+							"$ref": "#/definitions/filter"
 						}
 					}
 				},
@@ -5669,26 +4755,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"subject": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"string"
-												]
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"max_dist": {
 										"type": [
@@ -6008,134 +5075,7 @@
 										],
 										"properties": {
 											"filters": {
-												"type": [
-													"object"
-												],
-												"properties": {
-													"all_of": {
-														"type": [
-															"array"
-														],
-														"items": {
-															"type": [
-																"object"
-															],
-															"properties": {
-																"test": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"subject": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"domain": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"value": {
-																	"type": [
-																		"string",
-																		"boolean",
-																		"integer"
-																	]
-																},
-																"operator": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"any_of": {
-																	"type": [
-																		"array"
-																	],
-																	"items": {
-																		"type": [
-																			"object"
-																		],
-																		"properties": {
-																			"test": {
-																				"type": [
-																					"string"
-																				]
-																			},
-																			"subject": {
-																				"type": [
-																					"string"
-																				]
-																			},
-																			"domain": {
-																				"type": [
-																					"string"
-																				]
-																			},
-																			"value": {
-																				"type": [
-																					"string"
-																				]
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													},
-													"any_of": {
-														"type": [
-															"array"
-														],
-														"items": {
-															"type": [
-																"object"
-															],
-															"properties": {
-																"test": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"subject": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"domain": {
-																	"type": [
-																		"string"
-																	]
-																},
-																"value": {
-																	"type": [
-																		"string"
-																	]
-																}
-															}
-														}
-													},
-													"test": {
-														"type": [
-															"string"
-														]
-													},
-													"subject": {
-														"type": [
-															"string"
-														]
-													},
-													"domain": {
-														"type": [
-															"string"
-														]
-													},
-													"value": {
-														"type": [
-															"string"
-														]
-													}
-												}
+												"$ref": "#/definitions/filter"
 											},
 											"event": {
 												"type": [
@@ -6234,48 +5174,7 @@
 									],
 									"properties": {
 										"filters": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"all_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"domain": {
-																"type": [
-																	"string"
-																]
-															},
-															"subject": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"string"
-																]
-															},
-															"operator": {
-																"type": [
-																	"string"
-																]
-															}
-														}
-													}
-												}
-											}
+											"$ref": "#/definitions/filter"
 										},
 										"event": {
 											"type": [
@@ -6357,26 +5256,7 @@
 							]
 						},
 						"filters": {
-							"type": [
-								"object"
-							],
-							"properties": {
-								"test": {
-									"type": [
-										"string"
-									]
-								},
-								"subject": {
-									"type": [
-										"string"
-									]
-								},
-								"value": {
-									"type": [
-										"string"
-									]
-								}
-							}
+							"$ref": "#/definitions/filter"
 						},
 						"angle_of_view_horizontal": {
 							"type": [
@@ -6492,44 +5372,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string",
-																"boolean"
-															]
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"max_dist": {
 										"type": [
@@ -7009,43 +5852,7 @@
 							],
 							"properties": {
 								"filters": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"all_of": {
-											"type": [
-												"array"
-											],
-											"items": {
-												"type": [
-													"object"
-												],
-												"properties": {
-													"test": {
-														"type": [
-															"string"
-														]
-													},
-													"domain": {
-														"type": [
-															"string"
-														]
-													},
-													"operator": {
-														"type": [
-															"string"
-														]
-													},
-													"value": {
-														"type": [
-															"boolean"
-														]
-													}
-												}
-											}
-										}
-									}
+									"$ref": "#/definitions/filter"
 								},
 								"event": {
 									"type": [
@@ -7140,31 +5947,7 @@
 							]
 						},
 						"filters": {
-							"type": [
-								"object"
-							],
-							"properties": {
-								"test": {
-									"type": [
-										"string"
-									]
-								},
-								"subject": {
-									"type": [
-										"string"
-									]
-								},
-								"operator": {
-									"type": [
-										"string"
-									]
-								},
-								"value": {
-									"type": [
-										"integer"
-									]
-								}
-							}
+							"$ref": "#/definitions/filter"
 						}
 					}
 				},
@@ -7179,66 +5962,7 @@
 							]
 						},
 						"filters": {
-							"type": [
-								"object"
-							],
-							"properties": {
-								"all_of": {
-									"type": [
-										"array"
-									],
-									"items": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"any_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string",
-																"boolean"
-															]
-														}
-													}
-												}
-											},
-											"test": {
-												"type": [
-													"string"
-												]
-											},
-											"operator": {
-												"type": [
-													"string"
-												]
-											},
-											"value": {
-												"type": [
-													"integer"
-												]
-											}
-										}
-									}
-								}
-							}
+							"$ref": "#/definitions/filter"
 						}
 					}
 				},
@@ -7277,110 +6001,7 @@
 										]
 									},
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"any_of": {
-															"type": [
-																"array"
-															],
-															"items": {
-																"type": [
-																	"object"
-																],
-																"properties": {
-																	"test": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"operator": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"value": {
-																		"type": [
-																			"integer",
-																			"boolean",
-																			"string"
-																		]
-																	},
-																	"subject": {
-																		"type": [
-																			"string"
-																		]
-																	},
-																	"all_of": {
-																		"type": [
-																			"array"
-																		],
-																		"items": {
-																			"type": [
-																				"object"
-																			],
-																			"properties": {
-																				"test": {
-																					"type": [
-																						"string"
-																					]
-																				},
-																				"subject": {
-																					"type": [
-																						"string"
-																					]
-																				},
-																				"value": {
-																					"type": [
-																						"string"
-																					]
-																				},
-																				"operator": {
-																					"type": [
-																						"string"
-																					]
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														},
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"boolean",
-																"integer"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									}
 								}
 							}
@@ -8624,43 +7245,7 @@
 								],
 								"properties": {
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string"
-															]
-														},
-														"operator": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									}
 								}
 							}
@@ -8922,38 +7507,7 @@
 										]
 									},
 									"filters": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"all_of": {
-												"type": [
-													"array"
-												],
-												"items": {
-													"type": [
-														"object"
-													],
-													"properties": {
-														"test": {
-															"type": [
-																"string"
-															]
-														},
-														"subject": {
-															"type": [
-																"string"
-															]
-														},
-														"value": {
-															"type": [
-																"string"
-															]
-														}
-													}
-												}
-											}
-										}
+										"$ref": "#/definitions/filter"
 									},
 									"start_sound_event": {
 										"type": [
@@ -9799,26 +8353,7 @@
 							],
 							"properties": {
 								"filters": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"test": {
-											"type": [
-												"string"
-											]
-										},
-										"subject": {
-											"type": [
-												"string"
-											]
-										},
-										"value": {
-											"type": [
-												"string"
-											]
-										}
-									}
+									"$ref": "#/definitions/filter"
 								}
 							}
 						}
@@ -9863,6 +8398,80 @@
 								"integer"
 							]
 						}
+					}
+				}
+			}
+		},
+		"filter": {
+			"type": [
+				"object",
+				"array"
+			],
+			"properties": {
+				"test": {
+					"type": [
+						"string"
+					]
+				},
+				"subject": {
+					"type": [
+						"string"
+					]
+				},
+				"operator": {
+					"type": [
+						"string"
+					]
+				},
+				"value": {
+					"type": [
+						"boolean",
+						"string",
+						"integer",
+						"number"
+					]
+				},
+				"all_of": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/filter"
+					}
+				},
+				"any_of": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/filter"
+					}
+				},
+				"domain": {
+					"type": [
+						"string"
+					]
+				},
+				"other_with_families": {
+					"type": [
+						"string"
+					]
+				}
+			},
+			"items": {
+				"type": [
+					"object"
+				],
+				"properties": {
+					"test": {
+						"type": [
+							"string"
+						]
+					},
+					"value": {
+						"type": [
+							"boolean"
+						]
 					}
 				}
 			}
@@ -9984,131 +8593,7 @@
 								}
 							},
 							"filters": {
-								"type": [
-									"object"
-								],
-								"properties": {
-									"test": {
-										"type": [
-											"string"
-										]
-									},
-									"value": {
-										"type": [
-											"boolean",
-											"string",
-											"integer"
-										]
-									},
-									"operator": {
-										"type": [
-											"string"
-										]
-									},
-									"any_of": {
-										"type": [
-											"array"
-										],
-										"items": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"test": {
-													"type": [
-														"string"
-													]
-												},
-												"value": {
-													"type": [
-														"string"
-													]
-												},
-												"all_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"string"
-																]
-															},
-															"operator": {
-																"type": [
-																	"string"
-																]
-															}
-														}
-													}
-												}
-											}
-										}
-									},
-									"all_of": {
-										"type": [
-											"array"
-										],
-										"items": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"any_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"string"
-																]
-															}
-														}
-													}
-												},
-												"test": {
-													"type": [
-														"string"
-													]
-												},
-												"operator": {
-													"type": [
-														"string"
-													]
-												},
-												"value": {
-													"type": [
-														"string"
-													]
-												}
-											}
-										}
-									},
-									"subject": {
-										"type": [
-											"string"
-										]
-									}
-								}
+								"$ref": "#/definitions/filter"
 							},
 							"add": {
 								"type": [
@@ -10137,130 +8622,7 @@
 									],
 									"properties": {
 										"filters": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"test": {
-													"type": [
-														"string"
-													]
-												},
-												"subject": {
-													"type": [
-														"string"
-													]
-												},
-												"value": {
-													"type": [
-														"string",
-														"integer"
-													]
-												},
-												"any_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"string"
-																]
-															},
-															"all_of": {
-																"type": [
-																	"array"
-																],
-																"items": {
-																	"type": [
-																		"object"
-																	],
-																	"properties": {
-																		"test": {
-																			"type": [
-																				"string"
-																			]
-																		},
-																		"value": {
-																			"type": [
-																				"string"
-																			]
-																		},
-																		"operator": {
-																			"type": [
-																				"string"
-																			]
-																		}
-																	}
-																}
-															}
-														}
-													}
-												},
-												"all_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"any_of": {
-																"type": [
-																	"array"
-																],
-																"items": {
-																	"type": [
-																		"object"
-																	],
-																	"properties": {
-																		"test": {
-																			"type": [
-																				"string"
-																			]
-																		},
-																		"value": {
-																			"type": [
-																				"string"
-																			]
-																		}
-																	}
-																}
-															},
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"operator": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"string"
-																]
-															}
-														}
-													}
-												},
-												"operator": {
-													"type": [
-														"string"
-													]
-												}
-											}
+											"$ref": "#/definitions/filter"
 										},
 										"add": {
 											"type": [
@@ -10332,15 +8694,6 @@
 										}
 									}
 								}
-							}
-						}
-					}
-				},
-				"minecraft:entity": {
-					"properties": {
-						"events": {
-							"additionalProperties": {
-								"$ref": "#/definitions/event"
 							}
 						}
 					}
@@ -10474,65 +8827,7 @@
 											}
 										},
 										"filters": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"all_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"boolean"
-																]
-															}
-														}
-													}
-												},
-												"test": {
-													"type": [
-														"string"
-													]
-												},
-												"value": {
-													"type": [
-														"string"
-													]
-												},
-												"any_of": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"test": {
-																"type": [
-																	"string"
-																]
-															},
-															"value": {
-																"type": [
-																	"boolean"
-																]
-															}
-														}
-													}
-												}
-											}
+											"$ref": "#/definitions/filter"
 										}
 									}
 								}
@@ -10541,26 +8836,7 @@
 					}
 				},
 				"filters": {
-					"type": [
-						"object"
-					],
-					"properties": {
-						"test": {
-							"type": [
-								"string"
-							]
-						},
-						"operator": {
-							"type": [
-								"string"
-							]
-						},
-						"value": {
-							"type": [
-								"string"
-							]
-						}
-					}
+					"$ref": "#/definitions/filter"
 				}
 			}
 		}

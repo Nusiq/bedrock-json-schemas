@@ -10,7 +10,7 @@ import json
 import json_paths as jp
 from schema_builder import create_schema_definitions
 
-from conversion_config import BEHAVIOR_CONFIG, BEHAVIOR_BLACKLIST
+from conversion_config import BEHAVIOR_CONFIG
 
 
 def jsonc_read(f: tp.IO[tp.Any]) -> tp.Any:
@@ -64,9 +64,9 @@ def create_bp_schemas_from_examples(
                         continue
                     create_schema_definitions(
                         source=entity_dict, target=behavior_schema,
-                        define_objects=BEHAVIOR_CONFIG,
-                        blacklist=BEHAVIOR_BLACKLIST
+                        meta_schema=BEHAVIOR_CONFIG
                     )
+                    # break
 
     finally:  # Remove temporary files if something went wrong
         if tmp_created:
