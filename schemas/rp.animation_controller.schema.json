@@ -1,0 +1,121 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"animation_controllers": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/controller"
+					}
+				}
+			}
+		},
+		"controller": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"states": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/state"
+					}
+				},
+				"initial_state": {
+					"type": [
+						"string"
+					]
+				}
+			}
+		},
+		"state": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"particle_effects": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"object"
+						],
+						"properties": {
+							"effect": {
+								"type": [
+									"string"
+								]
+							},
+							"locator": {
+								"type": [
+									"string"
+								]
+							}
+						}
+					}
+				},
+				"transitions": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"object"
+						],
+						"additionalProperties": {
+							"$ref": "#/definitions/transition"
+						}
+					}
+				},
+				"animations": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"string",
+							"object"
+						],
+						"additionalProperties": {
+							"$ref": "#/definitions/animation"
+						}
+					}
+				},
+				"blend_transition": {
+					"type": [
+						"number"
+					]
+				},
+				"blend_via_shortest_path": {
+					"type": [
+						"boolean"
+					]
+				}
+			}
+		},
+		"transition": {
+			"type": [
+				"string"
+			]
+		},
+		"animation": {
+			"type": [
+				"string"
+			]
+		}
+	}
+}

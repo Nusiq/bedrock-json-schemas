@@ -1,0 +1,313 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"minecraft:client_entity": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								},
+								"spawn_egg": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"base_color": {
+											"type": [
+												"string"
+											]
+										},
+										"overlay_color": {
+											"type": [
+												"string"
+											]
+										},
+										"texture": {
+											"type": [
+												"string"
+											]
+										},
+										"texture_index": {
+											"type": [
+												"integer"
+											]
+										}
+									}
+								},
+								"materials": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/material"
+									}
+								},
+								"textures": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/texture"
+									}
+								},
+								"geometry": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/geometry_item"
+									}
+								},
+								"particle_effects": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"speeder_smoke": {
+											"type": [
+												"string"
+											]
+										},
+										"speeder_fire": {
+											"type": [
+												"string"
+											]
+										},
+										"speeder_hud_reaload": {
+											"type": [
+												"string"
+											]
+										},
+										"speeder_locked": {
+											"type": [
+												"string"
+											]
+										},
+										"target_marker": {
+											"type": [
+												"string"
+											]
+										},
+										"speeder_projectile_particle": {
+											"type": [
+												"string"
+											]
+										},
+										"speeder_projectile_trail": {
+											"type": [
+												"string"
+											]
+										},
+										"speeder_projectile_explosion": {
+											"type": [
+												"string"
+											]
+										},
+										"laser_pink": {
+											"type": [
+												"string"
+											]
+										},
+										"nectar_dripping": {
+											"type": [
+												"string"
+											]
+										},
+										"stun_particles": {
+											"type": [
+												"string"
+											]
+										},
+										"spell": {
+											"type": [
+												"string"
+											]
+										},
+										"travel_location_selector": {
+											"type": [
+												"string"
+											]
+										}
+									}
+								},
+								"animations": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/animation"
+									}
+								},
+								"scripts": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"animate": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"string",
+													"object"
+												],
+												"properties": {
+													"walk": {
+														"type": [
+															"string"
+														]
+													},
+													"bounty_particle": {
+														"type": [
+															"string"
+														]
+													},
+													"baby_transform": {
+														"type": [
+															"string"
+														]
+													},
+													"bee_no_stinger": {
+														"type": [
+															"string"
+														]
+													},
+													"move": {
+														"type": [
+															"string"
+														]
+													},
+													"ride": {
+														"type": [
+															"string"
+														]
+													},
+													"drive": {
+														"type": [
+															"string"
+														]
+													},
+													"fly": {
+														"type": [
+															"string"
+														]
+													}
+												}
+											}
+										},
+										"pre_animation": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"string"
+												]
+											}
+										},
+										"scale": {
+											"type": [
+												"string"
+											]
+										},
+										"initialize": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"string"
+												]
+											}
+										}
+									}
+								},
+								"render_controllers": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"string",
+											"object"
+										],
+										"additionalProperties": {
+											"$ref": "#/definitions/render_controller"
+										}
+									}
+								},
+								"min_engine_version": {
+									"type": [
+										"string"
+									]
+								},
+								"enable_attachables": {
+									"type": [
+										"boolean"
+									]
+								},
+								"particle_emitters": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"flame": {
+											"type": [
+												"string"
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"material": {
+			"type": [
+				"string"
+			]
+		},
+		"texture": {
+			"type": [
+				"string"
+			]
+		},
+		"geometry_item": {
+			"type": [
+				"string"
+			]
+		},
+		"animation": {
+			"type": [
+				"string"
+			]
+		},
+		"render_controller": {
+			"type": [
+				"string"
+			]
+		}
+	}
+}

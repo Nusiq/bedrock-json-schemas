@@ -11,19 +11,26 @@ import json_paths as jp
 from schema_builder import create_schema_definitions
 
 from conversion_config import (
-    BEHAVIOR_CONFIG,
-    BEHAVIOR_CONTROLLER_CONFIG,
-    BEHAVIOR_ANIMATION_CONFIG,
-    BEHAVIOR_LOOT_TABLE,
-    BEHAVIOR_RECIPE,
-    BEHAVIOR_SPAWN_RULE,
-    BEHAVIOR_TRADING,
-    RESOURCE_CONTROLLER_CONFIG,
-    RESOURCE_ENTITY_CONFIG,
-    RESOURCE_PARTICLE_CONFIG,
-    RESOURCE_RENDER_CONTROLLER_CONFIG,
-)
+    MetaSchema, ExportConfig,
 
+    # Behaviorpack
+    BP_ENTITY_MS, BP_ENTITY_CFG,
+    BP_ITEM_MS, BP_ITEM_CFG,
+    BP_ANIMATION_CONTROLLER_MS, BP_ANIMATION_CONTROLLER_CFG,
+    BP_ANIMATION_MS, BP_ANIMATION_CFG,
+    BP_LOOT_TABLE_MS, BP_LOOT_TABLE_CFG,
+    BP_RECIPE_MS, BP_RECIPE_CFG,
+    BP_SPAWN_RULE_MS, BP_SPAWN_RULE_CFG,
+    BP_TRADING_MS, BP_TRADING_CFG,
+
+    # Resourcepack
+    RP_ANIMATION_CONTROLLER_MS, RP_ANIMATION_CONTROLLER_CFG,
+    RP_ANIMATION_MS, RP_ANIMATION_CFG,
+    RP_ATTACHABLE_MS, RP_ATTACHABLE_CFG,
+    RP_ENTITY_MS, RP_ENTITY_CFG,
+    RP_PARTICLE_MS, RP_PARTICLE_CFG,
+    RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,
+)
 
 def jsonc_read(f: tp.IO[tp.Any]) -> tp.Any:
     '''
@@ -40,169 +47,102 @@ def jsonc_read(f: tp.IO[tp.Any]) -> tp.Any:
         return {}
 
 
-def create_bp_schemas_from_examples(
-    bp_path: str,
-    behavior_schema: tp.Dict,
-    controller_schema: tp.Dict,
-    animation_schema: tp.Dict,
-    loot_table_schema: tp.Dict,
-    recipies_schema: tp.Dict,
-    spawn_rules_schema: tp.Dict,
-    trading_schema: tp.Dict,
+def get_schema_dict() -> tp.Dict:
+    return {"$ref": "#/definitions/root"}
+
+class CreateSchemaInput(object):
+    def __init__(self, meta_schema, export_config):
+        self.meta_schema: MetaSchema = meta_schema
+        self.export_config: ExportConfig = export_config
+        self.schema: tp.Dict = get_schema_dict()
+
+def create_schemas(
+    source_path: str, inputs: tp.List[CreateSchemaInput],
     tmp_path: str='./.tmp'
 ):
-    '''
-    Tries to create behaviorpack schemas based on examples from behavior-pack.
-    Uses tmp_path to create temporary files.
-
-    - bp_path - a path to a behavior-pack (the pack can be in a zip file)
-
-    Returns a dictionary with schemas.
-    '''
     tmp_created = False  # True if temporary files were created
 
     # Try to read the ZIP file
     if os.path.isfile:
-        with ZipFile(bp_path, 'r') as zipf:
+        with ZipFile(source_path, 'r') as zipf:
             is_valid = zipf.testzip() is None
             if not is_valid:
                 raise ValueError('Input file is not a ziped behavior-pack')
             zipf.extractall(tmp_path)
             bp_path = tmp_path
             tmp_created = True
-    # Read the data from bp_path
     try:
         for root, dirs, files in os.walk(bp_path):
-            for file in files:
-                fp = os.path.join(root, file)
-                behavior_pattern = os.path.join(bp_path, 'entities/**.json')
-                controller_pattern = os.path.join(bp_path, 'animation_controllers/**.json')
-                animation_pattern = os.path.join(bp_path, 'animations/**.json')
-                loot_table_pattern = os.path.join(bp_path, 'loot_tables/**.json')
-                recipies_pattern = os.path.join(bp_path, 'recipes/**.json')
-                spawn_rules_pattern = os.path.join(bp_path, 'spawn_rules/**.json')
-                trading_pattern = os.path.join(bp_path, 'trading/**.json')
-                if fnmatch.fnmatch(fp, behavior_pattern):
-                    with open(fp, 'r') as f:
-                        entity_dict = jsonc_read(f)
-                    format_version = entity_dict['format_version']
-                    if format_version not in ['1.14.0', '1.13.0']:
-                        print(f'Skipped file {file} - reason format_version=={format_version}')
-                        continue
-                    create_schema_definitions(
-                        source=entity_dict, target=behavior_schema,
-                        meta_schema=BEHAVIOR_CONFIG
-                    )
-                elif fnmatch.fnmatch(fp, controller_pattern):
-                    with open(fp, 'r') as f:
-                        entity_dict = jsonc_read(f)
-                    format_version = entity_dict['format_version']
-                    if format_version not in ['1.10.0']:
-                        print(f'Skipped file {file} - reason format_version=={format_version}')
-                        continue
-                    create_schema_definitions(
-                        source=entity_dict, target=controller_schema,
-                        meta_schema=BEHAVIOR_CONTROLLER_CONFIG
-                    )
-                elif fnmatch.fnmatch(fp, animation_pattern):
-                    with open(fp, 'r') as f:
-                        entity_dict = jsonc_read(f)
-                    format_version = entity_dict['format_version']
-                    if format_version not in ['1.10.0']:
-                        print(f'Skipped file {file} - reason format_version=={format_version}')
-                        continue
-                    create_schema_definitions(
-                        source=entity_dict, target=animation_schema,
-                        meta_schema=BEHAVIOR_ANIMATION_CONFIG
-                    )
-                elif fnmatch.fnmatch(fp, loot_table_pattern):
-                    with open(fp, 'r') as f:
-                        entity_dict = jsonc_read(f)
-                    # THERE IS NO VERSIONING FOR LOOT TABLES
-                    create_schema_definitions(
-                        source=entity_dict, target=loot_table_schema,
-                        meta_schema=BEHAVIOR_LOOT_TABLE
-                    )
-                elif fnmatch.fnmatch(fp, recipies_pattern):
-                    with open(fp, 'r') as f:
-                        entity_dict = jsonc_read(f)
-                    try:
-                        format_version = entity_dict['format_version']
-                    except KeyError as e:
-                        print(f'ERROR: Unable to read format version of recipe {fp}')
-                        continue
-                    if format_version not in ['1.12']:
-                        print(f'Skipped file {file} - reason format_version=={format_version}')
-                        continue
-                    create_schema_definitions(
-                        source=entity_dict, target=recipies_schema,
-                        meta_schema=BEHAVIOR_RECIPE
-                    )
-                elif fnmatch.fnmatch(fp, spawn_rules_pattern):
-                    with open(fp, 'r') as f:
-                        entity_dict = jsonc_read(f)
-                    format_version = entity_dict['format_version']
-                    if format_version not in ['1.8.0']:
-                        print(f'Skipped file {file} - reason format_version=={format_version}')
-                        continue
-                    create_schema_definitions(
-                        source=entity_dict, target=spawn_rules_schema,
-                        meta_schema=BEHAVIOR_SPAWN_RULE
-                    )
-                elif fnmatch.fnmatch(fp, trading_pattern):
-                    with open(fp, 'r') as f:
-                        entity_dict = jsonc_read(f)
-                    # THERE IS NO VERSIONING FOR TRADING
-                    create_schema_definitions(
-                        source=entity_dict, target=trading_schema,
-                        meta_schema=BEHAVIOR_TRADING
-                    )
-
-
-
+            for file_ in files:
+                fp = os.path.join(root, file_)
+                for inp in inputs:
+                    pattern = os.path.join(bp_path, inp.export_config.pattern)
+                    if fnmatch.fnmatch(fp, pattern):
+                        with open(fp, 'r') as f:
+                            source = jsonc_read(f)
+                        for assertion in inp.export_config.assertions:
+                            try:
+                                if not assertion(source):
+                                    print(
+                                        f'Skipped file: {fp} assertion '
+                                        'condition not met'
+                                    )
+                                    break
+                            except:
+                                print(
+                                    f'Skipped file: {fp} error during '
+                                    'checking conditions'
+                                )
+                                break
+                        else:  # All assertion conditions met
+                            create_schema_definitions(
+                                source=source,
+                                target=inp.schema,
+                                meta_schema=inp.meta_schema
+                            )
     finally:  # Remove temporary files if something went wrong
         if tmp_created:
             shutil.rmtree(tmp_path)
 
 
-def get_schema_dict() -> tp.Dict:
-    return {"$ref": "#/definitions/root"}
-
 if __name__ == "__main__":
-    # GENERATE SCHEMAS FOR BEHAVIORPACK
-    behavior_schema: tp.Dict = get_schema_dict()
-    controller_schema: tp.Dict = get_schema_dict()
-    animation_schema: tp.Dict = get_schema_dict()
-    loot_table_schema: tp.Dict = get_schema_dict()
-    recipies_schema: tp.Dict = get_schema_dict()
-    spawn_rules_schema: tp.Dict = get_schema_dict()
-    trading_schema: tp.Dict = get_schema_dict()
+    # GENERATING BEHAVIORPACK SCHEMAS
+    print('GENERATING BEHAVIORPACK SCHEMAS')
+    bp_schema_inputs = [
+        CreateSchemaInput(BP_ENTITY_MS, BP_ENTITY_CFG),
+        CreateSchemaInput(BP_ITEM_MS, BP_ITEM_CFG),
+        CreateSchemaInput(
+            BP_ANIMATION_CONTROLLER_MS, BP_ANIMATION_CONTROLLER_CFG
+        ),
+        CreateSchemaInput(BP_ANIMATION_MS, BP_ANIMATION_CFG),
+        CreateSchemaInput(BP_LOOT_TABLE_MS, BP_LOOT_TABLE_CFG),
+        CreateSchemaInput(BP_RECIPE_MS, BP_RECIPE_CFG),
+        CreateSchemaInput(BP_SPAWN_RULE_MS, BP_SPAWN_RULE_CFG),
+        CreateSchemaInput(BP_TRADING_MS, BP_TRADING_CFG),
+    ]
     
     for dir_ in os.listdir(BP_PATH):
-        create_bp_schemas_from_examples(
-            os.path.join(BP_PATH, dir_),
-            behavior_schema,
-            controller_schema,
-            animation_schema,
-            loot_table_schema,
-            recipies_schema,
-            spawn_rules_schema,
-            trading_schema
-        )
-    with open('../results/behavior_schema.json', 'w') as f:
-        json.dump(behavior_schema, f, indent='\t')
-    with open('../results/controller_schema.json', 'w') as f:
-        json.dump(controller_schema, f, indent='\t')
-    with open('../results/animation_schema.json', 'w') as f:
-        json.dump(animation_schema, f, indent='\t')
-    with open('../results/loot_table_schema.json', 'w') as f:
-        json.dump(loot_table_schema, f, indent='\t')
-    with open('../results/recipies_schema.json', 'w') as f:
-        json.dump(recipies_schema, f, indent='\t')
-    with open('../results/spawn_rules_schema.json', 'w') as f:
-        json.dump(spawn_rules_schema, f, indent='\t')
-    with open('../results/trading_schema.json', 'w') as f:
-        json.dump(trading_schema, f, indent='\t')
+        create_schemas(os.path.join(BP_PATH, dir_), bp_schema_inputs)
 
-    # GENERATE SCHEMAS FOR RESOURCEPACK
-    # TODO - implement
+    for inp in bp_schema_inputs:
+        with open(inp.export_config.export_path, 'w') as f:
+            json.dump(inp.schema, f, indent='\t')
+
+
+    # GENERATING RESOURCEPACK SCHEMAS
+    print('GENERATING RESOURCEPACK SCHEMAS')
+    rp_schema_inputs = [
+        CreateSchemaInput(RP_ANIMATION_CONTROLLER_MS, RP_ANIMATION_CONTROLLER_CFG,),
+        CreateSchemaInput(RP_ANIMATION_MS, RP_ANIMATION_CFG,),
+        CreateSchemaInput(RP_ATTACHABLE_MS, RP_ATTACHABLE_CFG,),
+        CreateSchemaInput(RP_ENTITY_MS, RP_ENTITY_CFG,),
+        CreateSchemaInput(RP_PARTICLE_MS, RP_PARTICLE_CFG,),
+        CreateSchemaInput(RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,),
+    ]
+    
+    for dir_ in os.listdir(RP_PATH):
+        create_schemas(os.path.join(RP_PATH, dir_), rp_schema_inputs)
+
+    for inp in rp_schema_inputs:
+        with open(inp.export_config.export_path, 'w') as f:
+            json.dump(inp.schema, f, indent='\t')

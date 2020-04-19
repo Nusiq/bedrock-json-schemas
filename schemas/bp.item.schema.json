@@ -1,0 +1,222 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"minecraft:item": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"components": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"minecraft:seed": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"crop_result": {
+											"type": [
+												"string"
+											]
+										},
+										"plant_at": {
+											"type": [
+												"string",
+												"array"
+											],
+											"items": {
+												"type": [
+													"string"
+												]
+											}
+										}
+									}
+								},
+								"minecraft:use_duration": {
+									"type": [
+										"integer"
+									]
+								},
+								"minecraft:food": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"nutrition": {
+											"type": [
+												"integer"
+											]
+										},
+										"saturation_modifier": {
+											"type": [
+												"string"
+											]
+										},
+										"effects": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"object"
+												],
+												"properties": {
+													"name": {
+														"type": [
+															"string"
+														]
+													},
+													"chance": {
+														"type": [
+															"number"
+														]
+													},
+													"duration": {
+														"type": [
+															"integer"
+														]
+													},
+													"amplifier": {
+														"type": [
+															"integer"
+														]
+													}
+												}
+											}
+										},
+										"can_always_eat": {
+											"type": [
+												"boolean"
+											]
+										},
+										"using_converts_to": {
+											"type": [
+												"string"
+											]
+										},
+										"is_meat": {
+											"type": [
+												"boolean"
+											]
+										},
+										"on_use_action": {
+											"type": [
+												"string"
+											]
+										},
+										"on_use_range": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"integer"
+												]
+											}
+										},
+										"cooldown_type": {
+											"type": [
+												"string"
+											]
+										},
+										"cooldown_time": {
+											"type": [
+												"integer"
+											]
+										}
+									}
+								},
+								"minecraft:block": {
+									"type": [
+										"string"
+									]
+								},
+								"minecraft:camera": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"black_bars_duration": {
+											"type": [
+												"number"
+											]
+										},
+										"black_bars_screen_ratio": {
+											"type": [
+												"number"
+											]
+										},
+										"shutter_duration": {
+											"type": [
+												"number"
+											]
+										},
+										"picture_duration": {
+											"type": [
+												"number"
+											]
+										},
+										"slide_away_duration": {
+											"type": [
+												"number"
+											]
+										}
+									}
+								},
+								"minecraft:stacked_by_data": {
+									"type": [
+										"boolean"
+									]
+								},
+								"minecraft:foil": {
+									"type": [
+										"boolean"
+									]
+								},
+								"minecraft:max_stack_size": {
+									"type": [
+										"integer"
+									]
+								},
+								"minecraft:hand_equipped": {
+									"type": [
+										"boolean"
+									]
+								},
+								"minecraft:max_damage": {
+									"type": [
+										"integer"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

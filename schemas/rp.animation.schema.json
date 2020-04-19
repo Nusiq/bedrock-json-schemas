@@ -1,0 +1,162 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"animations": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/animation"
+					}
+				}
+			}
+		},
+		"animation": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"loop": {
+					"type": [
+						"boolean"
+					]
+				},
+				"bones": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/bone"
+					}
+				},
+				"animation_length": {
+					"type": [
+						"integer",
+						"number"
+					]
+				},
+				"anim_time_update": {
+					"type": [
+						"string"
+					]
+				},
+				"override_previous_animation": {
+					"type": [
+						"boolean"
+					]
+				}
+			}
+		},
+		"bone": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"position": {
+					"type": [
+						"array",
+						"object"
+					],
+					"items": {
+						"type": [
+							"integer",
+							"string",
+							"number"
+						]
+					},
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					}
+				},
+				"rotation": {
+					"type": [
+						"array",
+						"object"
+					],
+					"items": {
+						"type": [
+							"integer",
+							"string",
+							"number"
+						]
+					},
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					}
+				},
+				"scale": {
+					"type": [
+						"number",
+						"array",
+						"string"
+					],
+					"items": {
+						"type": [
+							"string",
+							"number"
+						]
+					}
+				},
+				"relative_to": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"rotation": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				}
+			}
+		},
+		"timestamp": {
+			"type": [
+				"array",
+				"object"
+			],
+			"items": {
+				"type": [
+					"integer",
+					"string",
+					"number"
+				]
+			},
+			"properties": {
+				"post": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"string",
+							"number"
+						]
+					}
+				},
+				"pre": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"string",
+							"number"
+						]
+					}
+				}
+			}
+		}
+	}
+}

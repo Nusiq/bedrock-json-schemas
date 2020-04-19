@@ -1,0 +1,129 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"minecraft:attachable": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								},
+								"item": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/item_item"
+									}
+								},
+								"materials": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/material"
+									}
+								},
+								"textures": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/texture"
+									}
+								},
+								"geometry": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/geometry_item"
+									}
+								},
+								"scripts": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/script"
+									}
+								},
+								"render_controllers": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"string"
+										]
+									}
+								},
+								"animations": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"offset": {
+											"type": [
+												"string"
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"item_item": {
+			"type": [
+				"string"
+			]
+		},
+		"material": {
+			"type": [
+				"string"
+			]
+		},
+		"texture": {
+			"type": [
+				"string"
+			]
+		},
+		"geometry_item": {
+			"type": [
+				"string"
+			]
+		},
+		"script": {
+			"type": [
+				"string",
+				"array"
+			],
+			"items": {
+				"type": [
+					"string"
+				]
+			}
+		}
+	}
+}
