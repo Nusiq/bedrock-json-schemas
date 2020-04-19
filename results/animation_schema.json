@@ -1,0 +1,55 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"animations": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/animation"
+					}
+				}
+			}
+		},
+		"animation": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"timeline": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					}
+				},
+				"loop": {
+					"type": [
+						"boolean"
+					]
+				},
+				"animation_length": {
+					"type": [
+						"number"
+					]
+				}
+			}
+		},
+		"timestamp": {
+			"type": [
+				"array"
+			]
+		}
+	}
+}

@@ -284,7 +284,6 @@ class SchemaDict(object):
             raise ValueError(f'Invalid object type: {type(obj)}')
 
 
-
 def create_schema_definitions(
     source: tp.Any, target: tp.Dict, meta_schema: MetaSchema
 ):

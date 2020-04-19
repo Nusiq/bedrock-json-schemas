@@ -1,0 +1,95 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"animation_controllers": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/controller"
+					}
+				}
+			}
+		},
+		"controller": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"states": {
+					"type": [
+						"object"
+					],
+					"additionalProperties": {
+						"$ref": "#/definitions/state"
+					}
+				}
+			}
+		},
+		"state": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"transitions": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"object"
+						],
+						"additionalProperties": {
+							"$ref": "#/definitions/transition"
+						}
+					}
+				},
+				"on_entry": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"string"
+						]
+					}
+				},
+				"on_exit": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"string"
+						]
+					}
+				},
+				"animations": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"string"
+						]
+					}
+				}
+			}
+		},
+		"transition": {
+			"type": [
+				"string"
+			]
+		}
+	}
+}

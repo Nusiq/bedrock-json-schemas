@@ -1,0 +1,351 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"minecraft:recipe_shaped": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"tags": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						},
+						"pattern": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						},
+						"key": {
+							"type": [
+								"object"
+							],
+							"additionalProperties": {
+								"$ref": "#/definitions/key_parameter"
+							}
+						},
+						"result": {
+							"type": [
+								"object",
+								"array"
+							],
+							"properties": {
+								"item": {
+									"type": [
+										"string"
+									]
+								},
+								"count": {
+									"type": [
+										"integer"
+									]
+								},
+								"data": {
+									"type": [
+										"integer"
+									]
+								}
+							},
+							"items": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"item": {
+										"type": [
+											"string"
+										]
+									},
+									"count": {
+										"type": [
+											"integer"
+										]
+									},
+									"data": {
+										"type": [
+											"integer"
+										]
+									}
+								}
+							}
+						},
+						"group": {
+							"type": [
+								"string"
+							]
+						},
+						"priority": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:recipe_shapeless": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"tags": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						},
+						"group": {
+							"type": [
+								"string"
+							]
+						},
+						"ingredients": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"item": {
+										"type": [
+											"string"
+										]
+									},
+									"data": {
+										"type": [
+											"integer"
+										]
+									},
+									"count": {
+										"type": [
+											"integer"
+										]
+									}
+								}
+							}
+						},
+						"result": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"item": {
+									"type": [
+										"string"
+									]
+								},
+								"data": {
+									"type": [
+										"integer"
+									]
+								},
+								"count": {
+									"type": [
+										"integer"
+									]
+								}
+							}
+						},
+						"priority": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:recipe_furnace": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"tags": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						},
+						"input": {
+							"type": [
+								"string"
+							]
+						},
+						"output": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				},
+				"minecraft:recipe_brewing_mix": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"tags": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						},
+						"input": {
+							"type": [
+								"string"
+							]
+						},
+						"reagent": {
+							"type": [
+								"string"
+							]
+						},
+						"output": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				},
+				"minecraft:recipe_brewing_container": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"tags": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						},
+						"input": {
+							"type": [
+								"string"
+							]
+						},
+						"reagent": {
+							"type": [
+								"string"
+							]
+						},
+						"output": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				}
+			}
+		},
+		"key_parameter": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"item": {
+					"type": [
+						"string"
+					]
+				},
+				"data": {
+					"type": [
+						"integer"
+					]
+				}
+			}
+		}
+	}
+}

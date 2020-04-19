@@ -1,0 +1,324 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					]
+				},
+				"minecraft:spawn_rules": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								},
+								"population_control": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"conditions": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"minecraft:spawns_on_surface": {
+										"type": [
+											"object"
+										]
+									},
+									"minecraft:spawns_on_block_filter": {
+										"type": [
+											"string"
+										]
+									},
+									"minecraft:brightness_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"min": {
+												"type": [
+													"integer"
+												]
+											},
+											"max": {
+												"type": [
+													"integer"
+												]
+											},
+											"adjust_for_weather": {
+												"type": [
+													"boolean"
+												]
+											}
+										}
+									},
+									"minecraft:weight": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"default": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
+									"minecraft:herd": {
+										"type": [
+											"array",
+											"object"
+										],
+										"items": {
+											"type": [
+												"object"
+											],
+											"properties": {
+												"min_size": {
+													"type": [
+														"integer"
+													]
+												},
+												"max_size": {
+													"type": [
+														"integer"
+													]
+												},
+												"event": {
+													"type": [
+														"string"
+													]
+												}
+											}
+										},
+										"properties": {
+											"min_size": {
+												"type": [
+													"integer"
+												]
+											},
+											"max_size": {
+												"type": [
+													"integer"
+												]
+											},
+											"event": {
+												"type": [
+													"string"
+												]
+											},
+											"event_skip_count": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
+									"minecraft:biome_filter": {
+										"$ref": "#/definitions/filter"
+									},
+									"minecraft:spawns_underwater": {
+										"type": [
+											"object"
+										]
+									},
+									"minecraft:difficulty_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"min": {
+												"type": [
+													"string"
+												]
+											},
+											"max": {
+												"type": [
+													"string"
+												]
+											}
+										}
+									},
+									"minecraft:density_limit": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"surface": {
+												"type": [
+													"integer"
+												]
+											},
+											"underground": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
+									"minecraft:spawns_underground": {
+										"type": [
+											"object"
+										]
+									},
+									"minecraft:permute_type": {
+										"type": [
+											"array"
+										],
+										"items": {
+											"type": [
+												"object"
+											],
+											"properties": {
+												"weight": {
+													"type": [
+														"integer"
+													]
+												},
+												"entity_type": {
+													"type": [
+														"string"
+													]
+												}
+											}
+										}
+									},
+									"minecraft:height_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"min": {
+												"type": [
+													"integer"
+												]
+											},
+											"max": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
+									"minecraft:spawn_event": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"event": {
+												"type": [
+													"string"
+												]
+											}
+										}
+									},
+									"minecraft:distance_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"min": {
+												"type": [
+													"integer"
+												]
+											},
+											"max": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"filter": {
+			"type": [
+				"object",
+				"array"
+			],
+			"properties": {
+				"test": {
+					"type": [
+						"string"
+					]
+				},
+				"operator": {
+					"type": [
+						"string"
+					]
+				},
+				"value": {
+					"type": [
+						"string",
+						"boolean"
+					]
+				},
+				"any_of": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/filter"
+					}
+				},
+				"all_of": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/filter"
+					}
+				}
+			},
+			"items": {
+				"type": [
+					"object"
+				],
+				"properties": {
+					"test": {
+						"type": [
+							"string"
+						]
+					},
+					"operator": {
+						"type": [
+							"string"
+						]
+					},
+					"value": {
+						"type": [
+							"string"
+						]
+					}
+				}
+			}
+		}
+	}
+}

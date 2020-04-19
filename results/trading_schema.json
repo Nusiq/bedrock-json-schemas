@@ -1,0 +1,329 @@
+{
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"tiers": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"object"
+						],
+						"properties": {
+							"total_exp_required": {
+								"type": [
+									"integer"
+								]
+							},
+							"groups": {
+								"type": [
+									"array"
+								],
+								"items": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"num_to_select": {
+											"type": [
+												"integer"
+											]
+										},
+										"trades": {
+											"$ref": "#/definitions/trade"
+										}
+									}
+								}
+							},
+							"trades": {
+								"$ref": "#/definitions/trade"
+							}
+						}
+					}
+				}
+			}
+		},
+		"trade": {
+			"type": [
+				"array"
+			],
+			"items": {
+				"type": [
+					"object"
+				],
+				"properties": {
+					"wants": {
+						"type": [
+							"array"
+						],
+						"items": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"item": {
+									"type": [
+										"string"
+									]
+								},
+								"quantity": {
+									"type": [
+										"integer",
+										"object"
+									],
+									"properties": {
+										"min": {
+											"type": [
+												"integer"
+											]
+										},
+										"max": {
+											"type": [
+												"integer"
+											]
+										}
+									}
+								},
+								"price_multiplier": {
+									"type": [
+										"integer",
+										"number"
+									]
+								},
+								"choice": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"item": {
+												"type": [
+													"string"
+												]
+											},
+											"quantity": {
+												"type": [
+													"integer"
+												]
+											},
+											"price_multiplier": {
+												"type": [
+													"number"
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"gives": {
+						"type": [
+							"array"
+						],
+						"items": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"item": {
+									"type": [
+										"string"
+									]
+								},
+								"quantity": {
+									"type": [
+										"integer",
+										"object"
+									],
+									"properties": {
+										"min": {
+											"type": [
+												"integer"
+											]
+										},
+										"max": {
+											"type": [
+												"integer"
+											]
+										}
+									}
+								},
+								"functions": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"function": {
+												"type": [
+													"string"
+												]
+											},
+											"treasure": {
+												"type": [
+													"boolean"
+												]
+											},
+											"levels": {
+												"type": [
+													"object"
+												],
+												"properties": {
+													"min": {
+														"type": [
+															"integer"
+														]
+													},
+													"max": {
+														"type": [
+															"integer"
+														]
+													}
+												}
+											},
+											"base_cost": {
+												"type": [
+													"integer"
+												]
+											},
+											"base_random_cost": {
+												"type": [
+													"integer"
+												]
+											},
+											"per_level_random_cost": {
+												"type": [
+													"integer"
+												]
+											},
+											"per_level_cost": {
+												"type": [
+													"integer"
+												]
+											},
+											"destination": {
+												"type": [
+													"string"
+												]
+											},
+											"block_state": {
+												"type": [
+													"string"
+												]
+											},
+											"values": {
+												"type": [
+													"object"
+												],
+												"properties": {
+													"min": {
+														"type": [
+															"integer"
+														]
+													},
+													"max": {
+														"type": [
+															"integer"
+														]
+													}
+												}
+											}
+										}
+									}
+								},
+								"choice": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"item": {
+												"type": [
+													"string"
+												]
+											},
+											"quantity": {
+												"type": [
+													"integer"
+												]
+											},
+											"functions": {
+												"type": [
+													"array"
+												],
+												"items": {
+													"type": [
+														"object"
+													],
+													"properties": {
+														"function": {
+															"type": [
+																"string"
+															]
+														},
+														"block_state": {
+															"type": [
+																"string"
+															]
+														},
+														"values": {
+															"type": [
+																"object"
+															],
+															"properties": {
+																"min": {
+																	"type": [
+																		"integer"
+																	]
+																},
+																"max": {
+																	"type": [
+																		"integer"
+																	]
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"trader_exp": {
+						"type": [
+							"integer"
+						]
+					},
+					"max_uses": {
+						"type": [
+							"integer"
+						]
+					},
+					"reward_exp": {
+						"type": [
+							"boolean"
+						]
+					}
+				}
+			}
+		}
+	}
+}
