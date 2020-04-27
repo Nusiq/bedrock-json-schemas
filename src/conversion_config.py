@@ -143,7 +143,12 @@ BP_ENTITY_MS = MetaSchema(
                 jp.Wildcard.ANY_ITEM: "filter"
             },
         },
-        "description": {},
+        "description": {
+            "animations": {
+                jp.Wildcard.ANY_PARAMETER: "description_animation"
+            }
+        },
+        "description_animation": {}
     },
     blacklist=[
         ["minecraft:entity", "minecraft:physics"],

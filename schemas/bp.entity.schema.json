@@ -88,157 +88,8 @@
 					"type": [
 						"object"
 					],
-					"properties": {
-						"citizen_interaction": {
-							"type": [
-								"string"
-							]
-						},
-						"controll_population": {
-							"type": [
-								"string"
-							]
-						},
-						"travel_location_selector": {
-							"type": [
-								"string"
-							]
-						},
-						"collect.collectible": {
-							"type": [
-								"string"
-							]
-						},
-						"spawn_controll": {
-							"type": [
-								"string"
-							]
-						},
-						"fast_travel": {
-							"type": [
-								"string"
-							]
-						},
-						"particle": {
-							"type": [
-								"string"
-							]
-						},
-						"quest": {
-							"type": [
-								"string"
-							]
-						},
-						"citizen_path_marker_commands": {
-							"type": [
-								"string"
-							]
-						},
-						"speeder_flight_commands": {
-							"type": [
-								"string"
-							]
-						},
-						"speeder_flight_visuals": {
-							"type": [
-								"string"
-							]
-						},
-						"speeder_eject_mechanics_brother": {
-							"type": [
-								"string"
-							]
-						},
-						"speeder_player_mount": {
-							"type": [
-								"string"
-							]
-						},
-						"speeder_init": {
-							"type": [
-								"string"
-							]
-						},
-						"first_damage": {
-							"type": [
-								"string"
-							]
-						},
-						"citizen_npc_init_commands": {
-							"type": [
-								"string"
-							]
-						},
-						"citizen_npc_spread_panic": {
-							"type": [
-								"string"
-							]
-						},
-						"citizen_npc_type": {
-							"type": [
-								"string"
-							]
-						},
-						"hololocator": {
-							"type": [
-								"string"
-							]
-						},
-						"collect": {
-							"type": [
-								"string"
-							]
-						},
-						"init_dialogue": {
-							"type": [
-								"string"
-							]
-						},
-						"despawn_enabled": {
-							"type": [
-								"string"
-							]
-						},
-						"dialogue": {
-							"type": [
-								"string"
-							]
-						},
-						"controll_panel.interact": {
-							"type": [
-								"string"
-							]
-						},
-						"player_flight_commands": {
-							"type": [
-								"string"
-							]
-						},
-						"reconnect_detector": {
-							"type": [
-								"string"
-							]
-						},
-						"death_detector": {
-							"type": [
-								"string"
-							]
-						},
-						"teleporter": {
-							"type": [
-								"string"
-							]
-						},
-						"teleportation_countdown": {
-							"type": [
-								"string"
-							]
-						},
-						"use_hololocator": {
-							"type": [
-								"string"
-							]
-						}
+					"additionalProperties": {
+						"$ref": "#/definitions/description_animation"
 					}
 				},
 				"runtime_identifier": {
@@ -247,6 +98,11 @@
 					]
 				}
 			}
+		},
+		"description_animation": {
+			"type": [
+				"string"
+			]
 		},
 		"component_group": {
 			"type": [
