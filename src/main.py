@@ -7,6 +7,7 @@ import typing as tp
 import shutil
 import fnmatch
 import json
+from jsonc_decoder import JSONCDecoder
 import json_paths as jp
 from schema_builder import create_schema_definitions
 
@@ -31,21 +32,6 @@ from conversion_config import (
     RP_PARTICLE_MS, RP_PARTICLE_CFG,
     RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,
 )
-
-def jsonc_read(f: tp.IO[tp.Any]) -> tp.Any:
-    '''
-    Reads json with comments
-    '''
-    lines_list: tp.List[str] = []
-    for line in f.readlines():
-        line = line.strip('\n').split('//')[0]
-        lines_list.append(line)
-    try:
-        return json.loads('\n'.join(lines_list))
-    except json.decoder.JSONDecodeError as e:
-        print(f'ERROR: UNABLE TO READ FILE (returning placeholder result)')
-        return {}
-
 
 def get_schema_dict() -> tp.Dict:
     return {"$ref": "#/definitions/root"}
@@ -79,7 +65,7 @@ def create_schemas(
                     pattern = os.path.join(bp_path, inp.export_config.pattern)
                     if fnmatch.fnmatch(fp, pattern):
                         with open(fp, 'r') as f:
-                            source = jsonc_read(f)
+                            source = json.load(f, cls=JSONCDecoder)
                         for assertion in inp.export_config.assertions:
                             try:
                                 if not assertion(source):
