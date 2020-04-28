@@ -1,7 +1,11 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8"
+		}
+	],
 	"definitions": {
-		"root": {
+		"8": {
 			"type": [
 				"object"
 			],
@@ -9,6 +13,9 @@
 				"format_version": {
 					"type": [
 						"string"
+					],
+					"enum": [
+						"1.8.0"
 					]
 				},
 				"animations": {

@@ -1,7 +1,11 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8_10"
+		}
+	],
 	"definitions": {
-		"root": {
+		"8_10": {
 			"type": [
 				"object"
 			],
@@ -9,6 +13,11 @@
 				"format_version": {
 					"type": [
 						"string"
+					],
+					"enum": [
+						"1.10.0",
+						"1.8.0",
+						"1.10"
 					]
 				},
 				"minecraft:attachable": {
@@ -54,8 +63,27 @@
 									"type": [
 										"object"
 									],
-									"additionalProperties": {
-										"$ref": "#/definitions/geometry_item"
+									"properties": {
+										"default": {
+											"type": [
+												"string"
+											]
+										},
+										"bow_pulling_0": {
+											"type": [
+												"string"
+											]
+										},
+										"bow_pulling_1": {
+											"type": [
+												"string"
+											]
+										},
+										"bow_pulling_2": {
+											"type": [
+												"string"
+											]
+										}
 									}
 								},
 								"scripts": {
@@ -80,12 +108,8 @@
 									"type": [
 										"object"
 									],
-									"properties": {
-										"offset": {
-											"type": [
-												"string"
-											]
-										}
+									"additionalProperties": {
+										"$ref": "#/definitions/animation"
 									}
 								}
 							}
@@ -109,11 +133,6 @@
 				"string"
 			]
 		},
-		"geometry_item": {
-			"type": [
-				"string"
-			]
-		},
 		"script": {
 			"type": [
 				"string",
@@ -124,6 +143,11 @@
 					"string"
 				]
 			}
+		},
+		"animation": {
+			"type": [
+				"string"
+			]
 		}
 	}
 }

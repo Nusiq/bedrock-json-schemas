@@ -1,7 +1,14 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8_10_12"
+		},
+		{
+			"$ref": "#/definitions/13_14"
+		}
+	],
 	"definitions": {
-		"root": {
+		"8_10_12": {
 			"type": [
 				"object"
 			],
@@ -9,6 +16,11 @@
 				"format_version": {
 					"type": [
 						"string"
+					],
+					"enum": [
+						"1.10.0",
+						"1.12.0",
+						"1.8.0"
 					]
 				},
 				"minecraft:entity": {
@@ -24,11 +36,11 @@
 								"object"
 							],
 							"additionalProperties": {
-								"$ref": "#/definitions/component_group"
+								"$ref": "#/definitions/component_group_8_10_12"
 							}
 						},
 						"components": {
-							"$ref": "#/definitions/component_group"
+							"$ref": "#/definitions/component_group_8_10_12"
 						},
 						"events": {
 							"type": [
@@ -89,7 +101,7 @@
 						"object"
 					],
 					"additionalProperties": {
-						"$ref": "#/definitions/description_animation"
+						"$ref": "#/definitions/description_config"
 					}
 				},
 				"runtime_identifier": {
@@ -99,12 +111,1837 @@
 				}
 			}
 		},
-		"description_animation": {
+		"description_config": {
 			"type": [
 				"string"
 			]
 		},
-		"component_group": {
+		"component_group_8_10_12": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"minecraft:variant": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:interact": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"on_interact": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"filters": {
+									"$ref": "#/definitions/filter"
+								},
+								"event": {
+									"type": [
+										"string"
+									]
+								},
+								"target": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"play_sounds": {
+							"type": [
+								"string"
+							]
+						},
+						"interact_text": {
+							"type": [
+								"string"
+							]
+						},
+						"particle_on_start": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"particle_type": {
+									"type": [
+										"string"
+									]
+								},
+								"particle_offset_towards_interactor": {
+									"type": [
+										"boolean"
+									]
+								},
+								"particle_y_offset": {
+									"type": [
+										"integer"
+									]
+								}
+							}
+						}
+					}
+				},
+				"minecraft:is_baby": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:behavior.look_at_player": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"probability": {
+							"type": [
+								"integer"
+							]
+						},
+						"priority": {
+							"type": [
+								"integer"
+							]
+						},
+						"look_distance": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:physics": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"has_gravity": {
+							"type": [
+								"boolean"
+							]
+						},
+						"has_collision": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:scale": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"number",
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:collision_box": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"width": {
+							"type": [
+								"number",
+								"integer"
+							]
+						},
+						"height": {
+							"type": [
+								"number",
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:push_through": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:knockback_resistance": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:health": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						},
+						"max": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:damage_sensor": {
+					"type": [
+						"array",
+						"object"
+					],
+					"items": {
+						"type": [
+							"object"
+						],
+						"properties": {
+							"on_damage": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"filters": {
+										"$ref": "#/definitions/filter"
+									},
+									"event": {
+										"type": [
+											"string"
+										]
+									}
+								}
+							},
+							"deals_damage": {
+								"type": [
+									"boolean"
+								]
+							}
+						}
+					},
+					"properties": {
+						"triggers": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"deals_damage": {
+									"type": [
+										"boolean"
+									]
+								}
+							}
+						}
+					}
+				},
+				"minecraft:spell_effects": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"remove_effects": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						},
+						"add_effects": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"effect": {
+										"type": [
+											"string"
+										]
+									},
+									"duration": {
+										"type": [
+											"integer"
+										]
+									},
+									"amplifier": {
+										"type": [
+											"integer"
+										]
+									},
+									"visible": {
+										"type": [
+											"boolean"
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"minecraft:navigation.walk": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"is_amphibious": {
+							"type": [
+								"boolean"
+							]
+						},
+						"can_pass_doors": {
+							"type": [
+								"boolean"
+							]
+						},
+						"can_walk": {
+							"type": [
+								"boolean"
+							]
+						},
+						"can_break_doors": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:movement.basic": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:is_saddled": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:is_tamed": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:input_ground_controlled": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:behavior.player_ride_tamed": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:movement": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"number"
+							]
+						}
+					}
+				},
+				"minecraft:rideable": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						},
+						"seat_count": {
+							"type": [
+								"integer"
+							]
+						},
+						"interact_text": {
+							"type": [
+								"string"
+							]
+						},
+						"seats": {
+							"type": [
+								"array",
+								"object"
+							],
+							"items": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"position": {
+										"type": [
+											"array"
+										],
+										"items": {
+											"type": [
+												"integer",
+												"number"
+											]
+										}
+									},
+									"min_rider_count": {
+										"type": [
+											"integer"
+										]
+									},
+									"max_rider_count": {
+										"type": [
+											"integer"
+										]
+									},
+									"lock_rider_rotation": {
+										"type": [
+											"integer"
+										]
+									}
+								}
+							},
+							"properties": {
+								"position": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"number"
+										]
+									}
+								}
+							}
+						},
+						"pull_in_entities": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:type_family": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"family": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						}
+					}
+				},
+				"minecraft:economy_trade_table": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"display_name": {
+							"type": [
+								"string"
+							]
+						},
+						"table": {
+							"type": [
+								"string"
+							]
+						},
+						"new_screen": {
+							"type": [
+								"boolean"
+							]
+						},
+						"persist_trades": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:behavior.trade_with_player": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:inventory": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"container_type": {
+							"type": [
+								"string"
+							]
+						},
+						"inventory_size": {
+							"type": [
+								"integer"
+							]
+						},
+						"can_be_siphoned_from": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:despawn": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"filters": {
+							"$ref": "#/definitions/filter"
+						}
+					}
+				},
+				"minecraft:mark_variant": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:breathable": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"breathesAir": {
+							"type": [
+								"boolean"
+							]
+						},
+						"breathesWater": {
+							"type": [
+								"boolean"
+							]
+						},
+						"breathesLava": {
+							"type": [
+								"boolean"
+							]
+						},
+						"breathesSolids": {
+							"type": [
+								"boolean"
+							]
+						},
+						"generatesBubbles": {
+							"type": [
+								"boolean"
+							]
+						},
+						"totalSupply": {
+							"type": [
+								"integer"
+							]
+						},
+						"suffocateTime": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:fall_damage": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"number"
+							]
+						}
+					}
+				},
+				"minecraft:attack": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"damage": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:behavior.melee_attack": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						},
+						"speed_multiplier": {
+							"type": [
+								"integer"
+							]
+						},
+						"track_target": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:jump.static": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:can_climb": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:behavior.random_look_around": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:angry": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"duration": {
+							"type": [
+								"integer"
+							]
+						},
+						"calm_event": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				},
+				"minecraft:nameable": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:behavior.hurt_by_target": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:behavior.nearest_attackable_target": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						},
+						"within_radius": {
+							"type": [
+								"integer"
+							]
+						},
+						"reselect_targets": {
+							"type": [
+								"boolean"
+							]
+						},
+						"entity_types": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"filters": {
+										"$ref": "#/definitions/filter"
+									},
+									"max_dist": {
+										"type": [
+											"integer"
+										]
+									}
+								}
+							}
+						},
+						"must_see": {
+							"type": [
+								"boolean"
+							]
+						},
+						"must_see_forget_duration": {
+							"type": [
+								"number"
+							]
+						},
+						"scan_interval": {
+							"type": [
+								"integer"
+							]
+						},
+						"persist_time": {
+							"type": [
+								"number"
+							]
+						},
+						"target_search_height": {
+							"type": [
+								"number"
+							]
+						}
+					}
+				},
+				"minecraft:environment_sensor": {
+					"type": [
+						"array",
+						"object"
+					],
+					"items": {
+						"type": [
+							"object"
+						],
+						"properties": {
+							"filters": {
+								"$ref": "#/definitions/filter"
+							},
+							"event": {
+								"type": [
+									"string"
+								]
+							}
+						}
+					},
+					"properties": {
+						"event": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				},
+				"minecraft:transformation": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"into": {
+							"type": [
+								"string"
+							]
+						},
+						"drop_equipment": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:timer": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"looping": {
+							"type": [
+								"boolean"
+							]
+						},
+						"time": {
+							"type": [
+								"integer",
+								"number"
+							]
+						},
+						"time_down_event": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"event": {
+									"type": [
+										"string"
+									]
+								},
+								"target": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						}
+					}
+				},
+				"minecraft:color": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:skin_id": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:is_chested": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:behavior.swoop_attack": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						},
+						"speed_multiplier": {
+							"type": [
+								"number"
+							]
+						},
+						"delay_range": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"number"
+								]
+							}
+						}
+					}
+				},
+				"minecraft:target_nearby_sensor": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"inside_range": {
+							"type": [
+								"number"
+							]
+						},
+						"must_see": {
+							"type": [
+								"boolean"
+							]
+						},
+						"on_inside_range": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"event": {
+									"type": [
+										"string"
+									]
+								},
+								"target": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						}
+					}
+				},
+				"minecraft:behavior.avoid_mob_type": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"priority": {
+							"type": [
+								"integer"
+							]
+						},
+						"entity_types": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"object"
+								],
+								"properties": {
+									"filters": {
+										"$ref": "#/definitions/filter"
+									},
+									"max_dist": {
+										"type": [
+											"integer"
+										]
+									},
+									"walk_speed_multiplier": {
+										"type": [
+											"number"
+										]
+									},
+									"sprint_speed_multiplier": {
+										"type": [
+											"number"
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"minecraft:movement.glide": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"start_speed": {
+							"type": [
+								"number"
+							]
+						},
+						"speed_when_turning": {
+							"type": [
+								"number"
+							]
+						}
+					}
+				},
+				"minecraft:follow_range": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"integer"
+							]
+						},
+						"max": {
+							"type": [
+								"integer"
+							]
+						}
+					}
+				},
+				"minecraft:spawn_entity": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"type": [
+							"object"
+						],
+						"properties": {
+							"min_wait_time": {
+								"type": [
+									"integer"
+								]
+							},
+							"max_wait_time": {
+								"type": [
+									"integer"
+								]
+							},
+							"spawn_entity": {
+								"type": [
+									"string"
+								]
+							},
+							"spawn_event": {
+								"type": [
+									"string"
+								]
+							},
+							"single_use": {
+								"type": [
+									"boolean"
+								]
+							},
+							"num_to_spawn": {
+								"type": [
+									"integer"
+								]
+							},
+							"should_leash": {
+								"type": [
+									"boolean"
+								]
+							},
+							"filters": {
+								"$ref": "#/definitions/filter"
+							}
+						}
+					}
+				},
+				"minecraft:projectile": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"on_hit": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"douse_fire": {
+									"type": [
+										"object"
+									]
+								},
+								"thrown_potion_effect": {
+									"type": [
+										"object"
+									]
+								},
+								"remove_on_hit": {
+									"type": [
+										"object"
+									]
+								},
+								"definition_event": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"affect_projectile": {
+											"type": [
+												"boolean"
+											]
+										},
+										"event_trigger": {
+											"type": [
+												"object"
+											],
+											"properties": {
+												"event": {
+													"type": [
+														"string"
+													]
+												},
+												"target": {
+													"type": [
+														"string"
+													]
+												}
+											}
+										}
+									}
+								},
+								"mob_effect": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"effect": {
+											"type": [
+												"string"
+											]
+										},
+										"durationeasy": {
+											"type": [
+												"integer"
+											]
+										},
+										"durationnormal": {
+											"type": [
+												"integer"
+											]
+										},
+										"durationhard": {
+											"type": [
+												"integer"
+											]
+										},
+										"amplifier": {
+											"type": [
+												"integer"
+											]
+										}
+									}
+								},
+								"stick_in_ground": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"shake_time": {
+											"type": [
+												"integer"
+											]
+										}
+									}
+								},
+								"impact_damage": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"damage": {
+											"type": [
+												"integer"
+											]
+										},
+										"knockback": {
+											"type": [
+												"boolean"
+											]
+										},
+										"should_bounce": {
+											"type": [
+												"boolean"
+											]
+										},
+										"filter": {
+											"type": [
+												"string"
+											]
+										},
+										"semi_random_diff_damage": {
+											"type": [
+												"boolean"
+											]
+										},
+										"destroy_on_hit": {
+											"type": [
+												"boolean"
+											]
+										},
+										"catch_fire": {
+											"type": [
+												"boolean"
+											]
+										}
+									}
+								},
+								"particle_on_hit": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"particle_type": {
+											"type": [
+												"string"
+											]
+										},
+										"on_other_hit": {
+											"type": [
+												"boolean"
+											]
+										},
+										"num_particles": {
+											"type": [
+												"integer"
+											]
+										},
+										"on_entity_hit": {
+											"type": [
+												"boolean"
+											]
+										}
+									}
+								},
+								"spawn_aoe_cloud": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"radius": {
+											"type": [
+												"number"
+											]
+										},
+										"radius_on_use": {
+											"type": [
+												"number",
+												"integer"
+											]
+										},
+										"duration": {
+											"type": [
+												"integer"
+											]
+										},
+										"reapplication_delay": {
+											"type": [
+												"integer"
+											]
+										},
+										"potion": {
+											"type": [
+												"integer"
+											]
+										},
+										"particle": {
+											"type": [
+												"string"
+											]
+										},
+										"color": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"integer"
+												]
+											}
+										},
+										"affect_owner": {
+											"type": [
+												"boolean"
+											]
+										}
+									}
+								},
+								"spawn_chance": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"first_spawn_chance": {
+											"type": [
+												"integer"
+											]
+										},
+										"second_spawn_chance": {
+											"type": [
+												"integer"
+											]
+										},
+										"first_spawn_count": {
+											"type": [
+												"integer"
+											]
+										},
+										"second_spawn_count": {
+											"type": [
+												"integer"
+											]
+										},
+										"spawn_definition": {
+											"type": [
+												"string"
+											]
+										},
+										"spawn_baby": {
+											"type": [
+												"boolean"
+											]
+										},
+										"first_spawn_percent_chance": {
+											"type": [
+												"number"
+											]
+										}
+									}
+								},
+								"grant_xp": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"minXP": {
+											"type": [
+												"integer"
+											]
+										},
+										"maxXP": {
+											"type": [
+												"integer"
+											]
+										}
+									}
+								},
+								"teleport_owner": {
+									"type": [
+										"object"
+									]
+								},
+								"catch_fire": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"fire_affected_by_griefing": {
+											"type": [
+												"boolean"
+											]
+										}
+									}
+								}
+							}
+						},
+						"power": {
+							"type": [
+								"number",
+								"integer"
+							]
+						},
+						"gravity": {
+							"type": [
+								"number"
+							]
+						},
+						"angle_offset": {
+							"type": [
+								"number"
+							]
+						},
+						"hit_sound": {
+							"type": [
+								"string"
+							]
+						},
+						"uncertainty_base": {
+							"type": [
+								"number",
+								"integer"
+							]
+						},
+						"uncertainty_multiplier": {
+							"type": [
+								"integer"
+							]
+						},
+						"shoot_sound": {
+							"type": [
+								"string"
+							]
+						},
+						"anchor": {
+							"type": [
+								"integer"
+							]
+						},
+						"offset": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"integer",
+									"number"
+								]
+							}
+						},
+						"inertia": {
+							"type": [
+								"number",
+								"integer"
+							]
+						},
+						"liquid_inertia": {
+							"type": [
+								"number",
+								"integer"
+							]
+						},
+						"shoot_target": {
+							"type": [
+								"boolean"
+							]
+						},
+						"destroyOnHurt": {
+							"type": [
+								"boolean"
+							]
+						},
+						"crit_particle_on_hurt": {
+							"type": [
+								"boolean"
+							]
+						},
+						"homing": {
+							"type": [
+								"boolean"
+							]
+						},
+						"semi_random_diff_damage": {
+							"type": [
+								"boolean"
+							]
+						},
+						"reflect_on_hurt": {
+							"type": [
+								"boolean"
+							]
+						},
+						"hit_ground_sound": {
+							"type": [
+								"string"
+							]
+						},
+						"stop_on_hurt": {
+							"type": [
+								"boolean"
+							]
+						},
+						"should_bounce": {
+							"type": [
+								"boolean"
+							]
+						},
+						"multiple_targets": {
+							"type": [
+								"boolean"
+							]
+						},
+						"is_dangerous": {
+							"type": [
+								"boolean"
+							]
+						},
+						"catch_fire": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:pushable": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"is_pushable": {
+							"type": [
+								"boolean"
+							]
+						},
+						"is_pushable_by_piston": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:item_hopper": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:rail_sensor": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"on_activate": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"event": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"on_deactivate": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"event": {
+									"type": [
+										"string"
+									]
+								}
+							}
+						},
+						"check_block_types": {
+							"type": [
+								"boolean"
+							]
+						},
+						"eject_on_activate": {
+							"type": [
+								"boolean"
+							]
+						},
+						"eject_on_deactivate": {
+							"type": [
+								"boolean"
+							]
+						},
+						"tick_command_block_on_activate": {
+							"type": [
+								"boolean"
+							]
+						},
+						"tick_command_block_on_deactivate": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:rail_movement": {
+					"type": [
+						"object"
+					]
+				},
+				"minecraft:is_stackable": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"value": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:explode": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"fuse_length": {
+							"type": [
+								"integer",
+								"object"
+							],
+							"properties": {
+								"range_min": {
+									"type": [
+										"number"
+									]
+								},
+								"range_max": {
+									"type": [
+										"number"
+									]
+								}
+							}
+						},
+						"fuse_lit": {
+							"type": [
+								"boolean"
+							]
+						},
+						"power": {
+							"type": [
+								"integer"
+							]
+						},
+						"causes_fire": {
+							"type": [
+								"boolean"
+							]
+						},
+						"destroy_affected_by_griefing": {
+							"type": [
+								"boolean"
+							]
+						},
+						"max_resistance": {
+							"type": [
+								"number"
+							]
+						},
+						"fire_affected_by_griefing": {
+							"type": [
+								"boolean"
+							]
+						}
+					}
+				},
+				"minecraft:loot": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"table": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				},
+				"minecraft:fire_immune": {
+					"type": [
+						"boolean"
+					]
+				},
+				"minecraft:on_hurt": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"event": {
+							"type": [
+								"string"
+							]
+						},
+						"target": {
+							"type": [
+								"string"
+							]
+						}
+					}
+				}
+			}
+		},
+		"filter": {
+			"type": [
+				"object",
+				"array"
+			],
+			"properties": {
+				"test": {
+					"type": [
+						"string"
+					]
+				},
+				"subject": {
+					"type": [
+						"string"
+					]
+				},
+				"domain": {
+					"type": [
+						"string"
+					]
+				},
+				"value": {
+					"type": [
+						"string",
+						"integer",
+						"boolean",
+						"number"
+					]
+				},
+				"any_of": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/filter"
+					}
+				},
+				"operator": {
+					"type": [
+						"string"
+					]
+				},
+				"all_of": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/filter"
+					}
+				},
+				"target": {
+					"type": [
+						"string"
+					]
+				},
+				"other_with_families": {
+					"type": [
+						"string"
+					]
+				}
+			},
+			"items": {
+				"$ref": "#/definitions/filter"
+			}
+		},
+		"event": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"sequence": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/event"
+					}
+				},
+				"add": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"component_groups": {
+							"type": [
+								"array",
+								"string"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						}
+					}
+				},
+				"randomize": {
+					"type": [
+						"array"
+					],
+					"items": {
+						"$ref": "#/definitions/event"
+					}
+				},
+				"remove": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"component_groups": {
+							"type": [
+								"array"
+							],
+							"items": {
+								"type": [
+									"string"
+								]
+							}
+						}
+					}
+				},
+				"weight": {
+					"type": [
+						"integer"
+					]
+				},
+				"filters": {
+					"$ref": "#/definitions/filter"
+				}
+			}
+		},
+		"13_14": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					],
+					"enum": [
+						"1.13.0",
+						"1.14.0"
+					]
+				},
+				"minecraft:entity": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"$ref": "#/definitions/description"
+						},
+						"component_groups": {
+							"type": [
+								"object"
+							],
+							"additionalProperties": {
+								"$ref": "#/definitions/component_group_13_14"
+							}
+						},
+						"components": {
+							"$ref": "#/definitions/component_group_13_14"
+						},
+						"events": {
+							"type": [
+								"object"
+							],
+							"additionalProperties": {
+								"$ref": "#/definitions/event"
+							}
+						}
+					}
+				}
+			}
+		},
+		"component_group_13_14": {
 			"type": [
 				"object"
 			],
@@ -8634,474 +10471,6 @@
 							]
 						}
 					}
-				}
-			}
-		},
-		"filter": {
-			"type": [
-				"object",
-				"array"
-			],
-			"properties": {
-				"test": {
-					"type": [
-						"string"
-					]
-				},
-				"operator": {
-					"type": [
-						"string"
-					]
-				},
-				"value": {
-					"type": [
-						"integer",
-						"string",
-						"boolean",
-						"number"
-					]
-				},
-				"subject": {
-					"type": [
-						"string"
-					]
-				},
-				"any_of": {
-					"type": [
-						"array"
-					],
-					"items": {
-						"$ref": "#/definitions/filter"
-					}
-				},
-				"all_of": {
-					"type": [
-						"array",
-						"object"
-					],
-					"items": {
-						"$ref": "#/definitions/filter"
-					},
-					"properties": {
-						"test": {
-							"type": [
-								"string"
-							]
-						},
-						"subject": {
-							"type": [
-								"string"
-							]
-						},
-						"value": {
-							"type": [
-								"string"
-							]
-						}
-					}
-				},
-				"domain": {
-					"type": [
-						"string"
-					]
-				},
-				"target": {
-					"type": [
-						"string"
-					]
-				},
-				"other_with_families": {
-					"type": [
-						"string"
-					]
-				}
-			},
-			"items": {
-				"type": [
-					"object"
-				],
-				"properties": {
-					"test": {
-						"type": [
-							"string"
-						]
-					},
-					"subject": {
-						"type": [
-							"string"
-						]
-					},
-					"value": {
-						"type": [
-							"string",
-							"boolean"
-						]
-					}
-				}
-			}
-		},
-		"event": {
-			"type": [
-				"object"
-			],
-			"properties": {
-				"sequence": {
-					"type": [
-						"array"
-					],
-					"items": {
-						"type": [
-							"object"
-						],
-						"properties": {
-							"randomize": {
-								"type": [
-									"array"
-								],
-								"items": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"add": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"component_groups": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"string"
-														]
-													}
-												}
-											}
-										},
-										"weight": {
-											"type": [
-												"integer"
-											]
-										},
-										"sequence": {
-											"type": [
-												"array"
-											],
-											"items": {
-												"type": [
-													"object"
-												],
-												"properties": {
-													"add": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"component_groups": {
-																"type": [
-																	"array"
-																],
-																"items": {
-																	"type": [
-																		"string"
-																	]
-																}
-															}
-														}
-													},
-													"randomize": {
-														"type": [
-															"array"
-														],
-														"items": {
-															"type": [
-																"object"
-															],
-															"properties": {
-																"weight": {
-																	"type": [
-																		"integer"
-																	]
-																},
-																"add": {
-																	"type": [
-																		"object"
-																	],
-																	"properties": {
-																		"component_groups": {
-																			"type": [
-																				"array"
-																			],
-																			"items": {
-																				"type": [
-																					"string"
-																				]
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										},
-										"remove": {
-											"type": [
-												"object"
-											]
-										}
-									}
-								}
-							},
-							"add": {
-								"type": [
-									"object"
-								],
-								"properties": {
-									"component_groups": {
-										"type": [
-											"array"
-										],
-										"items": {
-											"type": [
-												"string"
-											]
-										}
-									}
-								}
-							},
-							"filters": {
-								"$ref": "#/definitions/filter"
-							},
-							"remove": {
-								"type": [
-									"object"
-								],
-								"properties": {
-									"component_groups": {
-										"type": [
-											"array"
-										],
-										"items": {
-											"type": [
-												"string"
-											]
-										}
-									}
-								}
-							},
-							"sequence": {
-								"type": [
-									"array"
-								],
-								"items": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"filters": {
-											"$ref": "#/definitions/filter"
-										},
-										"add": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"component_groups": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"string"
-														]
-													}
-												}
-											}
-										},
-										"randomize": {
-											"type": [
-												"array"
-											],
-											"items": {
-												"type": [
-													"object"
-												],
-												"properties": {
-													"weight": {
-														"type": [
-															"integer"
-														]
-													},
-													"add": {
-														"type": [
-															"object"
-														],
-														"properties": {
-															"component_groups": {
-																"type": [
-																	"array"
-																],
-																"items": {
-																	"type": [
-																		"string"
-																	]
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"remove": {
-					"type": [
-						"object"
-					],
-					"properties": {
-						"component_groups": {
-							"type": [
-								"array"
-							],
-							"items": {
-								"type": [
-									"string"
-								]
-							}
-						},
-						"minecraft:silverfish_calm": {
-							"type": [
-								"object"
-							]
-						},
-						"minecraft:silverfish_angry": {
-							"type": [
-								"object"
-							]
-						}
-					}
-				},
-				"add": {
-					"type": [
-						"object"
-					],
-					"properties": {
-						"component_groups": {
-							"type": [
-								"array"
-							],
-							"items": {
-								"type": [
-									"string"
-								]
-							}
-						}
-					}
-				},
-				"randomize": {
-					"type": [
-						"array"
-					],
-					"items": {
-						"type": [
-							"object"
-						],
-						"properties": {
-							"add": {
-								"type": [
-									"object"
-								],
-								"properties": {
-									"component_groups": {
-										"type": [
-											"string",
-											"array"
-										],
-										"items": {
-											"type": [
-												"string"
-											]
-										}
-									}
-								}
-							},
-							"weight": {
-								"type": [
-									"integer"
-								]
-							},
-							"remove": {
-								"type": [
-									"object"
-								],
-								"properties": {
-									"component_groups": {
-										"type": [
-											"array"
-										],
-										"items": {
-											"type": [
-												"string"
-											]
-										}
-									}
-								}
-							},
-							"randomize": {
-								"type": [
-									"array"
-								],
-								"items": {
-									"type": [
-										"object"
-									],
-									"properties": {
-										"weight": {
-											"type": [
-												"integer"
-											]
-										},
-										"remove": {
-											"type": [
-												"object"
-											]
-										},
-										"add": {
-											"type": [
-												"object"
-											],
-											"properties": {
-												"component_groups": {
-													"type": [
-														"array"
-													],
-													"items": {
-														"type": [
-															"string"
-														]
-													}
-												}
-											}
-										},
-										"filters": {
-											"$ref": "#/definitions/filter"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"filters": {
-					"$ref": "#/definitions/filter"
 				}
 			}
 		}

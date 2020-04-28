@@ -10,3 +10,4 @@ site/**
 .tox/**
 packs/**
 draft.ipynb
+local_files/**

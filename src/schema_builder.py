@@ -6,6 +6,17 @@ import typing as tp
 from collections import namedtuple
 from enum import Enum
 
+class Policy(Enum):
+    '''
+    Defines how to handle encounters of primitive values in the creation of
+    schema. There are 3 options:
+    - STRICT - add the value to enum that defines acceptablem values.
+    - EXAMPLE - add the value to list of examples.
+    - NONE - don't do anythoing.
+    '''
+    STRICT = 0
+    EXAMPLE = 1
+    NONE = 2
 
 
 class MetaSchema(object):
@@ -15,10 +26,52 @@ class MetaSchema(object):
     def __init__(
         self,
         meta_schema: tp.Dict[str, tp.Dict],
-        blacklist: tp.List[tp.List[jp.JsonPathPattern]]
+        blacklist: tp.List[tp.List[jp.JsonPathPattern]],
+        root_filters: tp.Dict[str, tp.Callable[[tp.Dict], str]],
+        path_policies: tp.List[tp.Tuple[jp.JsonPathPattern, Policy]],
+        null_policy: Policy=Policy.NONE, bool_policy: Policy=Policy.NONE,
+        int_policy: Policy=Policy.NONE, float_policy: Policy=Policy.NONE,
+        str_policy: Policy=Policy.NONE
     ):
+        if path_policies is None:
+            path_policies = []
         self.meta_schema = meta_schema
         self.blacklist = blacklist
+        self.root_filters = root_filters
+        self.path_policies = path_policies
+        self.null_policy = null_policy
+        self.bool_policy = bool_policy
+        self.int_policy = int_policy
+        self.float_policy = float_policy
+        self.str_policy = str_policy
+
+    def get_policy(self, obj: tp.Any, path: jp.JsonPath) -> Policy:
+        result = Policy.NONE
+        if isinstance(obj, type(None)):
+            result = self.null_policy
+        elif isinstance(obj, bool):
+            result = self.bool_policy
+        elif isinstance(obj, int):
+            result = self.int_policy
+        elif isinstance(obj, float):
+            result = self.float_policy
+        elif isinstance(obj, str):
+            result = self.str_policy
+
+        for pattern, policy in self.path_policies:
+            if jp.match(path, pattern, full_match=True).result:
+                return policy
+        return result
+
+
+    def get_root_name(self, data: tp.Any) -> tp.Optional[str]:
+        '''
+        Returns the root name of schema for given data.
+        '''
+        for name, rf in self.root_filters.items():
+            if rf(data):
+                return name
+        return None
 
     def is_blacklisted(self, path: jp.JsonPath) -> bool:
         '''
@@ -73,7 +126,7 @@ class MetaSchema(object):
         return result
 
     def create_schema_paths(
-        self, path: jp.JsonPath
+        self, path: jp.JsonPath, root_name: str = 'root'
     ) -> tp.Tuple['SchemaPath', tp.Optional['SchemaPath']]:
         '''
         Creates pair of SchemaPaths based on JsonPath. The first path is a
@@ -95,7 +148,7 @@ class MetaSchema(object):
                     return jpmatch
             return None
 
-        curr_def = 'root'
+        curr_def = root_name
         curr_path = path
 
         while True:
@@ -130,7 +183,9 @@ class SchemaPathWildcard(Enum):
     ANY_ITEM = 0
     ADDITIONAL_PROPERTY = 1
 
+
 SchemaPathItem = tp.Union[str, int, SchemaPathWildcard]
+
 
 class SchemaPath(object):
     '''
@@ -200,12 +255,14 @@ class SchemaPath(object):
                 sp_path.append(p)
         return sp_path
 
+
 class SchemaReference(object):
     '''
     Represents a reference in schema
     '''
     def __init__(self, target: str):
         self.target = f'#/definitions/{target}'
+
 
 class SchemaDict(object):
     '''
@@ -218,7 +275,19 @@ class SchemaDict(object):
         if 'definitions' not in self.schema_dict:
             self.schema_dict['definitions'] = {}
 
-    def append(self, obj: tp.Any, path: SchemaPath):
+    def append(
+        self, obj: tp.Any, path: SchemaPath, policy: Policy=Policy.NONE
+    ):
+        '''
+        Adds object to schema_dict using the SchemaPath object. The policy
+        argument is when primitive type is added.
+        - NONE - just marks the type of the object in certain path
+        - STRICT - adds the object to list of acceptable values
+        - EXAMPLE - marks the type and adds an example to list.
+
+        Objects, arrays and reference types always take NONE polic even if you\
+        specify other.
+        '''
         if path.definition not in self.schema_dict['definitions']:
             self.schema_dict['definitions'][path.definition] = {}
         curr_def = self.schema_dict['definitions'][path.definition]
@@ -278,24 +347,51 @@ class SchemaDict(object):
                 curr_def['type'].append('object')
         elif isinstance(obj, SchemaReference):
             curr_def['$ref'] = obj.target
-            # TODO - check if there are other properties? References shouldn't
-            # have any (like 'type' or 'additionalProperties' etc.)
         else:
             raise ValueError(f'Invalid object type: {type(obj)}')
+
+        # Reset policy for complex objects
+        if (
+            isinstance(obj, list) or isinstance(obj, dict) or
+            isinstance(obj, SchemaReference)
+        ):
+            policy = Policy.NONE
+
+        # Add example or item to enum
+        if policy is Policy.EXAMPLE:
+            if 'examples' not in curr_def:
+                curr_def['examples'] = []
+            if obj not in curr_def['examples']:
+                curr_def['examples'].append(obj)
+        elif policy is Policy.STRICT:
+            if 'enum' not in curr_def:
+                curr_def['enum'] = []
+            if obj not in curr_def['enum']:
+                curr_def['enum'].append(obj)
 
 
 def create_schema_definitions(
     source: tp.Any, target: tp.Dict, meta_schema: MetaSchema
-):
+) -> bool:
+    '''Creates schema definition. Returns succes value'''
     schema_dict = SchemaDict(target)
+    root_name: tp.Optional[str] = meta_schema.get_root_name(source)
+    if root_name is None:
+        print('Unable to select root name')
+        return False
+
 
     for obj, path in jp.walk(source):
         if meta_schema.is_blacklisted(path):
             continue
-        schema_path, reference_path = meta_schema.create_schema_paths(path)
-        schema_dict.append(obj, schema_path)
+        schema_path, reference_path = meta_schema.create_schema_paths(
+            path, root_name
+        )
+        policy = meta_schema.get_policy(obj, path)
+        schema_dict.append(obj, schema_path, policy)
         if reference_path is not None:
             schema_dict.append(
                 SchemaReference(schema_path.definition),
                 reference_path
             )
+    return True

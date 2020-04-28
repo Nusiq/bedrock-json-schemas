@@ -1,7 +1,11 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/10_14_16"
+		}
+	],
 	"definitions": {
-		"root": {
+		"10_14_16": {
 			"type": [
 				"object"
 			],
@@ -9,6 +13,11 @@
 				"format_version": {
 					"type": [
 						"string"
+					],
+					"enum": [
+						"1.10",
+						"1.16",
+						"1.14"
 					]
 				},
 				"minecraft:item": {
@@ -147,6 +156,16 @@
 											"type": [
 												"integer"
 											]
+										},
+										"remove_effects": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"string"
+												]
+											}
 										}
 									}
 								},

@@ -1,7 +1,11 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8_11"
+		}
+	],
 	"definitions": {
-		"root": {
+		"8_11": {
 			"type": [
 				"object"
 			],
@@ -9,6 +13,10 @@
 				"format_version": {
 					"type": [
 						"string"
+					],
+					"enum": [
+						"1.8.0",
+						"1.11.0"
 					]
 				},
 				"minecraft:spawn_rules": {
@@ -133,6 +141,16 @@
 												"type": [
 													"integer"
 												]
+											},
+											"initial_event": {
+												"type": [
+													"string"
+												]
+											},
+											"initial_event_count": {
+												"type": [
+													"integer"
+												]
 											}
 										}
 									},
@@ -205,6 +223,91 @@
 											}
 										}
 									},
+									"minecraft:mob_event_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"event": {
+												"type": [
+													"string"
+												]
+											}
+										}
+									},
+									"minecraft:world_age_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"min": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
+									"minecraft:delay_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"min": {
+												"type": [
+													"integer"
+												]
+											},
+											"max": {
+												"type": [
+													"integer"
+												]
+											},
+											"identifier": {
+												"type": [
+													"string"
+												]
+											},
+											"spawn_chance": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
+									"minecraft:distance_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"min": {
+												"type": [
+													"integer"
+												]
+											},
+											"max": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
+									"minecraft:player_in_village_filter": {
+										"type": [
+											"object"
+										],
+										"properties": {
+											"distance": {
+												"type": [
+													"integer"
+												]
+											},
+											"village_border_tolerance": {
+												"type": [
+													"integer"
+												]
+											}
+										}
+									},
 									"minecraft:height_filter": {
 										"type": [
 											"object"
@@ -230,23 +333,6 @@
 											"event": {
 												"type": [
 													"string"
-												]
-											}
-										}
-									},
-									"minecraft:distance_filter": {
-										"type": [
-											"object"
-										],
-										"properties": {
-											"min": {
-												"type": [
-													"integer"
-												]
-											},
-											"max": {
-												"type": [
-													"integer"
 												]
 											}
 										}

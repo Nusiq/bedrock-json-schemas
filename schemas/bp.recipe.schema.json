@@ -1,7 +1,11 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/12_14"
+		}
+	],
 	"definitions": {
-		"root": {
+		"12_14": {
 			"type": [
 				"object"
 			],
@@ -9,6 +13,10 @@
 				"format_version": {
 					"type": [
 						"string"
+					],
+					"enum": [
+						"1.12",
+						"1.14"
 					]
 				},
 				"minecraft:recipe_shaped": {

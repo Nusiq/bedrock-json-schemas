@@ -1,5 +1,9 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/root"
+		}
+	],
 	"definitions": {
 		"root": {
 			"type": [

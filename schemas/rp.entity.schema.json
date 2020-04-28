@@ -1,7 +1,14 @@
 {
-	"$ref": "#/definitions/root",
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8"
+		},
+		{
+			"$ref": "#/definitions/10"
+		}
+	],
 	"definitions": {
-		"root": {
+		"8": {
 			"type": [
 				"object"
 			],
@@ -9,6 +16,224 @@
 				"format_version": {
 					"type": [
 						"string"
+					],
+					"enum": [
+						"1.8.0"
+					]
+				},
+				"minecraft:client_entity": {
+					"type": [
+						"object"
+					],
+					"properties": {
+						"description": {
+							"type": [
+								"object"
+							],
+							"properties": {
+								"identifier": {
+									"type": [
+										"string"
+									]
+								},
+								"render_controllers": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"string"
+										]
+									}
+								},
+								"geometry": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/geometry_item"
+									}
+								},
+								"textures": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/texture"
+									}
+								},
+								"materials": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/material"
+									}
+								},
+								"scripts": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"pre_animation": {
+											"type": [
+												"array"
+											],
+											"items": {
+												"type": [
+													"string"
+												]
+											}
+										},
+										"scalex": {
+											"type": [
+												"string"
+											]
+										},
+										"scaley": {
+											"type": [
+												"string"
+											]
+										},
+										"scalez": {
+											"type": [
+												"string"
+											]
+										},
+										"scale": {
+											"type": [
+												"string"
+											]
+										},
+										"scaleX": {
+											"type": [
+												"string"
+											]
+										},
+										"scaleY": {
+											"type": [
+												"string"
+											]
+										},
+										"scaleZ": {
+											"type": [
+												"string"
+											]
+										}
+									}
+								},
+								"animations": {
+									"type": [
+										"object"
+									],
+									"additionalProperties": {
+										"$ref": "#/definitions/animation"
+									}
+								},
+								"animation_controllers": {
+									"type": [
+										"array"
+									],
+									"items": {
+										"type": [
+											"object"
+										],
+										"additionalProperties": {
+											"$ref": "#/definitions/animation_controller"
+										}
+									}
+								},
+								"particle_effects": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"spell": {
+											"type": [
+												"string"
+											]
+										},
+										"charged_flames": {
+											"type": [
+												"string"
+											]
+										},
+										"wing_dust": {
+											"type": [
+												"string"
+											]
+										}
+									}
+								},
+								"spawn_egg": {
+									"type": [
+										"object"
+									],
+									"properties": {
+										"texture": {
+											"type": [
+												"string"
+											]
+										},
+										"texture_index": {
+											"type": [
+												"integer"
+											]
+										},
+										"base_color": {
+											"type": [
+												"string"
+											]
+										},
+										"overlay_color": {
+											"type": [
+												"string"
+											]
+										}
+									}
+								},
+								"min_engine_version": {
+									"type": [
+										"string"
+									]
+								},
+								"enable_attachables": {
+									"type": [
+										"boolean"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"geometry_item": {
+			"type": [
+				"string"
+			]
+		},
+		"texture": {
+			"type": [
+				"string"
+			]
+		},
+		"material": {
+			"type": [
+				"string"
+			]
+		},
+		"10": {
+			"type": [
+				"object"
+			],
+			"properties": {
+				"format_version": {
+					"type": [
+						"string"
+					],
+					"enum": [
+						"1.10.0"
 					]
 				},
 				"minecraft:client_entity": {
@@ -284,22 +509,12 @@
 				}
 			}
 		},
-		"material": {
-			"type": [
-				"string"
-			]
-		},
-		"texture": {
-			"type": [
-				"string"
-			]
-		},
-		"geometry_item": {
-			"type": [
-				"string"
-			]
-		},
 		"animation": {
+			"type": [
+				"string"
+			]
+		},
+		"animation_controller": {
 			"type": [
 				"string"
 			]
