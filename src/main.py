@@ -115,7 +115,7 @@ if __name__ == "__main__":
 
     for inp in bp_schema_inputs:
         with open(inp.export_config.export_path, 'w') as f:
-            json.dump(inp.schema, f, indent='\t')
+            json.dump(inp.schema, f, indent='\t', sort_keys=True)
 
     # GENERATING RESOURCEPACK SCHEMAS
     print('GENERATING RESOURCEPACK SCHEMAS')
@@ -124,4 +124,4 @@ if __name__ == "__main__":
 
     for inp in rp_schema_inputs:
         with open(inp.export_config.export_path, 'w') as f:
-            json.dump(inp.schema, f, indent='\t')
+            json.dump(inp.schema, f, indent='\t', sort_keys=True)

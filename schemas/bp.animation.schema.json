@@ -6,52 +6,52 @@
 	],
 	"definitions": {
 		"10": {
-			"type": [
-				"object"
-			],
 			"properties": {
-				"format_version": {
-					"type": [
-						"string"
-					],
-					"enum": [
-						"1.10.0"
-					]
-				},
 				"animations": {
-					"type": [
-						"object"
-					],
 					"additionalProperties": {
 						"$ref": "#/definitions/animation"
-					}
-				}
-			}
-		},
-		"animation": {
-			"type": [
-				"object"
-			],
-			"properties": {
-				"timeline": {
+					},
 					"type": [
 						"object"
+					]
+				},
+				"format_version": {
+					"enum": [
+						"1.10.0"
 					],
-					"additionalProperties": {
-						"$ref": "#/definitions/timestamp"
-					}
+					"type": [
+						"string"
+					]
+				}
+			},
+			"type": [
+				"object"
+			]
+		},
+		"animation": {
+			"properties": {
+				"animation_length": {
+					"type": [
+						"number"
+					]
 				},
 				"loop": {
 					"type": [
 						"boolean"
 					]
 				},
-				"animation_length": {
+				"timeline": {
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					},
 					"type": [
-						"number"
+						"object"
 					]
 				}
-			}
+			},
+			"type": [
+				"object"
+			]
 		},
 		"timestamp": {
 			"type": [
