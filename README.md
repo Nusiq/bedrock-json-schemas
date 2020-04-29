@@ -74,6 +74,12 @@ Just add this to your configuration in the `settings.json` for VS Code.
         // },
         {
             "fileMatch": [
+                "models/**.json"
+            ],
+            "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.model.schema.json"
+        },
+        {
+            "fileMatch": [
                 "attachables/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.attachable.schema.json"
@@ -99,3 +105,33 @@ Just add this to your configuration in the `settings.json` for VS Code.
     ],
 ```
 
+# What is generated?
+The schemas are generated for files that use format_versions from list below.
+Everything is generated from examples (not from documentation which
+unfortunately has some errors) so some things may be missing.
+
+## BEHAVIORPACK SCHEMAS
+| type                    | value                                  |
+| ------------------------|--------------------------------------- |
+| animation_controllers   | 1.10.0                                 |
+| animations              | 1.10.0                                 |
+| entities                | 1.8.0, 1.10.0, 1.12.0, 1.13.0, 1.14.0  |
+| trading                 | None                                   |
+| loot_tables             | None                                   |
+| items                   | 1.16, 1.14, 1.10                       |
+| recipes                 | 1.12, 1.14                             |
+| spawn_rules             | 1.8.0, 1.11.0                          |
+
+## RESOURCEPACK SCHEMAS
+| type                   |value                                   |
+| -----------------------|--------------------------------------- |
+| animation_controllers  | 1.10.0                                 |
+| animations             | 1.8.0                                  |
+| entity                 | 1.8.0, 1.10.0                          |
+| particles              | 1.10.0                                 |
+| render_controllers     | 1.8.0, 1.10.0, 1.10                    |
+| attachables            | 1.10.0, 1.10, 1.8.0                    |
+| models                 | 1.8.0, 1.10.0, 1.12.0                  |
+
+\* This table isn't automatically generated so it's not guaranteed its
+up-to-date.

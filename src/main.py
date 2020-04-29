@@ -34,6 +34,7 @@ from conversion_config import (
     RP_ENTITY_MS, RP_ENTITY_CFG,
     RP_PARTICLE_MS, RP_PARTICLE_CFG,
     RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,
+    RP_MODEL_MS, RP_MODEL_CFG,
 )
 
 class CreateSchemaInput(object):
@@ -102,6 +103,7 @@ rp_schema_inputs = [
     CreateSchemaInput(RP_ENTITY_MS, RP_ENTITY_CFG,),
     CreateSchemaInput(RP_PARTICLE_MS, RP_PARTICLE_CFG,),
     CreateSchemaInput(RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,),
+    CreateSchemaInput(RP_MODEL_MS, RP_MODEL_CFG,),
 ]
 
 

@@ -67,6 +67,10 @@ RP_RENDER_CONTROLLER_CFG=ExportConfig(
     export_path='../schemas/rp.render_controller.schema.json',
     pattern='render_controllers/**.json',
 )
+RP_MODEL_CFG=ExportConfig(
+    export_path='../schemas/rp.model.schema.json',
+    pattern='models/**.json',
+)
 
 def format_version_filter_creator(
     versions: tp.List[str]
@@ -594,6 +598,50 @@ RP_RENDER_CONTROLLER_MS=MetaSchema(
     blacklist=[],
     root_filters={
         '8_10': format_version_filter_creator(['1.8.0', '1.10.0', '1.10']),
+    },
+    path_policies=[
+        (['format_version'], Policy.STRICT)
+    ]
+)
+RP_MODEL_MS=MetaSchema(
+    meta_schema={
+        # 1.8.0 and 1.10.0
+        "8_10": {
+            "format_version": "format_version_8_10",
+            jp.Wildcard.ANY_PARAMETER: "entity_8_10"
+        },
+        "format_version_8_10": {},
+        "entity_8_10": {
+            "bones": {
+                jp.Wildcard.ANY_ITEM: {
+                    "locators": {
+                        jp.Wildcard.ANY_PARAMETER: "locator_8_10"
+                    }
+                }
+            }
+        },
+        "locator_8_10": {},
+        # 1.12.0
+        "12": {
+            "minecraft:geometry": {
+                jp.Wildcard.ANY_ITEM: "entity_12"
+            }
+        },
+        "entity_12": {
+            "bones": {
+                jp.Wildcard.ANY_ITEM: {
+                    "locators": {
+                        jp.Wildcard.ANY_PARAMETER: "locator_12"
+                    }
+                }
+            }
+        },
+        "locator_12": {}
+    },
+    blacklist=[],
+    root_filters={
+        '8_10': format_version_filter_creator(['1.8.0', '1.10.0']),
+        '12': format_version_filter_creator(['1.12.0']),
     },
     path_policies=[
         (['format_version'], Policy.STRICT)
