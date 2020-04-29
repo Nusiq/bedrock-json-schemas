@@ -5,7 +5,335 @@
 		}
 	],
 	"definitions": {
+		"entry": {
+			"properties": {
+				"auxVal": {
+					"type": [
+						"integer"
+					]
+				},
+				"functions": {
+					"items": {
+						"properties": {
+							"chance": {
+								"type": [
+									"number"
+								]
+							},
+							"conditions": {
+								"items": {
+									"properties": {
+										"condition": {
+											"type": [
+												"string"
+											]
+										},
+										"entity": {
+											"type": [
+												"string"
+											]
+										},
+										"properties": {
+											"properties": {
+												"on_fire": {
+													"type": [
+														"boolean"
+													]
+												}
+											},
+											"type": [
+												"object"
+											]
+										}
+									},
+									"type": [
+										"object"
+									]
+								},
+								"type": [
+									"array"
+								]
+							},
+							"count": {
+								"properties": {
+									"max": {
+										"type": [
+											"integer",
+											"number"
+										]
+									},
+									"min": {
+										"type": [
+											"integer",
+											"number"
+										]
+									}
+								},
+								"type": [
+									"object",
+									"integer"
+								]
+							},
+							"damage": {
+								"properties": {
+									"max": {
+										"type": [
+											"number"
+										]
+									},
+									"min": {
+										"type": [
+											"number",
+											"integer"
+										]
+									}
+								},
+								"type": [
+									"object"
+								]
+							},
+							"data": {
+								"type": [
+									"integer"
+								]
+							},
+							"destination": {
+								"type": [
+									"string"
+								]
+							},
+							"function": {
+								"type": [
+									"string"
+								]
+							},
+							"levels": {
+								"properties": {
+									"max": {
+										"type": [
+											"integer"
+										]
+									},
+									"min": {
+										"type": [
+											"integer"
+										]
+									}
+								},
+								"type": [
+									"object",
+									"integer"
+								]
+							},
+							"limit": {
+								"type": [
+									"integer"
+								]
+							},
+							"treasure": {
+								"type": [
+									"boolean"
+								]
+							},
+							"type": {
+								"type": [
+									"integer"
+								]
+							},
+							"values": {
+								"properties": {
+									"max": {
+										"type": [
+											"integer"
+										]
+									},
+									"min": {
+										"type": [
+											"integer"
+										]
+									}
+								},
+								"type": [
+									"object"
+								]
+							}
+						},
+						"type": [
+							"object"
+						]
+					},
+					"type": [
+						"array"
+					]
+				},
+				"name": {
+					"type": [
+						"string"
+					]
+				},
+				"pools": {
+					"items": {
+						"$ref": "#/definitions/pool"
+					},
+					"type": [
+						"array"
+					]
+				},
+				"quality": {
+					"type": [
+						"integer"
+					]
+				},
+				"type": {
+					"type": [
+						"string"
+					]
+				},
+				"weight": {
+					"type": [
+						"integer"
+					]
+				}
+			},
+			"type": [
+				"object"
+			]
+		},
+		"pool": {
+			"properties": {
+				"conditions": {
+					"items": {
+						"properties": {
+							"chance": {
+								"type": [
+									"number"
+								]
+							},
+							"condition": {
+								"type": [
+									"string"
+								]
+							},
+							"default_chance": {
+								"type": [
+									"number"
+								]
+							},
+							"easy": {
+								"type": [
+									"integer"
+								]
+							},
+							"entity_type": {
+								"type": [
+									"string"
+								]
+							},
+							"hard": {
+								"type": [
+									"number"
+								]
+							},
+							"looting_multiplier": {
+								"type": [
+									"number"
+								]
+							},
+							"max_chance": {
+								"type": [
+									"number"
+								]
+							},
+							"peaceful": {
+								"type": [
+									"integer"
+								]
+							},
+							"value": {
+								"type": [
+									"integer"
+								]
+							}
+						},
+						"type": [
+							"object"
+						]
+					},
+					"type": [
+						"array"
+					]
+				},
+				"entries": {
+					"items": {
+						"$ref": "#/definitions/entry"
+					},
+					"type": [
+						"array"
+					]
+				},
+				"rolls": {
+					"properties": {
+						"max": {
+							"type": [
+								"integer",
+								"number"
+							]
+						},
+						"min": {
+							"type": [
+								"integer",
+								"number"
+							]
+						}
+					},
+					"type": [
+						"integer",
+						"object"
+					]
+				},
+				"tiers": {
+					"properties": {
+						"bonus_chance": {
+							"type": [
+								"number"
+							]
+						},
+						"bonus_rolls": {
+							"type": [
+								"integer"
+							]
+						},
+						"initial_range": {
+							"type": [
+								"integer"
+							]
+						}
+					},
+					"type": [
+						"object"
+					]
+				}
+			},
+			"type": [
+				"object"
+			]
+		},
 		"root": {
+			"properties": {
+				"pools": {
+					"items": {
+						"$ref": "#/definitions/pool"
+					},
+					"type": [
+						"array"
+					]
+				},
+				"type": {
+					"type": [
+						"string"
+					]
+				}
+			},
 			"type": [
 				"object"
 			]

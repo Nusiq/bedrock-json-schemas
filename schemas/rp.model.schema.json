@@ -8,6 +8,29 @@
 		}
 	],
 	"definitions": {
+		"12": {
+			"properties": {
+				"format_version": {
+					"enum": [
+						"1.12.0"
+					],
+					"type": [
+						"string"
+					]
+				},
+				"minecraft:geometry": {
+					"items": {
+						"$ref": "#/definitions/entity_12"
+					},
+					"type": [
+						"array"
+					]
+				}
+			},
+			"type": [
+				"object"
+			]
+		},
 		"8_10": {
 			"additionalProperties": {
 				"$ref": "#/definitions/entity_8_10"
@@ -15,6 +38,367 @@
 			"properties": {
 				"format_version": {
 					"$ref": "#/definitions/format_version_8_10"
+				}
+			},
+			"type": [
+				"object"
+			]
+		},
+		"entity_12": {
+			"properties": {
+				"bones": {
+					"items": {
+						"properties": {
+							"cubes": {
+								"items": {
+									"properties": {
+										"inflate": {
+											"type": [
+												"number"
+											]
+										},
+										"mirror": {
+											"type": [
+												"boolean"
+											]
+										},
+										"origin": {
+											"items": {
+												"type": [
+													"integer",
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"pivot": {
+											"items": {
+												"type": [
+													"integer",
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"rotation": {
+											"items": {
+												"type": [
+													"integer",
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"size": {
+											"items": {
+												"type": [
+													"integer",
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"uv": {
+											"items": {
+												"type": [
+													"integer",
+													"number"
+												]
+											},
+											"properties": {
+												"down": {
+													"properties": {
+														"uv": {
+															"items": {
+																"type": [
+																	"integer"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"east": {
+													"properties": {
+														"uv": {
+															"items": {
+																"type": [
+																	"integer",
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"north": {
+													"properties": {
+														"uv": {
+															"items": {
+																"type": [
+																	"integer"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"south": {
+													"properties": {
+														"uv": {
+															"items": {
+																"type": [
+																	"integer",
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														},
+														"uv_size": {
+															"items": {
+																"type": [
+																	"integer"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"up": {
+													"properties": {
+														"uv": {
+															"items": {
+																"type": [
+																	"integer"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"west": {
+													"properties": {
+														"uv": {
+															"items": {
+																"type": [
+																	"integer"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												}
+											},
+											"type": [
+												"array",
+												"object"
+											]
+										}
+									},
+									"type": [
+										"object"
+									]
+								},
+								"type": [
+									"array"
+								]
+							},
+							"locators": {
+								"additionalProperties": {
+									"$ref": "#/definitions/locator_12"
+								},
+								"type": [
+									"object"
+								]
+							},
+							"mirror": {
+								"type": [
+									"boolean"
+								]
+							},
+							"name": {
+								"type": [
+									"string"
+								]
+							},
+							"parent": {
+								"type": [
+									"string"
+								]
+							},
+							"pivot": {
+								"items": {
+									"type": [
+										"integer",
+										"number"
+									]
+								},
+								"type": [
+									"array"
+								]
+							},
+							"rotation": {
+								"items": {
+									"type": [
+										"integer"
+									]
+								},
+								"type": [
+									"array"
+								]
+							},
+							"texture_meshes": {
+								"items": {
+									"properties": {
+										"local_pivot": {
+											"items": {
+												"type": [
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"position": {
+											"items": {
+												"type": [
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"rotation": {
+											"items": {
+												"type": [
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"scale": {
+											"items": {
+												"type": [
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"texture": {
+											"type": [
+												"string"
+											]
+										}
+									},
+									"type": [
+										"object"
+									]
+								},
+								"type": [
+									"array"
+								]
+							}
+						},
+						"type": [
+							"object"
+						]
+					},
+					"type": [
+						"array"
+					]
+				},
+				"description": {
+					"properties": {
+						"identifier": {
+							"type": [
+								"string"
+							]
+						},
+						"texture_height": {
+							"type": [
+								"integer",
+								"number"
+							]
+						},
+						"texture_width": {
+							"type": [
+								"integer",
+								"number"
+							]
+						},
+						"visible_bounds_height": {
+							"type": [
+								"integer",
+								"number"
+							]
+						},
+						"visible_bounds_offset": {
+							"items": {
+								"type": [
+									"integer",
+									"number"
+								]
+							},
+							"type": [
+								"array"
+							]
+						},
+						"visible_bounds_width": {
+							"type": [
+								"integer",
+								"number"
+							]
+						}
+					},
+					"type": [
+						"object"
+					]
 				}
 			},
 			"type": [
@@ -29,7 +413,8 @@
 							"bind_pose_rotation": {
 								"items": {
 									"type": [
-										"number"
+										"number",
+										"integer"
 									]
 								},
 								"type": [
@@ -143,7 +528,8 @@
 							"rotation": {
 								"items": {
 									"type": [
-										"number"
+										"number",
+										"integer"
 									]
 								},
 								"type": [
@@ -199,16 +585,29 @@
 		},
 		"format_version_8_10": {
 			"enum": [
+				"1.10.0",
 				"1.8.0"
 			],
 			"type": [
 				"string"
 			]
 		},
+		"locator_12": {
+			"items": {
+				"type": [
+					"integer",
+					"number"
+				]
+			},
+			"type": [
+				"array"
+			]
+		},
 		"locator_8_10": {
 			"items": {
 				"type": [
-					"number"
+					"number",
+					"integer"
 				]
 			},
 			"type": [

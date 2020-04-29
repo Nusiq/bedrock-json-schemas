@@ -10,6 +10,31 @@
 				"tiers": {
 					"items": {
 						"properties": {
+							"groups": {
+								"items": {
+									"properties": {
+										"num_to_select": {
+											"type": [
+												"integer"
+											]
+										},
+										"trades": {
+											"$ref": "#/definitions/trade"
+										}
+									},
+									"type": [
+										"object"
+									]
+								},
+								"type": [
+									"array"
+								]
+							},
+							"total_exp_required": {
+								"type": [
+									"integer"
+								]
+							},
 							"trades": {
 								"$ref": "#/definitions/trade"
 							}
@@ -33,6 +58,67 @@
 					"gives": {
 						"items": {
 							"properties": {
+								"choice": {
+									"items": {
+										"properties": {
+											"functions": {
+												"items": {
+													"properties": {
+														"block_state": {
+															"type": [
+																"string"
+															]
+														},
+														"function": {
+															"type": [
+																"string"
+															]
+														},
+														"values": {
+															"properties": {
+																"max": {
+																	"type": [
+																		"integer"
+																	]
+																},
+																"min": {
+																	"type": [
+																		"integer"
+																	]
+																}
+															},
+															"type": [
+																"object"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"type": [
+													"array"
+												]
+											},
+											"item": {
+												"type": [
+													"string"
+												]
+											},
+											"quantity": {
+												"type": [
+													"integer"
+												]
+											}
+										},
+										"type": [
+											"object"
+										]
+									},
+									"type": [
+										"array"
+									]
+								},
 								"functions": {
 									"items": {
 										"properties": {
@@ -44,6 +130,11 @@
 											"base_random_cost": {
 												"type": [
 													"integer"
+												]
+											},
+											"block_state": {
+												"type": [
+													"string"
 												]
 											},
 											"destination": {
@@ -87,6 +178,23 @@
 												"type": [
 													"boolean"
 												]
+											},
+											"values": {
+												"properties": {
+													"max": {
+														"type": [
+															"integer"
+														]
+													},
+													"min": {
+														"type": [
+															"integer"
+														]
+													}
+												},
+												"type": [
+													"object"
+												]
 											}
 										},
 										"type": [
@@ -116,8 +224,8 @@
 										}
 									},
 									"type": [
-										"object",
-										"integer"
+										"integer",
+										"object"
 									]
 								}
 							},
@@ -129,12 +237,60 @@
 							"array"
 						]
 					},
+					"max_uses": {
+						"type": [
+							"integer"
+						]
+					},
+					"reward_exp": {
+						"type": [
+							"boolean"
+						]
+					},
+					"trader_exp": {
+						"type": [
+							"integer"
+						]
+					},
 					"wants": {
 						"items": {
 							"properties": {
+								"choice": {
+									"items": {
+										"properties": {
+											"item": {
+												"type": [
+													"string"
+												]
+											},
+											"price_multiplier": {
+												"type": [
+													"number"
+												]
+											},
+											"quantity": {
+												"type": [
+													"integer"
+												]
+											}
+										},
+										"type": [
+											"object"
+										]
+									},
+									"type": [
+										"array"
+									]
+								},
 								"item": {
 									"type": [
 										"string"
+									]
+								},
+								"price_multiplier": {
+									"type": [
+										"integer",
+										"number"
 									]
 								},
 								"quantity": {
@@ -151,8 +307,8 @@
 										}
 									},
 									"type": [
-										"object",
-										"integer"
+										"integer",
+										"object"
 									]
 								}
 							},

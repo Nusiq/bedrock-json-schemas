@@ -57,8 +57,8 @@
 			"properties": {
 				"format_version": {
 					"enum": [
-						"1.12.0",
 						"1.10.0",
+						"1.12.0",
 						"1.8.0"
 					],
 					"type": [
@@ -1319,8 +1319,8 @@
 						"float_duration": {
 							"items": {
 								"type": [
-									"number",
-									"integer"
+									"integer",
+									"number"
 								]
 							},
 							"type": [
@@ -2011,8 +2011,8 @@
 						},
 						"look_distance": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"priority": {
@@ -2129,8 +2129,8 @@
 						},
 						"speed_multiplier": {
 							"type": [
-								"integer",
-								"number"
+								"number",
+								"integer"
 							]
 						},
 						"target_dist": {
@@ -2687,8 +2687,8 @@
 					"properties": {
 						"attack_interval": {
 							"type": [
-								"integer",
-								"number"
+								"number",
+								"integer"
 							]
 						},
 						"attack_interval_min": {
@@ -3318,8 +3318,8 @@
 						},
 						"speed_multiplier": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"xz_dist": {
@@ -4641,8 +4641,8 @@
 						},
 						"duration": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"speed_multiplier": {
@@ -5610,8 +5610,8 @@
 						},
 						"fuse_length": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"fuse_lit": {
@@ -6022,8 +6022,8 @@
 								}
 							},
 							"type": [
-								"object",
-								"integer"
+								"integer",
+								"object"
 							]
 						}
 					},
@@ -6057,8 +6057,8 @@
 								}
 							},
 							"type": [
-								"object",
-								"number"
+								"number",
+								"object"
 							]
 						}
 					},
@@ -6421,8 +6421,8 @@
 						},
 						"value": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						}
 					},
@@ -6622,8 +6622,8 @@
 								}
 							},
 							"type": [
-								"object",
-								"number"
+								"number",
+								"object"
 							]
 						}
 					},
@@ -7277,8 +7277,8 @@
 					"properties": {
 						"default_block_cost": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"jump_cost": {
@@ -7377,9 +7377,9 @@
 												]
 											},
 											"type": [
-												"array",
+												"number",
 												"integer",
-												"number"
+												"array"
 											]
 										},
 										"destroy_on_hit": {
@@ -7964,14 +7964,14 @@
 						},
 						"max_wait_time": {
 							"type": [
-								"integer",
-								"number"
+								"number",
+								"integer"
 							]
 						},
 						"min_wait_time": {
 							"type": [
-								"integer",
-								"number"
+								"number",
+								"integer"
 							]
 						},
 						"num_to_spawn": {
@@ -8367,14 +8367,14 @@
 						"time": {
 							"items": {
 								"type": [
-									"integer",
-									"number"
+									"number",
+									"integer"
 								]
 							},
 							"type": [
 								"array",
-								"integer",
-								"number"
+								"number",
+								"integer"
 							]
 						},
 						"time_down_event": {
@@ -10418,8 +10418,26 @@
 					"items": {
 						"$ref": "#/definitions/filter"
 					},
+					"properties": {
+						"subject": {
+							"type": [
+								"string"
+							]
+						},
+						"test": {
+							"type": [
+								"string"
+							]
+						},
+						"value": {
+							"type": [
+								"string"
+							]
+						}
+					},
 					"type": [
-						"array"
+						"array",
+						"object"
 					]
 				},
 				"any_of": {
@@ -10463,8 +10481,8 @@
 				"value": {
 					"type": [
 						"string",
-						"boolean",
 						"integer",
+						"boolean",
 						"number"
 					]
 				}
