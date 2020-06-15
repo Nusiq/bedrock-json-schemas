@@ -55,7 +55,7 @@ def create_schemas(
     tmp_created = False  # True if temporary files were created
 
     # Try to read the ZIP file
-    if os.path.isfile:
+    if os.path.isfile(source_path):
         with ZipFile(source_path, 'r') as zipf:
             is_valid = zipf.testzip() is None
             if not is_valid:
@@ -63,6 +63,8 @@ def create_schemas(
             zipf.extractall(tmp_path)
             bp_path = tmp_path
             tmp_created = True
+    else:
+        bp_path = source_path
 
     try:
         for root, dirs, files in os.walk(bp_path):

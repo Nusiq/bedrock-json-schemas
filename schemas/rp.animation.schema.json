@@ -78,8 +78,8 @@
 						]
 					},
 					"type": [
-						"array",
-						"object"
+						"object",
+						"array"
 					]
 				},
 				"relative_to": {
@@ -106,20 +106,26 @@
 						]
 					},
 					"type": [
-						"array",
-						"object"
+						"object",
+						"array"
 					]
 				},
 				"scale": {
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					},
 					"items": {
 						"type": [
+							"integer",
 							"string",
 							"number"
 						]
 					},
 					"type": [
-						"number",
+						"object",
 						"array",
+						"integer",
+						"number",
 						"string"
 					]
 				}
@@ -132,8 +138,8 @@
 			"items": {
 				"type": [
 					"integer",
-					"string",
-					"number"
+					"number",
+					"string"
 				]
 			},
 			"properties": {
