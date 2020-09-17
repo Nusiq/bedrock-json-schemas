@@ -399,7 +399,6 @@ RP_ANIMATION_MS=MetaSchema(
             "position": {
                 jp.Wildcard.ANY_PARAMETER: "timestamp"
             }
-            
         },
         "timestamp": {},
     },
@@ -559,7 +558,12 @@ RP_PARTICLE_MS=MetaSchema(
         "event": {},
         "timestamp": {},
     },
-    blacklist=[],
+    blacklist=[
+        [
+            "particle_effect", "components", "minecraft:particle_lifetime_expression",
+            "activation_expression"
+        ]
+    ],
     root_filters={
         '10': format_version_filter_creator(['1.10.0']),
     },

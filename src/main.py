@@ -61,17 +61,17 @@ def create_schemas(
             if not is_valid:
                 raise ValueError('Input file is not a ziped behavior-pack')
             zipf.extractall(tmp_path)
-            bp_path = tmp_path
+            extracted_data_path = tmp_path
             tmp_created = True
     else:
-        bp_path = source_path
+        extracted_data_path = source_path
 
     try:
-        for root, dirs, files in os.walk(bp_path):
+        for root, dirs, files in os.walk(extracted_data_path):
             for file_ in files:
                 fp = os.path.join(root, file_)
                 for inp in inputs:
-                    pattern = os.path.join(bp_path, inp.export_config.pattern)
+                    pattern = os.path.join(extracted_data_path, inp.export_config.pattern)
                     if fnmatch.fnmatch(fp, pattern):
                         with open(fp, 'r') as f:
                             source = json.load(f, cls=JSONCDecoder)
