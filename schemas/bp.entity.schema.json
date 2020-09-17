@@ -57,9 +57,9 @@
 			"properties": {
 				"format_version": {
 					"enum": [
+						"1.8.0",
 						"1.10.0",
-						"1.12.0",
-						"1.8.0"
+						"1.12.0"
 					],
 					"type": [
 						"string"
@@ -241,8 +241,8 @@
 								},
 								"value": {
 									"type": [
-										"string",
-										"boolean"
+										"boolean",
+										"string"
 									]
 								}
 							},
@@ -465,14 +465,14 @@
 									},
 									"sprint_speed_multiplier": {
 										"type": [
-											"number",
-											"integer"
+											"integer",
+											"number"
 										]
 									},
 									"walk_speed_multiplier": {
 										"type": [
-											"number",
-											"integer"
+											"integer",
+											"number"
 										]
 									}
 								},
@@ -1983,8 +1983,8 @@
 						},
 						"look_distance": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"priority": {
@@ -2022,8 +2022,8 @@
 						},
 						"probability": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"target_distance": {
@@ -2129,8 +2129,8 @@
 						},
 						"speed_multiplier": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"target_dist": {
@@ -2243,8 +2243,8 @@
 						},
 						"target_dist": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"track_target": {
@@ -2540,8 +2540,8 @@
 						},
 						"speed_multiplier": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						}
 					},
@@ -2687,8 +2687,8 @@
 					"properties": {
 						"attack_interval": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"attack_interval_min": {
@@ -4202,8 +4202,8 @@
 												},
 												"size": {
 													"type": [
-														"number",
-														"integer"
+														"integer",
+														"number"
 													]
 												},
 												"sound_event": {
@@ -4420,8 +4420,8 @@
 						},
 						"speed_multiplier": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"within_radius": {
@@ -4985,8 +4985,8 @@
 				},
 				"minecraft:burns_in_daylight": {
 					"type": [
-						"object",
-						"boolean"
+						"boolean",
+						"object"
 					]
 				},
 				"minecraft:can_climb": {
@@ -5015,14 +5015,14 @@
 					"properties": {
 						"height": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"width": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						}
 					},
@@ -5149,8 +5149,8 @@
 								}
 							},
 							"type": [
-								"object",
-								"array"
+								"array",
+								"object"
 							]
 						}
 					},
@@ -5425,8 +5425,8 @@
 						},
 						"sensor_range": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						}
 					},
@@ -7377,9 +7377,9 @@
 												]
 											},
 											"type": [
-												"number",
+												"array",
 												"integer",
-												"array"
+												"number"
 											]
 										},
 										"destroy_on_hit": {
@@ -7700,8 +7700,8 @@
 									"position": {
 										"items": {
 											"type": [
-												"number",
-												"integer"
+												"integer",
+												"number"
 											]
 										},
 										"type": [
@@ -7754,8 +7754,8 @@
 					"properties": {
 						"value": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						}
 					},
@@ -7964,14 +7964,14 @@
 						},
 						"max_wait_time": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"min_wait_time": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"num_to_spawn": {
@@ -8061,8 +8061,8 @@
 								]
 							},
 							"type": [
-								"string",
-								"array"
+								"array",
+								"string"
 							]
 						}
 					},
@@ -8367,14 +8367,14 @@
 						"time": {
 							"items": {
 								"type": [
-									"number",
-									"integer"
+									"integer",
+									"number"
 								]
 							},
 							"type": [
 								"array",
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"time_down_event": {
@@ -8935,14 +8935,14 @@
 					"properties": {
 						"height": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"width": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						}
 					},
@@ -9493,8 +9493,8 @@
 						},
 						"inertia": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"is_dangerous": {
@@ -9504,8 +9504,8 @@
 						},
 						"liquid_inertia": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"multiple_targets": {
@@ -9734,8 +9734,8 @@
 										},
 										"radius_on_use": {
 											"type": [
-												"number",
-												"integer"
+												"integer",
+												"number"
 											]
 										},
 										"reapplication_delay": {
@@ -9819,8 +9819,8 @@
 						},
 						"power": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"reflect_on_hurt": {
@@ -9855,8 +9855,8 @@
 						},
 						"uncertainty_base": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						},
 						"uncertainty_multiplier": {
@@ -10041,8 +10041,8 @@
 					"properties": {
 						"value": {
 							"type": [
-								"number",
-								"integer"
+								"integer",
+								"number"
 							]
 						}
 					},
@@ -10411,7 +10411,27 @@
 		},
 		"filter": {
 			"items": {
-				"$ref": "#/definitions/filter"
+				"properties": {
+					"subject": {
+						"type": [
+							"string"
+						]
+					},
+					"test": {
+						"type": [
+							"string"
+						]
+					},
+					"value": {
+						"type": [
+							"boolean",
+							"string"
+						]
+					}
+				},
+				"type": [
+					"object"
+				]
 			},
 			"properties": {
 				"all_of": {
@@ -10449,11 +10469,28 @@
 					]
 				},
 				"domain": {
+					"examples": [
+						"hand",
+						"head",
+						"domobspawning",
+						"tntexplodes"
+					],
 					"type": [
 						"string"
 					]
 				},
 				"operator": {
+					"enum": [
+						"!=",
+						">",
+						"=",
+						"<",
+						">=",
+						"<=",
+						"==",
+						"equals",
+						"not"
+					],
 					"type": [
 						"string"
 					]
@@ -10464,6 +10501,13 @@
 					]
 				},
 				"subject": {
+					"enum": [
+						"other",
+						"self",
+						"target",
+						"player",
+						"block"
+					],
 					"type": [
 						"string"
 					]
@@ -10474,22 +10518,65 @@
 					]
 				},
 				"test": {
+					"enum": [
+						"is_family",
+						"has_tag",
+						"has_equipment",
+						"distance_to_nearest_player",
+						"has_damage",
+						"has_component",
+						"is_riding",
+						"on_ground",
+						"in_lava",
+						"has_mob_effect",
+						"is_in_village",
+						"rider_count",
+						"is_mark_variant",
+						"has_target",
+						"is_avoiding_mobs",
+						"is_difficulty",
+						"is_block",
+						"is_daytime",
+						"is_weather",
+						"has_biome_tag",
+						"in_water_or_rain",
+						"in_water",
+						"is_brightness",
+						"is_snow_covered",
+						"is_underground",
+						"is_biome",
+						"is_game_rule",
+						"is_color",
+						"trusts",
+						"is_sneaking",
+						"is_sleeping",
+						"is_underwater",
+						"is_leashed",
+						"in_caravan",
+						"is_variant",
+						"has_ability",
+						"is_temperature_value",
+						"hourly_clock_time",
+						"is_skin_id",
+						"has_trade_supply",
+						"is_visible"
+					],
 					"type": [
 						"string"
 					]
 				},
 				"value": {
 					"type": [
-						"string",
-						"integer",
 						"boolean",
-						"number"
+						"integer",
+						"number",
+						"string"
 					]
 				}
 			},
 			"type": [
-				"object",
-				"array"
+				"array",
+				"object"
 			]
 		}
 	}

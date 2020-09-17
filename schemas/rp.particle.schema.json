@@ -24,15 +24,15 @@
 										"activation_expression": {
 											"type": [
 												"integer",
-												"string",
-												"number"
+												"number",
+												"string"
 											]
 										},
 										"expiration_expression": {
 											"type": [
 												"integer",
-												"string",
-												"number"
+												"number",
+												"string"
 											]
 										}
 									},
@@ -44,8 +44,15 @@
 									"properties": {
 										"active_time": {
 											"type": [
+												"integer",
 												"number",
-												"integer"
+												"string"
+											]
+										},
+										"sleep_time": {
+											"type": [
+												"number",
+												"string"
 											]
 										}
 									},
@@ -58,7 +65,8 @@
 										"active_time": {
 											"type": [
 												"integer",
-												"number"
+												"number",
+												"string"
 											]
 										}
 									},
@@ -74,6 +82,11 @@
 											]
 										},
 										"rotation": {
+											"type": [
+												"boolean"
+											]
+										},
+										"velocity": {
 											"type": [
 												"boolean"
 											]
@@ -100,7 +113,9 @@
 									"properties": {
 										"max_particles": {
 											"type": [
-												"integer"
+												"integer",
+												"number",
+												"string"
 											]
 										}
 									},
@@ -112,12 +127,15 @@
 									"properties": {
 										"max_particles": {
 											"type": [
-												"integer"
+												"integer",
+												"number",
+												"string"
 											]
 										},
 										"spawn_rate": {
 											"type": [
 												"integer",
+												"number",
 												"string"
 											]
 										}
@@ -131,19 +149,22 @@
 										"direction": {
 											"items": {
 												"type": [
-													"integer"
+													"integer",
+													"number",
+													"string"
 												]
 											},
 											"type": [
-												"string",
-												"array"
+												"array",
+												"string"
 											]
 										},
 										"half_dimensions": {
 											"items": {
 												"type": [
+													"integer",
 													"number",
-													"integer"
+													"string"
 												]
 											},
 											"type": [
@@ -154,7 +175,8 @@
 											"items": {
 												"type": [
 													"integer",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"type": [
@@ -177,8 +199,8 @@
 											"items": {
 												"type": [
 													"integer",
-													"string",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"type": [
@@ -188,9 +210,9 @@
 										"offset": {
 											"items": {
 												"type": [
-													"string",
 													"integer",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"type": [
@@ -207,13 +229,19 @@
 										"direction": {
 											"items": {
 												"type": [
-													"string",
+													"integer",
 													"number",
-													"integer"
+													"string"
 												]
 											},
 											"type": [
-												"array"
+												"array",
+												"string"
+											]
+										},
+										"surface_only": {
+											"type": [
+												"boolean"
 											]
 										}
 									},
@@ -226,9 +254,9 @@
 										"direction": {
 											"items": {
 												"type": [
+													"integer",
 													"number",
-													"string",
-													"integer"
+													"string"
 												]
 											},
 											"type": [
@@ -238,9 +266,9 @@
 										"offset": {
 											"items": {
 												"type": [
-													"string",
+													"integer",
 													"number",
-													"integer"
+													"string"
 												]
 											},
 											"type": [
@@ -258,19 +286,21 @@
 											"items": {
 												"type": [
 													"integer",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"type": [
-												"string",
-												"array"
+												"array",
+												"string"
 											]
 										},
 										"offset": {
 											"items": {
 												"type": [
 													"integer",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"type": [
@@ -279,8 +309,9 @@
 										},
 										"radius": {
 											"type": [
+												"integer",
 												"number",
-												"integer"
+												"string"
 											]
 										},
 										"surface_only": {
@@ -303,8 +334,8 @@
 										"size": {
 											"items": {
 												"type": [
-													"string",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"type": [
@@ -318,7 +349,8 @@
 														"base_UV": {
 															"items": {
 																"type": [
-																	"integer"
+																	"integer",
+																	"number"
 																]
 															},
 															"type": [
@@ -343,7 +375,8 @@
 														"size_UV": {
 															"items": {
 																"type": [
-																	"integer"
+																	"integer",
+																	"number"
 																]
 															},
 															"type": [
@@ -353,7 +386,8 @@
 														"step_UV": {
 															"items": {
 																"type": [
-																	"integer"
+																	"integer",
+																	"number"
 																]
 															},
 															"type": [
@@ -384,6 +418,7 @@
 													"items": {
 														"type": [
 															"integer",
+															"number",
 															"string"
 														]
 													},
@@ -395,6 +430,7 @@
 													"items": {
 														"type": [
 															"integer",
+															"number",
 															"string"
 														]
 													},
@@ -422,9 +458,9 @@
 										"color": {
 											"items": {
 												"type": [
-													"string",
 													"integer",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"properties": {
@@ -432,13 +468,14 @@
 													"items": {
 														"items": {
 															"type": [
-																"string",
+																"integer",
 																"number",
-																"integer"
+																"string"
 															]
 														},
 														"type": [
-															"array"
+															"array",
+															"string"
 														]
 													},
 													"type": [
@@ -453,7 +490,8 @@
 											},
 											"type": [
 												"array",
-												"object"
+												"object",
+												"string"
 											]
 										}
 									},
@@ -474,15 +512,15 @@
 								"minecraft:particle_initial_speed": {
 									"items": {
 										"type": [
-											"string",
-											"number"
+											"number",
+											"string"
 										]
 									},
 									"type": [
-										"string",
-										"number",
+										"array",
 										"integer",
-										"array"
+										"number",
+										"string"
 									]
 								},
 								"minecraft:particle_initial_spin": {
@@ -490,12 +528,15 @@
 										"rotation": {
 											"type": [
 												"integer",
+												"number",
 												"string"
 											]
 										},
 										"rotation_rate": {
 											"type": [
-												"integer"
+												"integer",
+												"number",
+												"string"
 											]
 										}
 									},
@@ -523,7 +564,8 @@
 								"minecraft:particle_kill_plane": {
 									"items": {
 										"type": [
-											"integer"
+											"integer",
+											"number"
 										]
 									},
 									"type": [
@@ -532,6 +574,48 @@
 								},
 								"minecraft:particle_lifetime_events": {
 									"properties": {
+										"creation_event": {
+											"items": {
+												"type": [
+													"string"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"custom_events": {
+											"items": {
+												"properties": {
+													"eventname": {
+														"type": [
+															"string"
+														]
+													},
+													"eventtrigger": {
+														"type": [
+															"string"
+														]
+													}
+												},
+												"type": [
+													"object"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"expiration_event": {
+											"items": {
+												"type": [
+													"string"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
 										"timeline": {
 											"additionalProperties": {
 												"$ref": "#/definitions/timestamp"
@@ -547,11 +631,6 @@
 								},
 								"minecraft:particle_lifetime_expression": {
 									"properties": {
-										"activation_expression": {
-											"type": [
-												"number"
-											]
-										},
 										"expiration_expression": {
 											"type": [
 												"integer",
@@ -560,8 +639,8 @@
 										},
 										"max_lifetime": {
 											"type": [
-												"number",
 												"integer",
+												"number",
 												"string"
 											]
 										}
@@ -574,7 +653,8 @@
 									"properties": {
 										"coefficient_of_restitution": {
 											"type": [
-												"number"
+												"number",
+												"string"
 											]
 										},
 										"collision_drag": {
@@ -590,8 +670,9 @@
 										},
 										"enabled": {
 											"type": [
-												"string",
-												"integer"
+												"boolean",
+												"integer",
+												"string"
 											]
 										},
 										"events": {
@@ -649,12 +730,16 @@
 										},
 										"rotation_acceleration": {
 											"type": [
-												"integer"
+												"integer",
+												"number",
+												"string"
 											]
 										},
 										"rotation_drag_coefficient": {
 											"type": [
-												"integer"
+												"integer",
+												"number",
+												"string"
 											]
 										}
 									},
@@ -664,12 +749,23 @@
 								},
 								"minecraft:particle_motion_parametric": {
 									"properties": {
+										"direction": {
+											"items": {
+												"type": [
+													"number",
+													"string"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
 										"relative_position": {
 											"items": {
 												"type": [
 													"integer",
-													"string",
-													"number"
+													"number",
+													"string"
 												]
 											},
 											"type": [
@@ -678,6 +774,7 @@
 										},
 										"rotation": {
 											"type": [
+												"number",
 												"string"
 											]
 										}

@@ -226,8 +226,8 @@
 								}
 							},
 							"type": [
-								"object",
-								"array"
+								"array",
+								"object"
 							]
 						},
 						"tags": {

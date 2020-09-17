@@ -396,14 +396,14 @@
 				},
 				"value": {
 					"type": [
-						"string",
-						"boolean"
+						"boolean",
+						"string"
 					]
 				}
 			},
 			"type": [
-				"object",
-				"array"
+				"array",
+				"object"
 			]
 		}
 	}

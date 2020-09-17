@@ -166,8 +166,8 @@
 											"$ref": "#/definitions/render_controller"
 										},
 										"type": [
-											"string",
-											"object"
+											"object",
+											"string"
 										]
 									},
 									"type": [
@@ -221,8 +221,8 @@
 													}
 												},
 												"type": [
-													"string",
-													"object"
+													"object",
+													"string"
 												]
 											},
 											"type": [

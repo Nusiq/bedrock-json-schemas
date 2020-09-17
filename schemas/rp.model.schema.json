@@ -116,58 +116,11 @@
 											"properties": {
 												"down": {
 													"properties": {
-														"uv": {
-															"items": {
-																"type": [
-																	"integer"
-																]
-															},
+														"material_instance": {
 															"type": [
-																"array"
+																"string"
 															]
-														}
-													},
-													"type": [
-														"object"
-													]
-												},
-												"east": {
-													"properties": {
-														"uv": {
-															"items": {
-																"type": [
-																	"integer",
-																	"number"
-																]
-															},
-															"type": [
-																"array"
-															]
-														}
-													},
-													"type": [
-														"object"
-													]
-												},
-												"north": {
-													"properties": {
-														"uv": {
-															"items": {
-																"type": [
-																	"integer"
-																]
-															},
-															"type": [
-																"array"
-															]
-														}
-													},
-													"type": [
-														"object"
-													]
-												},
-												"south": {
-													"properties": {
+														},
 														"uv": {
 															"items": {
 																"type": [
@@ -182,7 +135,107 @@
 														"uv_size": {
 															"items": {
 																"type": [
-																	"integer"
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"east": {
+													"properties": {
+														"material_instance": {
+															"type": [
+																"string"
+															]
+														},
+														"uv": {
+															"items": {
+																"type": [
+																	"integer",
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														},
+														"uv_size": {
+															"items": {
+																"type": [
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"north": {
+													"properties": {
+														"material_instance": {
+															"type": [
+																"string"
+															]
+														},
+														"uv": {
+															"items": {
+																"type": [
+																	"integer",
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														},
+														"uv_size": {
+															"items": {
+																"type": [
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														}
+													},
+													"type": [
+														"object"
+													]
+												},
+												"south": {
+													"properties": {
+														"material_instance": {
+															"type": [
+																"string"
+															]
+														},
+														"uv": {
+															"items": {
+																"type": [
+																	"integer",
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														},
+														"uv_size": {
+															"items": {
+																"type": [
+																	"integer",
+																	"number"
 																]
 															},
 															"type": [
@@ -196,10 +249,26 @@
 												},
 												"up": {
 													"properties": {
+														"material_instance": {
+															"type": [
+																"string"
+															]
+														},
 														"uv": {
 															"items": {
 																"type": [
-																	"integer"
+																	"integer",
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														},
+														"uv_size": {
+															"items": {
+																"type": [
+																	"number"
 																]
 															},
 															"type": [
@@ -213,10 +282,26 @@
 												},
 												"west": {
 													"properties": {
+														"material_instance": {
+															"type": [
+																"string"
+															]
+														},
 														"uv": {
 															"items": {
 																"type": [
-																	"integer"
+																	"integer",
+																	"number"
+																]
+															},
+															"type": [
+																"array"
+															]
+														},
+														"uv_size": {
+															"items": {
+																"type": [
+																	"number"
 																]
 															},
 															"type": [
@@ -241,6 +326,16 @@
 								},
 								"type": [
 									"array"
+								]
+							},
+							"debug": {
+								"type": [
+									"boolean"
+								]
+							},
+							"inflate": {
+								"type": [
+									"number"
 								]
 							},
 							"locators": {
@@ -277,10 +372,93 @@
 									"array"
 								]
 							},
+							"poly_mesh": {
+								"properties": {
+									"normalized_uvs": {
+										"type": [
+											"boolean"
+										]
+									},
+									"normals": {
+										"items": {
+											"items": {
+												"type": [
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"type": [
+											"array"
+										]
+									},
+									"polys": {
+										"items": {
+											"items": {
+												"items": {
+													"type": [
+														"number"
+													]
+												},
+												"type": [
+													"array"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"type": [
+											"array"
+										]
+									},
+									"positions": {
+										"items": {
+											"items": {
+												"type": [
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"type": [
+											"array"
+										]
+									},
+									"uvs": {
+										"items": {
+											"items": {
+												"type": [
+													"number"
+												]
+											},
+											"type": [
+												"array"
+											]
+										},
+										"type": [
+											"array"
+										]
+									}
+								},
+								"type": [
+									"object"
+								]
+							},
+							"render_group_id": {
+								"type": [
+									"integer"
+								]
+							},
 							"rotation": {
 								"items": {
 									"type": [
-										"integer"
+										"integer",
+										"number"
 									]
 								},
 								"type": [
@@ -353,6 +531,11 @@
 						"array"
 					]
 				},
+				"cape": {
+					"type": [
+						"string"
+					]
+				},
 				"description": {
 					"properties": {
 						"identifier": {
@@ -413,8 +596,8 @@
 							"bind_pose_rotation": {
 								"items": {
 									"type": [
-										"number",
-										"integer"
+										"integer",
+										"number"
 									]
 								},
 								"type": [
@@ -437,8 +620,8 @@
 										"origin": {
 											"items": {
 												"type": [
-													"number",
-													"integer"
+													"integer",
+													"number"
 												]
 											},
 											"type": [
@@ -448,8 +631,8 @@
 										"size": {
 											"items": {
 												"type": [
-													"number",
-													"integer"
+													"integer",
+													"number"
 												]
 											},
 											"type": [
@@ -512,8 +695,8 @@
 							"pivot": {
 								"items": {
 									"type": [
-										"number",
-										"integer"
+										"integer",
+										"number"
 									]
 								},
 								"type": [
@@ -528,8 +711,8 @@
 							"rotation": {
 								"items": {
 									"type": [
-										"number",
-										"integer"
+										"integer",
+										"number"
 									]
 								},
 								"type": [
@@ -584,10 +767,6 @@
 			]
 		},
 		"format_version_8_10": {
-			"enum": [
-				"1.10.0",
-				"1.8.0"
-			],
 			"type": [
 				"string"
 			]
@@ -599,15 +778,43 @@
 					"number"
 				]
 			},
+			"properties": {
+				"ignore_inherited_scale": {
+					"type": [
+						"boolean"
+					]
+				},
+				"offset": {
+					"items": {
+						"type": [
+							"number"
+						]
+					},
+					"type": [
+						"array"
+					]
+				},
+				"rotation": {
+					"items": {
+						"type": [
+							"number"
+						]
+					},
+					"type": [
+						"array"
+					]
+				}
+			},
 			"type": [
-				"array"
+				"array",
+				"object"
 			]
 		},
 		"locator_8_10": {
 			"items": {
 				"type": [
-					"number",
-					"integer"
+					"integer",
+					"number"
 				]
 			},
 			"type": [

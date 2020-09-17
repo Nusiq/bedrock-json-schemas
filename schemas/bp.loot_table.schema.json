@@ -70,8 +70,8 @@
 									}
 								},
 								"type": [
-									"object",
-									"integer"
+									"integer",
+									"object"
 								]
 							},
 							"damage": {
@@ -83,8 +83,8 @@
 									},
 									"min": {
 										"type": [
-											"number",
-											"integer"
+											"integer",
+											"number"
 										]
 									}
 								},
@@ -121,8 +121,8 @@
 									}
 								},
 								"type": [
-									"object",
-									"integer"
+									"integer",
+									"object"
 								]
 							},
 							"limit": {

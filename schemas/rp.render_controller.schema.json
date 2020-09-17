@@ -289,8 +289,8 @@
 							"*": {
 								"type": [
 									"boolean",
-									"string",
-									"integer"
+									"integer",
+									"string"
 								]
 							},
 							"arms": {
@@ -398,8 +398,8 @@
 							},
 							"head": {
 								"type": [
-									"string",
-									"boolean"
+									"boolean",
+									"string"
 								]
 							},
 							"head_sleeping": {
@@ -409,8 +409,8 @@
 							},
 							"helmet": {
 								"type": [
-									"string",
-									"boolean"
+									"boolean",
+									"string"
 								]
 							},
 							"leftArm": {
@@ -547,8 +547,8 @@
 						"offset": {
 							"items": {
 								"type": [
-									"string",
-									"number"
+									"number",
+									"string"
 								]
 							},
 							"type": [

@@ -1,6 +1,8 @@
 import json_paths as jp
-from schema_builder import MetaSchema, Policy
+from schema_builder import MetaSchema, Policy, MetaSchemaReference
 import typing as tp
+
+Msr = MetaSchemaReference
 
 
 class ExportConfig(tp.NamedTuple):
@@ -85,69 +87,75 @@ def format_version_filter_creator(
         )
     return format_version_filter
 
+
 # META SCHEMAS
 BP_ENTITY_MS = MetaSchema(
     meta_schema={
         # 1.8.0 and 1.10.0 and 1.12.0
         "8_10_12": {
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:entity": {
-                "description": "description",
-                "components": "component_group_8_10_12",
+                "description": Msr("description"),
+                "components": Msr("component_group_8_10_12"),
                 "component_groups": {
-                    jp.Wildcard.ANY_PARAMETER: "component_group_8_10_12",
+                    jp.Wildcard.ANY_PARAMETER: Msr("component_group_8_10_12"),
                 },
                 "events": {
-                    jp.Wildcard.ANY_PARAMETER: "event",
+                    jp.Wildcard.ANY_PARAMETER: Msr("event"),
                 },
             },
         },
         "component_group_8_10_12": {
             jp.Wildcard.ANYTHING_UNTIL_NEXT_MATCH: {
-                "filters": "filter",
+                "filters": Msr("filter", Policy.STRICT),
             },
         },
         # 1.13.0 and 1.14.0
         "13_14": {
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:entity": {
-                "description": "description",
-                "components": "component_group_13_14",
+                "description": Msr("description"),
+                "components": Msr("component_group_13_14"),
                 "component_groups": {
-                    jp.Wildcard.ANY_PARAMETER: "component_group_13_14",
+                    jp.Wildcard.ANY_PARAMETER: Msr("component_group_13_14"),
                 },
                 "events": {
-                    jp.Wildcard.ANY_PARAMETER: "event",
+                    jp.Wildcard.ANY_PARAMETER: Msr("event"),
                 },
             },
         },
         "component_group_13_14": {
             jp.Wildcard.ANYTHING_UNTIL_NEXT_MATCH: {
-                "filters": "filter",
+                "filters": Msr("filter", Policy.STRICT),
             },
         },
         # Common for all version
         "event": {
             "sequence": {
-                jp.Wildcard.ANY_ITEM: "event"
+                jp.Wildcard.ANY_ITEM: Msr("event")
             },
             "randomize": {
-                jp.Wildcard.ANY_ITEM: "event"
+                jp.Wildcard.ANY_ITEM: Msr("event")
             },
             jp.Wildcard.ANYTHING_UNTIL_NEXT_MATCH: {
-                "filters": "filter"
+                "filters": Msr("filter", Policy.STRICT)
             }
         },
         "filter": {
             "all_of": {
-                jp.Wildcard.ANY_ITEM: "filter"
+                jp.Wildcard.ANY_ITEM: Msr("filter", Policy.STRICT)
             },
             "any_of": {
-                jp.Wildcard.ANY_ITEM: "filter"
+                jp.Wildcard.ANY_ITEM: Msr("filter", Policy.STRICT)
             },
-            jp.Wildcard.ANY_ITEM: "filter"
+            "test": Msr(None, Policy.STRICT),
+            "operator": Msr(None, Policy.STRICT),
+            "subject": Msr(None, Policy.STRICT),
+            "domain": Msr(None, Policy.EXAMPLE)
         },
         "description": {
             "animations": {
-                jp.Wildcard.ANY_PARAMETER: "description_config"
+                jp.Wildcard.ANY_PARAMETER: Msr("description_config")
             }
         },
         "description_config": {}
@@ -161,40 +169,37 @@ BP_ENTITY_MS = MetaSchema(
     root_filters={
         '8_10_12': format_version_filter_creator(['1.8.0', '1.10.0', '1.12.0']),
         '13_14': format_version_filter_creator(['1.13.0', '1.14.0']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 BP_ITEM_MS = MetaSchema(
     meta_schema={
-        "10_14_16": {}  # 1.10, 1.14, 1.16
+        "10_14_16": {
+            "format_version": Msr(None, Policy.STRICT)
+        }
     },
     blacklist=[],
     root_filters={
         '10_14_16': format_version_filter_creator(['1.10', '1.14', '1.16']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 BP_ANIMATION_CONTROLLER_MS=MetaSchema(
     meta_schema={
         # 1.10.0
         "10": {
+            "format_version": Msr(None, Policy.STRICT),
             "animation_controllers": {
-                jp.Wildcard.ANY_PARAMETER: "controller"
+                jp.Wildcard.ANY_PARAMETER: Msr("controller")
             }
         },
         "controller": {
             "states": {
-                jp.Wildcard.ANY_PARAMETER: "state"
+                jp.Wildcard.ANY_PARAMETER: Msr("state")
             }
         },
         "state": {
             "transitions": {
                 jp.Wildcard.ANY_ITEM: {
-                    jp.Wildcard.ANY_PARAMETER: "transition"
+                    jp.Wildcard.ANY_PARAMETER: Msr("transition")
                 }
             }
         },
@@ -208,26 +213,24 @@ BP_ANIMATION_CONTROLLER_MS=MetaSchema(
     ],
     root_filters={
         '10': format_version_filter_creator(['1.10.0'])
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 BP_ANIMATION_MS=MetaSchema(
     meta_schema={
         # 1.10.0
         "10": {
+            "format_version": Msr(None, Policy.STRICT),
             "animations": {
-                jp.Wildcard.ANY_PARAMETER: "animation"
+                jp.Wildcard.ANY_PARAMETER: Msr("animation")
             }
         },
         "animation": {
             "timeline": {
-                jp.Wildcard.ANY_PARAMETER: "timestamp"
+                jp.Wildcard.ANY_PARAMETER: Msr("timestamp")
             }
         },
         "timestamp": {
-            jp.Wildcard.ANY_ITEM: "command"
+            jp.Wildcard.ANY_ITEM: Msr("command")
         },
         "command": {},
     },
@@ -239,41 +242,38 @@ BP_ANIMATION_MS=MetaSchema(
     ],
     root_filters={
         '10': format_version_filter_creator(['1.10.0'])
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 BP_LOOT_TABLE_MS=MetaSchema(
     meta_schema={
         "root": {
             "pools": {
-                jp.Wildcard.ANY_ITEM: "pool"
+                jp.Wildcard.ANY_ITEM: Msr("pool")
             }
         },
         "pool": {
             "entries": {
-                jp.Wildcard.ANY_ITEM: "entry"
+                jp.Wildcard.ANY_ITEM: Msr("entry")
             }
         },
         "entry": {
             "pools": {
-                jp.Wildcard.ANY_ITEM: "pool"
+                jp.Wildcard.ANY_ITEM: Msr("pool")
             }
         }
     },
     blacklist=[],
     root_filters={
         'root': lambda data: True
-    },
-    path_policies=[]
+    }
 )
 BP_RECIPE_MS=MetaSchema(
     meta_schema={
         "12_14": {
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:recipe_shaped": {
                 "key": {
-                    jp.Wildcard.ANY_PARAMETER: "key_parameter"
+                    jp.Wildcard.ANY_PARAMETER: Msr("key_parameter")
                 }
             }
         },
@@ -282,38 +282,33 @@ BP_RECIPE_MS=MetaSchema(
     blacklist=[],
     root_filters={
         '12_14': format_version_filter_creator(['1.12', '1.14']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 BP_SPAWN_RULE_MS=MetaSchema(
     meta_schema={
         "8_11":{
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:spawn_rules": {
                 "conditions": {
                     jp.Wildcard.ANY_ITEM: {
-                        "minecraft:biome_filter": "filter"
+                        "minecraft:biome_filter": Msr("filter", Policy.STRICT)
                     }
                 }
             }
         },
         "filter": {
             "all_of": {
-                jp.Wildcard.ANY_ITEM: "filter"
+                jp.Wildcard.ANY_ITEM: Msr("filter", Policy.STRICT)
             },
             "any_of": {
-                jp.Wildcard.ANY_ITEM: "filter"
-            },
+                jp.Wildcard.ANY_ITEM: Msr("filter", Policy.STRICT)
+            }
         }
     },
     blacklist=[],
     root_filters={
         '8_11': format_version_filter_creator(['1.8.0', '1.11.0'])
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 BP_TRADING_MS=MetaSchema(
     meta_schema={
@@ -322,10 +317,10 @@ BP_TRADING_MS=MetaSchema(
                 jp.Wildcard.ANY_ITEM: {
                     "groups": {
                         jp.Wildcard.ANY_ITEM: {
-                            "trades": "trade"
+                            "trades": Msr("trade")
                         }
                     },
-                    "trades": "trade"
+                    "trades": Msr("trade")
                 }
             }
         },
@@ -334,30 +329,30 @@ BP_TRADING_MS=MetaSchema(
     blacklist=[],
     root_filters={
         'root': lambda data: True
-    },
-    path_policies=[]
+    }
 )
 RP_ANIMATION_CONTROLLER_MS=MetaSchema(
     meta_schema={
         "10": {
+            "format_version": Msr(None, Policy.STRICT),
             "animation_controllers": {
-                jp.Wildcard.ANY_PARAMETER: "controller"
+                jp.Wildcard.ANY_PARAMETER: Msr("controller")
             }
         },
         "controller": {
             "states": {
-                jp.Wildcard.ANY_PARAMETER: "state"
+                jp.Wildcard.ANY_PARAMETER: Msr("state")
             }
         },
         "state": {
             "transitions": {
                 jp.Wildcard.ANY_ITEM: {
-                    jp.Wildcard.ANY_PARAMETER: "transition"
+                    jp.Wildcard.ANY_PARAMETER: Msr("transition")
                 }
             },
             "animations": {
                 jp.Wildcard.ANY_ITEM: {
-                    jp.Wildcard.ANY_PARAMETER: "animation"
+                    jp.Wildcard.ANY_PARAMETER: Msr("animation")
                 }
             }
         },
@@ -372,32 +367,30 @@ RP_ANIMATION_CONTROLLER_MS=MetaSchema(
     ],
     root_filters={
         '10': format_version_filter_creator(['1.10.0']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 RP_ANIMATION_MS=MetaSchema(
     meta_schema={
         "8": {
+            "format_version": Msr(None, Policy.STRICT),
             "animations": {
-                jp.Wildcard.ANY_PARAMETER: "animation"
+                jp.Wildcard.ANY_PARAMETER: Msr("animation")
             }
         },
         "animation": {
             "bones": {
-                jp.Wildcard.ANY_PARAMETER: "bone"
+                jp.Wildcard.ANY_PARAMETER: Msr("bone")
             }
         },
         "bone": {
             "rotation": {
-                jp.Wildcard.ANY_PARAMETER: "timestamp"
+                jp.Wildcard.ANY_PARAMETER: Msr("timestamp")
             },
             "scale": {
-                jp.Wildcard.ANY_PARAMETER: "timestamp"
+                jp.Wildcard.ANY_PARAMETER: Msr("timestamp")
             },
             "position": {
-                jp.Wildcard.ANY_PARAMETER: "timestamp"
+                jp.Wildcard.ANY_PARAMETER: Msr("timestamp")
             }
         },
         "timestamp": {},
@@ -405,33 +398,31 @@ RP_ANIMATION_MS=MetaSchema(
     blacklist=[],
     root_filters={
         '8': format_version_filter_creator(['1.8.0']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 RP_ATTACHABLE_MS=MetaSchema(
     meta_schema={
         "8_10": {
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:attachable": {
                 "description": {
                     "materials": {
-                        jp.Wildcard.ANY_PARAMETER: "material"
+                        jp.Wildcard.ANY_PARAMETER: Msr("material")
                     },
                     "textures": {
-                        jp.Wildcard.ANY_PARAMETER: "texture"
+                        jp.Wildcard.ANY_PARAMETER: Msr("texture")
                     },
                     "geometry": {
                         jp.Wildcard.ANY_PARAMETER: {}
                     },
                     "item": {
-                        jp.Wildcard.ANY_PARAMETER: "item_item"
+                        jp.Wildcard.ANY_PARAMETER: Msr("item_item")
                     },
                     "scripts": {
-                        jp.Wildcard.ANY_PARAMETER: "script"
+                        jp.Wildcard.ANY_PARAMETER: Msr("script")
                     },
                     "animations": {
-                        jp.Wildcard.ANY_PARAMETER: "animation"
+                        jp.Wildcard.ANY_PARAMETER: Msr("animation")
                     },
                 }
             }
@@ -446,44 +437,42 @@ RP_ATTACHABLE_MS=MetaSchema(
     blacklist=[],
     root_filters={
         '8_10': format_version_filter_creator(['1.8.0', '1.10.0', '1.10'])
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 RP_ENTITY_MS=MetaSchema(
     meta_schema={
         # 1.8.0
         "8": {
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:client_entity": {
                 "description": {
                     "materials": {
-                        jp.Wildcard.ANY_PARAMETER: "material"
+                        jp.Wildcard.ANY_PARAMETER: Msr("material")
                     },
                     "textures": {
-                        jp.Wildcard.ANY_PARAMETER: "texture"
+                        jp.Wildcard.ANY_PARAMETER: Msr("texture")
                     },
                     "geometry": {
-                        jp.Wildcard.ANY_PARAMETER: "geometry_item"
+                        jp.Wildcard.ANY_PARAMETER: Msr("geometry_item")
                     },
                     "animations": {
-                        jp.Wildcard.ANY_PARAMETER: "animation"
+                        jp.Wildcard.ANY_PARAMETER: Msr("animation")
                     },
                     "animation_controllers": {
                         jp.Wildcard.ANY_ITEM: {
-                            jp.Wildcard.ANY_PARAMETER: "animation_controller"
+                            jp.Wildcard.ANY_PARAMETER: Msr("animation_controller")
                         }
                     },
                     "render_controllers": {
                         jp.Wildcard.ANY_ITEM: {
-                            jp.Wildcard.ANY_PARAMETER: "render_controller"
+                            jp.Wildcard.ANY_PARAMETER: Msr("render_controller")
                         }
                     }
                 },
                 "scripts": {
                     "animate": {
                         jp.Wildcard.ANY_ITEM: {
-                            jp.Wildcard.ANY_PARAMETER: "condition"
+                            jp.Wildcard.ANY_PARAMETER: Msr("condition")
                         }
                     }
                 }
@@ -491,30 +480,31 @@ RP_ENTITY_MS=MetaSchema(
         },
         # 1.10.0
         "10": {
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:client_entity": {
                 "description": {
                     "materials": {
-                        jp.Wildcard.ANY_PARAMETER: "material"
+                        jp.Wildcard.ANY_PARAMETER: Msr("material")
                     },
                     "textures": {
-                        jp.Wildcard.ANY_PARAMETER: "texture"
+                        jp.Wildcard.ANY_PARAMETER: Msr("texture")
                     },
                     "geometry": {
-                        jp.Wildcard.ANY_PARAMETER: "geometry_item"
+                        jp.Wildcard.ANY_PARAMETER: Msr("geometry_item")
                     },
                     "animations": {
-                        jp.Wildcard.ANY_PARAMETER: "animation"
+                        jp.Wildcard.ANY_PARAMETER: Msr("animation")
                     },
                     "render_controllers": {
                         jp.Wildcard.ANY_ITEM: {
-                            jp.Wildcard.ANY_PARAMETER: "render_controller"
+                            jp.Wildcard.ANY_PARAMETER: Msr("render_controller")
                         }
                     }
                 },
                 "scripts": {
                     "animate": {
                         jp.Wildcard.ANY_ITEM: {
-                            jp.Wildcard.ANY_PARAMETER: "condition"
+                            jp.Wildcard.ANY_PARAMETER: Msr("condition")
                         }
                     }
                 }
@@ -533,23 +523,21 @@ RP_ENTITY_MS=MetaSchema(
     root_filters={
         '8': format_version_filter_creator(['1.8.0']),
         '10': format_version_filter_creator(['1.10.0']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 RP_PARTICLE_MS=MetaSchema(
     meta_schema={
         # 1.10.0
         "10": {
+            "format_version": Msr(None, Policy.STRICT),
             "particle_effect": {
                 "events": {
-                    jp.Wildcard.ANY_PARAMETER: "event"
+                    jp.Wildcard.ANY_PARAMETER: Msr("event")
                 },
                 "components": {
                     "minecraft:particle_lifetime_events": {
                         "timeline": {
-                            jp.Wildcard.ANY_PARAMETER: "timestamp"
+                            jp.Wildcard.ANY_PARAMETER: Msr("timestamp")
                         }
                     }
                 }
@@ -566,32 +554,30 @@ RP_PARTICLE_MS=MetaSchema(
     ],
     root_filters={
         '10': format_version_filter_creator(['1.10.0']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 RP_RENDER_CONTROLLER_MS=MetaSchema(
     meta_schema={
         "8_10": {
+            "format_version": Msr(None, Policy.STRICT),
             "render_controllers": {
-                jp.Wildcard.ANY_PARAMETER: "render_controller"
+                jp.Wildcard.ANY_PARAMETER: Msr("render_controller")
             }
         },
         "render_controller": {
             "arrays": {
                 "materials": {
-                    jp.Wildcard.ANY_PARAMETER: "array_material"
+                    jp.Wildcard.ANY_PARAMETER: Msr("array_material")
                 },
                 "textures": {
-                    jp.Wildcard.ANY_PARAMETER: "array_texture"
+                    jp.Wildcard.ANY_PARAMETER: Msr("array_texture")
                 },
                 "geometries": {
-                    jp.Wildcard.ANY_PARAMETER: "array_geometry"
+                    jp.Wildcard.ANY_PARAMETER: Msr("array_geometry")
                 },
             },
             "part_visibility": {
-                jp.Wildcard.ANY_PARAMETER: "part_visibility_item"
+                jp.Wildcard.ANY_PARAMETER: Msr("part_visibility_item")
             },
         },
         "array_material": {},
@@ -602,24 +588,22 @@ RP_RENDER_CONTROLLER_MS=MetaSchema(
     blacklist=[],
     root_filters={
         '8_10': format_version_filter_creator(['1.8.0', '1.10.0', '1.10']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )
 RP_MODEL_MS=MetaSchema(
     meta_schema={
         # 1.8.0 and 1.10.0
         "8_10": {
-            "format_version": "format_version_8_10",
-            jp.Wildcard.ANY_PARAMETER: "entity_8_10"
+            "format_version": Msr(None, Policy.STRICT),
+            "format_version": Msr("format_version_8_10"),
+            jp.Wildcard.ANY_PARAMETER: Msr("entity_8_10")
         },
         "format_version_8_10": {},
         "entity_8_10": {
             "bones": {
                 jp.Wildcard.ANY_ITEM: {
                     "locators": {
-                        jp.Wildcard.ANY_PARAMETER: "locator_8_10"
+                        jp.Wildcard.ANY_PARAMETER: Msr("locator_8_10")
                     }
                 }
             }
@@ -627,15 +611,16 @@ RP_MODEL_MS=MetaSchema(
         "locator_8_10": {},
         # 1.12.0
         "12": {
+            "format_version": Msr(None, Policy.STRICT),
             "minecraft:geometry": {
-                jp.Wildcard.ANY_ITEM: "entity_12"
+                jp.Wildcard.ANY_ITEM: Msr("entity_12")
             }
         },
         "entity_12": {
             "bones": {
                 jp.Wildcard.ANY_ITEM: {
                     "locators": {
-                        jp.Wildcard.ANY_PARAMETER: "locator_12"
+                        jp.Wildcard.ANY_PARAMETER: Msr("locator_12")
                     }
                 }
             }
@@ -646,8 +631,5 @@ RP_MODEL_MS=MetaSchema(
     root_filters={
         '8_10': format_version_filter_creator(['1.8.0', '1.10.0']),
         '12': format_version_filter_creator(['1.12.0']),
-    },
-    path_policies=[
-        (['format_version'], Policy.STRICT)
-    ]
+    }
 )

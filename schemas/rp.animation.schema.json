@@ -73,13 +73,13 @@
 					"items": {
 						"type": [
 							"integer",
-							"string",
-							"number"
+							"number",
+							"string"
 						]
 					},
 					"type": [
-						"object",
-						"array"
+						"array",
+						"object"
 					]
 				},
 				"relative_to": {
@@ -101,13 +101,13 @@
 					"items": {
 						"type": [
 							"integer",
-							"string",
-							"number"
+							"number",
+							"string"
 						]
 					},
 					"type": [
-						"object",
-						"array"
+						"array",
+						"object"
 					]
 				},
 				"scale": {
@@ -117,15 +117,15 @@
 					"items": {
 						"type": [
 							"integer",
-							"string",
-							"number"
+							"number",
+							"string"
 						]
 					},
 					"type": [
-						"object",
 						"array",
 						"integer",
 						"number",
+						"object",
 						"string"
 					]
 				}
@@ -146,8 +146,8 @@
 				"post": {
 					"items": {
 						"type": [
-							"string",
-							"number"
+							"number",
+							"string"
 						]
 					},
 					"type": [
@@ -157,8 +157,8 @@
 				"pre": {
 					"items": {
 						"type": [
-							"string",
-							"number"
+							"number",
+							"string"
 						]
 					},
 					"type": [
