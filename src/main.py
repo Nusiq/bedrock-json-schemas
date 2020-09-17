@@ -10,6 +10,7 @@ import shutil
 import fnmatch
 import json
 from jsonc_decoder import JSONCDecoder
+from json_encoder import CompactEncoder
 import json_paths as jp
 from schema_builder import create_schema_definitions
 from collections import defaultdict
@@ -117,7 +118,7 @@ if __name__ == "__main__":
 
     for inp in bp_schema_inputs:
         with open(inp.export_config.export_path, 'w') as f:
-            json.dump(inp.schema, f, indent='\t', sort_keys=True)
+            json.dump(inp.schema, f, cls=CompactEncoder)
 
     # GENERATING RESOURCEPACK SCHEMAS
     print('GENERATING RESOURCEPACK SCHEMAS')
@@ -126,4 +127,4 @@ if __name__ == "__main__":
 
     for inp in rp_schema_inputs:
         with open(inp.export_config.export_path, 'w') as f:
-            json.dump(inp.schema, f, indent='\t', sort_keys=True)
+            json.dump(inp.schema, f, cls=CompactEncoder)

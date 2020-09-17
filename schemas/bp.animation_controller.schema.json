@@ -6,97 +6,65 @@
 	],
 	"definitions": {
 		"10": {
+			"type": ["object"],
 			"properties": {
+				"format_version": {
+					"type": ["string"],
+					"enum": ["1.10.0"]
+				},
 				"animation_controllers": {
+					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/controller"
-					},
-					"type": [
-						"object"
-					]
-				},
-				"format_version": {
-					"enum": [
-						"1.10.0"
-					],
-					"type": [
-						"string"
-					]
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"controller": {
+			"type": ["object"],
 			"properties": {
 				"states": {
+					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/state"
-					},
-					"type": [
-						"object"
-					]
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"state": {
+			"type": ["object"],
 			"properties": {
-				"animations": {
-					"items": {
-						"type": [
-							"string"
-						]
-					},
-					"type": [
-						"array"
-					]
-				},
-				"on_entry": {
-					"items": {
-						"type": [
-							"string"
-						]
-					},
-					"type": [
-						"array"
-					]
-				},
-				"on_exit": {
-					"items": {
-						"type": [
-							"string"
-						]
-					},
-					"type": [
-						"array"
-					]
-				},
 				"transitions": {
+					"type": ["array"],
 					"items": {
+						"type": ["object"],
 						"additionalProperties": {
 							"$ref": "#/definitions/transition"
-						},
-						"type": [
-							"object"
-						]
-					},
-					"type": [
-						"array"
-					]
+						}
+					}
+				},
+				"on_entry": {
+					"type": ["array"],
+					"items": {
+						"type": ["string"]
+					}
+				},
+				"animations": {
+					"type": ["array"],
+					"items": {
+						"type": ["string"]
+					}
+				},
+				"on_exit": {
+					"type": ["array"],
+					"items": {
+						"type": ["string"]
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"transition": {
-			"type": [
-				"string"
-			]
+			"type": ["string"]
 		}
 	}
 }

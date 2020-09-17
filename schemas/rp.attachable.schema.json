@@ -6,148 +6,97 @@
 	],
 	"definitions": {
 		"8_10": {
+			"type": ["object"],
 			"properties": {
 				"format_version": {
-					"enum": [
-						"1.10",
-						"1.8.0",
-						"1.10.0"
-					],
-					"type": [
-						"string"
-					]
+					"type": ["string"],
+					"enum": ["1.10", "1.8.0", "1.10.0"]
 				},
 				"minecraft:attachable": {
+					"type": ["object"],
 					"properties": {
 						"description": {
+							"type": ["object"],
 							"properties": {
-								"animations": {
-									"additionalProperties": {
-										"$ref": "#/definitions/animation"
-									},
-									"type": [
-										"object"
-									]
-								},
-								"geometry": {
-									"properties": {
-										"bow_pulling_0": {
-											"type": [
-												"string"
-											]
-										},
-										"bow_pulling_1": {
-											"type": [
-												"string"
-											]
-										},
-										"bow_pulling_2": {
-											"type": [
-												"string"
-											]
-										},
-										"default": {
-											"type": [
-												"string"
-											]
-										}
-									},
-									"type": [
-										"object"
-									]
-								},
 								"identifier": {
-									"type": [
-										"string"
-									]
-								},
-								"item": {
-									"additionalProperties": {
-										"$ref": "#/definitions/item_item"
-									},
-									"type": [
-										"object"
-									]
+									"type": ["string"]
 								},
 								"materials": {
+									"type": ["object"],
 									"additionalProperties": {
 										"$ref": "#/definitions/material"
-									},
-									"type": [
-										"object"
-									]
-								},
-								"render_controllers": {
-									"items": {
-										"type": [
-											"string"
-										]
-									},
-									"type": [
-										"array"
-									]
-								},
-								"scripts": {
-									"additionalProperties": {
-										"$ref": "#/definitions/script"
-									},
-									"type": [
-										"object"
-									]
+									}
 								},
 								"textures": {
+									"type": ["object"],
 									"additionalProperties": {
 										"$ref": "#/definitions/texture"
-									},
-									"type": [
-										"object"
-									]
+									}
+								},
+								"geometry": {
+									"type": ["object"],
+									"properties": {
+										"default": {
+											"type": ["string"]
+										},
+										"bow_pulling_0": {
+											"type": ["string"]
+										},
+										"bow_pulling_1": {
+											"type": ["string"]
+										},
+										"bow_pulling_2": {
+											"type": ["string"]
+										}
+									}
+								},
+								"scripts": {
+									"type": ["object"],
+									"additionalProperties": {
+										"$ref": "#/definitions/script"
+									}
+								},
+								"render_controllers": {
+									"type": ["array"],
+									"items": {
+										"type": ["string"]
+									}
+								},
+								"item": {
+									"type": ["object"],
+									"additionalProperties": {
+										"$ref": "#/definitions/item_item"
+									}
+								},
+								"animations": {
+									"type": ["object"],
+									"additionalProperties": {
+										"$ref": "#/definitions/animation"
+									}
 								}
-							},
-							"type": [
-								"object"
-							]
+							}
 						}
-					},
-					"type": [
-						"object"
-					]
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
-		},
-		"animation": {
-			"type": [
-				"string"
-			]
-		},
-		"item_item": {
-			"type": [
-				"string"
-			]
+			}
 		},
 		"material": {
-			"type": [
-				"string"
-			]
-		},
-		"script": {
-			"items": {
-				"type": [
-					"string"
-				]
-			},
-			"type": [
-				"array",
-				"string"
-			]
+			"type": ["string"]
 		},
 		"texture": {
-			"type": [
-				"string"
-			]
+			"type": ["string"]
+		},
+		"script": {
+			"type": ["array", "string"],
+			"items": {
+				"type": ["string"]
+			}
+		},
+		"item_item": {
+			"type": ["string"]
+		},
+		"animation": {
+			"type": ["string"]
 		}
 	}
 }

@@ -6,57 +6,39 @@
 	],
 	"definitions": {
 		"10": {
+			"type": ["object"],
 			"properties": {
+				"format_version": {
+					"type": ["string"],
+					"enum": ["1.10.0"]
+				},
 				"animations": {
+					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/animation"
-					},
-					"type": [
-						"object"
-					]
-				},
-				"format_version": {
-					"enum": [
-						"1.10.0"
-					],
-					"type": [
-						"string"
-					]
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"animation": {
+			"type": ["object"],
 			"properties": {
-				"animation_length": {
-					"type": [
-						"number"
-					]
-				},
-				"loop": {
-					"type": [
-						"boolean"
-					]
-				},
 				"timeline": {
+					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/timestamp"
-					},
-					"type": [
-						"object"
-					]
+					}
+				},
+				"loop": {
+					"type": ["boolean"]
+				},
+				"animation_length": {
+					"type": ["number"]
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"timestamp": {
-			"type": [
-				"array"
-			]
+			"type": ["array"]
 		}
 	}
 }

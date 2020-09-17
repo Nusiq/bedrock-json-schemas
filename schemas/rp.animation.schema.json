@@ -6,170 +6,102 @@
 	],
 	"definitions": {
 		"8": {
+			"type": ["object"],
 			"properties": {
+				"format_version": {
+					"type": ["string"],
+					"enum": ["1.8.0"]
+				},
 				"animations": {
+					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/animation"
-					},
-					"type": [
-						"object"
-					]
-				},
-				"format_version": {
-					"enum": [
-						"1.8.0"
-					],
-					"type": [
-						"string"
-					]
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"animation": {
+			"type": ["object"],
 			"properties": {
-				"anim_time_update": {
-					"type": [
-						"string"
-					]
-				},
-				"animation_length": {
-					"type": [
-						"integer",
-						"number"
-					]
+				"loop": {
+					"type": ["boolean"]
 				},
 				"bones": {
+					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/bone"
-					},
-					"type": [
-						"object"
-					]
+					}
 				},
-				"loop": {
-					"type": [
-						"boolean"
-					]
+				"animation_length": {
+					"type": ["integer", "number"]
+				},
+				"anim_time_update": {
+					"type": ["string"]
 				},
 				"override_previous_animation": {
-					"type": [
-						"boolean"
-					]
+					"type": ["boolean"]
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"bone": {
+			"type": ["object"],
 			"properties": {
-				"position": {
-					"additionalProperties": {
-						"$ref": "#/definitions/timestamp"
-					},
-					"items": {
-						"type": [
-							"integer",
-							"number",
-							"string"
-						]
-					},
-					"type": [
-						"array",
-						"object"
-					]
-				},
-				"relative_to": {
-					"properties": {
-						"rotation": {
-							"type": [
-								"string"
-							]
-						}
-					},
-					"type": [
-						"object"
-					]
-				},
 				"rotation": {
+					"type": ["array", "object"],
+					"items": {
+						"type": ["integer", "number", "string"]
+					},
 					"additionalProperties": {
 						"$ref": "#/definitions/timestamp"
-					},
+					}
+				},
+				"position": {
+					"type": ["array", "object"],
 					"items": {
-						"type": [
-							"integer",
-							"number",
-							"string"
-						]
+						"type": ["integer", "number", "string"]
 					},
-					"type": [
-						"array",
-						"object"
-					]
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					}
 				},
 				"scale": {
+					"type": ["array", "integer", "number", "object", "string"],
 					"additionalProperties": {
 						"$ref": "#/definitions/timestamp"
 					},
 					"items": {
-						"type": [
-							"integer",
-							"number",
-							"string"
-						]
-					},
-					"type": [
-						"array",
-						"integer",
-						"number",
-						"object",
-						"string"
-					]
+						"type": ["integer", "number", "string"]
+					}
+				},
+				"relative_to": {
+					"type": ["object"],
+					"properties": {
+						"rotation": {
+							"type": ["string"]
+						}
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
 		},
 		"timestamp": {
+			"type": ["array", "object"],
 			"items": {
-				"type": [
-					"integer",
-					"number",
-					"string"
-				]
+				"type": ["integer", "number", "string"]
 			},
 			"properties": {
 				"post": {
+					"type": ["array"],
 					"items": {
-						"type": [
-							"number",
-							"string"
-						]
-					},
-					"type": [
-						"array"
-					]
+						"type": ["number", "string"]
+					}
 				},
 				"pre": {
+					"type": ["array"],
 					"items": {
-						"type": [
-							"number",
-							"string"
-						]
-					},
-					"type": [
-						"array"
-					]
+						"type": ["number", "string"]
+					}
 				}
-			},
-			"type": [
-				"array",
-				"object"
-			]
+			}
 		}
 	}
 }

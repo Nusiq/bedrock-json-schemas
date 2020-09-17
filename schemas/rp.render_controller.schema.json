@@ -6,574 +6,348 @@
 	],
 	"definitions": {
 		"8_10": {
+			"type": ["object"],
 			"properties": {
 				"format_version": {
-					"enum": [
-						"1.10.0",
-						"1.8.0",
-						"1.10"
-					],
-					"type": [
-						"string"
-					]
+					"type": ["string"],
+					"enum": ["1.10.0", "1.8.0", "1.10"]
 				},
 				"render_controllers": {
+					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/render_controller"
-					},
-					"type": [
-						"object"
-					]
+					}
 				}
-			},
-			"type": [
-				"object"
-			]
-		},
-		"array_geometry": {
-			"items": {
-				"type": [
-					"string"
-				]
-			},
-			"type": [
-				"array"
-			]
-		},
-		"array_material": {
-			"items": {
-				"type": [
-					"string"
-				]
-			},
-			"type": [
-				"array"
-			]
-		},
-		"array_texture": {
-			"items": {
-				"type": [
-					"string"
-				]
-			},
-			"type": [
-				"array"
-			]
+			}
 		},
 		"render_controller": {
+			"type": ["object"],
 			"properties": {
-				"arrays": {
-					"properties": {
-						"geometries": {
-							"additionalProperties": {
-								"$ref": "#/definitions/array_geometry"
-							},
-							"type": [
-								"object"
-							]
-						},
-						"materials": {
-							"additionalProperties": {
-								"$ref": "#/definitions/array_material"
-							},
-							"type": [
-								"object"
-							]
-						},
-						"textures": {
-							"additionalProperties": {
-								"$ref": "#/definitions/array_texture"
-							},
-							"type": [
-								"object"
-							]
-						}
-					},
-					"type": [
-						"object"
-					]
-				},
-				"color": {
-					"properties": {
-						"a": {
-							"type": [
-								"string"
-							]
-						},
-						"b": {
-							"type": [
-								"string"
-							]
-						},
-						"g": {
-							"type": [
-								"string"
-							]
-						},
-						"r": {
-							"type": [
-								"string"
-							]
-						}
-					},
-					"type": [
-						"object"
-					]
-				},
-				"filter_lighting": {
-					"type": [
-						"boolean"
-					]
-				},
-				"geometry": {
-					"type": [
-						"string"
-					]
-				},
-				"ignore_lighting": {
-					"type": [
-						"boolean"
-					]
-				},
-				"light_color_multiplier": {
-					"type": [
-						"number"
-					]
-				},
 				"materials": {
+					"type": ["array"],
 					"items": {
+						"type": ["object"],
 						"properties": {
 							"*": {
-								"type": [
-									"string"
-								]
-							},
-							"*Saddle*": {
-								"type": [
-									"string"
-								]
-							},
-							"Mane": {
-								"type": [
-									"string"
-								]
-							},
-							"TailA": {
-								"type": [
-									"string"
-								]
-							},
-							"body": {
-								"type": [
-									"string"
-								]
-							},
-							"bodyLayer_*": {
-								"type": [
-									"string"
-								]
-							},
-							"glow": {
-								"type": [
-									"string"
-								]
-							},
-							"green": {
-								"type": [
-									"string"
-								]
-							},
-							"hat": {
-								"type": [
-									"string"
-								]
-							},
-							"head": {
-								"type": [
-									"string"
-								]
-							},
-							"head*": {
-								"type": [
-									"string"
-								]
-							},
-							"leftarm": {
-								"type": [
-									"string"
-								]
-							},
-							"leftleg": {
-								"type": [
-									"string"
-								]
-							},
-							"leg*": {
-								"type": [
-									"string"
-								]
-							},
-							"light": {
-								"type": [
-									"string"
-								]
+								"type": ["string"]
 							},
 							"recolor": {
-								"type": [
-									"string"
-								]
-							},
-							"red": {
-								"type": [
-									"string"
-								]
-							},
-							"rightarm": {
-								"type": [
-									"string"
-								]
-							},
-							"rightleg": {
-								"type": [
-									"string"
-								]
-							},
-							"yellow": {
-								"type": [
-									"string"
-								]
-							}
-						},
-						"type": [
-							"object"
-						]
-					},
-					"type": [
-						"array"
-					]
-				},
-				"overlay_color": {
-					"properties": {
-						"a": {
-							"type": [
-								"number",
-								"string"
-							]
-						},
-						"b": {
-							"type": [
-								"number",
-								"string"
-							]
-						},
-						"g": {
-							"type": [
-								"number",
-								"string"
-							]
-						},
-						"r": {
-							"type": [
-								"number",
-								"string"
-							]
-						}
-					},
-					"type": [
-						"object"
-					]
-				},
-				"part_visibility": {
-					"items": {
-						"properties": {
-							"*": {
-								"type": [
-									"boolean",
-									"integer",
-									"string"
-								]
-							},
-							"arms": {
-								"type": [
-									"boolean",
-									"string"
-								]
-							},
-							"belt": {
-								"type": [
-									"string"
-								]
-							},
-							"body": {
-								"type": [
-									"boolean",
-									"string"
-								]
-							},
-							"bodyArmor": {
-								"type": [
-									"string"
-								]
-							},
-							"bodylayer_0": {
-								"type": [
-									"string"
-								]
-							},
-							"bodylayer_1": {
-								"type": [
-									"string"
-								]
-							},
-							"bodylayer_2": {
-								"type": [
-									"string"
-								]
-							},
-							"bodypart_0": {
-								"type": [
-									"string"
-								]
-							},
-							"bodypart_1": {
-								"type": [
-									"string"
-								]
-							},
-							"bodypart_2": {
-								"type": [
-									"string"
-								]
-							},
-							"bodypart_3": {
-								"type": [
-									"string"
-								]
-							},
-							"bodypart_4": {
-								"type": [
-									"string"
-								]
-							},
-							"bodypart_5": {
-								"type": [
-									"string"
-								]
-							},
-							"bodypart_6": {
-								"type": [
-									"string"
-								]
-							},
-							"cape": {
-								"type": [
-									"string"
-								]
-							},
-							"chest*": {
-								"type": [
-									"string"
-								]
-							},
-							"hat": {
-								"type": [
-									"boolean",
-									"string"
-								]
-							},
-							"hat2": {
-								"type": [
-									"boolean"
-								]
-							},
-							"hat3": {
-								"type": [
-									"boolean"
-								]
-							},
-							"hat4": {
-								"type": [
-									"boolean"
-								]
+								"type": ["string"]
 							},
 							"head": {
-								"type": [
-									"boolean",
-									"string"
-								]
+								"type": ["string"]
 							},
-							"head_sleeping": {
-								"type": [
-									"string"
-								]
+							"hat": {
+								"type": ["string"]
 							},
-							"helmet": {
-								"type": [
-									"boolean",
-									"string"
-								]
-							},
-							"leftArm": {
-								"type": [
-									"string"
-								]
-							},
-							"leftArmArmor": {
-								"type": [
-									"string"
-								]
-							},
-							"leftBoot": {
-								"type": [
-									"string"
-								]
-							},
-							"leftLegging": {
-								"type": [
-									"string"
-								]
-							},
-							"leftSleeve": {
-								"type": [
-									"string"
-								]
-							},
-							"leftSock": {
-								"type": [
-									"string"
-								]
+							"body": {
+								"type": ["string"]
 							},
 							"leftarm": {
-								"type": [
-									"string"
-								]
-							},
-							"leftleg": {
-								"type": [
-									"string"
-								]
-							},
-							"leg*": {
-								"type": [
-									"string"
-								]
-							},
-							"leg0": {
-								"type": [
-									"boolean"
-								]
-							},
-							"leg1": {
-								"type": [
-									"boolean"
-								]
-							},
-							"nose": {
-								"type": [
-									"boolean"
-								]
-							},
-							"rightArm": {
-								"type": [
-									"string"
-								]
-							},
-							"rightArmArmor": {
-								"type": [
-									"string"
-								]
-							},
-							"rightBoot": {
-								"type": [
-									"string"
-								]
-							},
-							"rightItem": {
-								"type": [
-									"string"
-								]
-							},
-							"rightLegging": {
-								"type": [
-									"string"
-								]
-							},
-							"rightSleeve": {
-								"type": [
-									"string"
-								]
-							},
-							"rightSock": {
-								"type": [
-									"string"
-								]
+								"type": ["string"]
 							},
 							"rightarm": {
-								"type": [
-									"string"
-								]
+								"type": ["string"]
+							},
+							"leftleg": {
+								"type": ["string"]
 							},
 							"rightleg": {
-								"type": [
-									"string"
-								]
+								"type": ["string"]
+							},
+							"leg*": {
+								"type": ["string"]
+							},
+							"TailA": {
+								"type": ["string"]
+							},
+							"Mane": {
+								"type": ["string"]
+							},
+							"*Saddle*": {
+								"type": ["string"]
+							},
+							"bodyLayer_*": {
+								"type": ["string"]
+							},
+							"head*": {
+								"type": ["string"]
+							},
+							"light": {
+								"type": ["string"]
+							},
+							"glow": {
+								"type": ["string"]
+							},
+							"green": {
+								"type": ["string"]
+							},
+							"yellow": {
+								"type": ["string"]
+							},
+							"red": {
+								"type": ["string"]
+							}
+						}
+					}
+				},
+				"arrays": {
+					"type": ["object"],
+					"properties": {
+						"textures": {
+							"type": ["object"],
+							"additionalProperties": {
+								"$ref": "#/definitions/array_texture"
 							}
 						},
-						"type": [
-							"object"
-						]
-					},
-					"type": [
-						"array"
-					]
+						"geometries": {
+							"type": ["object"],
+							"additionalProperties": {
+								"$ref": "#/definitions/array_geometry"
+							}
+						},
+						"materials": {
+							"type": ["object"],
+							"additionalProperties": {
+								"$ref": "#/definitions/array_material"
+							}
+						}
+					}
 				},
-				"rebuild_animation_matrices": {
-					"type": [
-						"boolean"
-					]
+				"geometry": {
+					"type": ["string"]
 				},
 				"textures": {
+					"type": ["array"],
 					"items": {
-						"type": [
-							"string"
-						]
-					},
-					"type": [
-						"array"
-					]
+						"type": ["string"]
+					}
+				},
+				"part_visibility": {
+					"type": ["array"],
+					"items": {
+						"type": ["object"],
+						"properties": {
+							"*": {
+								"type": ["boolean", "integer", "string"]
+							},
+							"head": {
+								"type": ["boolean", "string"]
+							},
+							"hat": {
+								"type": ["boolean", "string"]
+							},
+							"body": {
+								"type": ["boolean", "string"]
+							},
+							"leftarm": {
+								"type": ["string"]
+							},
+							"rightarm": {
+								"type": ["string"]
+							},
+							"leftleg": {
+								"type": ["string"]
+							},
+							"rightleg": {
+								"type": ["string"]
+							},
+							"cape": {
+								"type": ["string"]
+							},
+							"arms": {
+								"type": ["boolean", "string"]
+							},
+							"leg*": {
+								"type": ["string"]
+							},
+							"head_sleeping": {
+								"type": ["string"]
+							},
+							"chest*": {
+								"type": ["string"]
+							},
+							"rightArm": {
+								"type": ["string"]
+							},
+							"rightSleeve": {
+								"type": ["string"]
+							},
+							"leftArm": {
+								"type": ["string"]
+							},
+							"leftSleeve": {
+								"type": ["string"]
+							},
+							"helmet": {
+								"type": ["boolean", "string"]
+							},
+							"leftLegging": {
+								"type": ["string"]
+							},
+							"rightLegging": {
+								"type": ["string"]
+							},
+							"leftBoot": {
+								"type": ["string"]
+							},
+							"rightBoot": {
+								"type": ["string"]
+							},
+							"leftSock": {
+								"type": ["string"]
+							},
+							"rightSock": {
+								"type": ["string"]
+							},
+							"bodyArmor": {
+								"type": ["string"]
+							},
+							"leftArmArmor": {
+								"type": ["string"]
+							},
+							"rightArmArmor": {
+								"type": ["string"]
+							},
+							"belt": {
+								"type": ["string"]
+							},
+							"bodypart_0": {
+								"type": ["string"]
+							},
+							"bodypart_1": {
+								"type": ["string"]
+							},
+							"bodypart_2": {
+								"type": ["string"]
+							},
+							"bodypart_3": {
+								"type": ["string"]
+							},
+							"bodypart_4": {
+								"type": ["string"]
+							},
+							"bodypart_5": {
+								"type": ["string"]
+							},
+							"bodypart_6": {
+								"type": ["string"]
+							},
+							"bodylayer_0": {
+								"type": ["string"]
+							},
+							"bodylayer_1": {
+								"type": ["string"]
+							},
+							"bodylayer_2": {
+								"type": ["string"]
+							},
+							"nose": {
+								"type": ["boolean"]
+							},
+							"leg0": {
+								"type": ["boolean"]
+							},
+							"leg1": {
+								"type": ["boolean"]
+							},
+							"rightItem": {
+								"type": ["string"]
+							},
+							"hat2": {
+								"type": ["boolean"]
+							},
+							"hat3": {
+								"type": ["boolean"]
+							},
+							"hat4": {
+								"type": ["boolean"]
+							}
+						}
+					}
+				},
+				"color": {
+					"type": ["object"],
+					"properties": {
+						"r": {
+							"type": ["string"]
+						},
+						"g": {
+							"type": ["string"]
+						},
+						"b": {
+							"type": ["string"]
+						},
+						"a": {
+							"type": ["string"]
+						}
+					}
+				},
+				"overlay_color": {
+					"type": ["object"],
+					"properties": {
+						"r": {
+							"type": ["number", "string"]
+						},
+						"g": {
+							"type": ["number", "string"]
+						},
+						"b": {
+							"type": ["number", "string"]
+						},
+						"a": {
+							"type": ["number", "string"]
+						}
+					}
+				},
+				"filter_lighting": {
+					"type": ["boolean"]
+				},
+				"rebuild_animation_matrices": {
+					"type": ["boolean"]
 				},
 				"uv_anim": {
+					"type": ["object"],
 					"properties": {
 						"offset": {
+							"type": ["array"],
 							"items": {
-								"type": [
-									"number",
-									"string"
-								]
-							},
-							"type": [
-								"array"
-							]
+								"type": ["number", "string"]
+							}
 						},
 						"scale": {
+							"type": ["array"],
 							"items": {
-								"type": [
-									"number"
-								]
-							},
-							"type": [
-								"array"
-							]
+								"type": ["number"]
+							}
 						}
-					},
-					"type": [
-						"object"
-					]
+					}
+				},
+				"light_color_multiplier": {
+					"type": ["number"]
+				},
+				"ignore_lighting": {
+					"type": ["boolean"]
 				}
-			},
-			"type": [
-				"object"
-			]
+			}
+		},
+		"array_texture": {
+			"type": ["array"],
+			"items": {
+				"type": ["string"]
+			}
+		},
+		"array_geometry": {
+			"type": ["array"],
+			"items": {
+				"type": ["string"]
+			}
+		},
+		"array_material": {
+			"type": ["array"],
+			"items": {
+				"type": ["string"]
+			}
 		}
 	}
 }
