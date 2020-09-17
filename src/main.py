@@ -76,11 +76,12 @@ def create_schemas(
                     if fnmatch.fnmatch(fp, pattern):
                         with open(fp, 'r') as f:
                             source = json.load(f, cls=JSONCDecoder)
-                        create_schema_definitions(
+                        if not create_schema_definitions(
                             source=source,
                             target=inp.schema,
                             meta_schema=inp.meta_schema
-                        )
+                        ):
+                            raise Exception(f'Missing schema root for file: {source_path} :: {fp}')
     finally:  # Remove temporary files if something went wrong
         if tmp_created:
             shutil.rmtree(tmp_path)

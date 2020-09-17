@@ -122,7 +122,10 @@
 										"type": ["object"]
 									},
 									"minecraft:spawns_on_block_filter": {
-										"type": ["string"]
+										"type": ["array", "string"],
+										"items": {
+											"type": ["string"]
+										}
 									},
 									"minecraft:spawns_underwater": {
 										"type": ["object"]
@@ -214,6 +217,15 @@
 												"type": ["string"]
 											}
 										}
+									},
+									"minecraft:spawns_on_block_prevented_filter": {
+										"type": ["array"],
+										"items": {
+											"type": ["string"]
+										}
+									},
+									"minecraft:spawns_lava": {
+										"type": ["object"]
 									}
 								}
 							}

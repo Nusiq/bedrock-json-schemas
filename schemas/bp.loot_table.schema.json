@@ -196,6 +196,23 @@
 							},
 							"limit": {
 								"type": ["integer"]
+							},
+							"enchants": {
+								"type": ["array"],
+								"items": {
+									"type": ["object"],
+									"properties": {
+										"id": {
+											"type": ["string"]
+										},
+										"level": {
+											"type": ["array"],
+											"items": {
+												"type": ["integer"]
+											}
+										}
+									}
+								}
 							}
 						}
 					}

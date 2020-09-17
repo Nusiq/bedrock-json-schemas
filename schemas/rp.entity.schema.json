@@ -87,31 +87,8 @@
 											"type": ["array"],
 											"items": {
 												"type": ["object", "string"],
-												"properties": {
-													"walk": {
-														"type": ["string"]
-													},
-													"bounty_particle": {
-														"type": ["string"]
-													},
-													"bee_no_stinger": {
-														"type": ["string"]
-													},
-													"move": {
-														"type": ["string"]
-													},
-													"baby_transform": {
-														"type": ["string"]
-													},
-													"ride": {
-														"type": ["string"]
-													},
-													"fly": {
-														"type": ["string"]
-													},
-													"drive": {
-														"type": ["string"]
-													}
+												"additionalProperties": {
+													"$ref": "#/definitions/condition"
 												}
 											}
 										},
@@ -209,6 +186,9 @@
 			"type": ["string"]
 		},
 		"animation": {
+			"type": ["string"]
+		},
+		"condition": {
 			"type": ["string"]
 		},
 		"8": {

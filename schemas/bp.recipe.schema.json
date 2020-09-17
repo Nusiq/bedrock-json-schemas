@@ -1,16 +1,16 @@
 {
 	"anyOf": [
 		{
-			"$ref": "#/definitions/12_14"
+			"$ref": "#/definitions/12_14_16"
 		}
 	],
 	"definitions": {
-		"12_14": {
+		"12_14_16": {
 			"type": ["object"],
 			"properties": {
 				"format_version": {
 					"type": ["string"],
-					"enum": ["1.12", "1.14"]
+					"enum": ["1.12", "1.14", "1.16"]
 				},
 				"minecraft:recipe_shaped": {
 					"type": ["object"],

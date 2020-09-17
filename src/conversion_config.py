@@ -111,20 +111,20 @@ BP_ENTITY_MS = MetaSchema(
             },
         },
         # 1.13.0 and 1.14.0
-        "13_14": {
+        "13_14_16": {
             "format_version": Msr(None, Policy.STRICT),
             "minecraft:entity": {
                 "description": Msr("description"),
-                "components": Msr("component_group_13_14"),
+                "components": Msr("component_group_13_14_16"),
                 "component_groups": {
-                    jp.Wildcard.ANY_PARAMETER: Msr("component_group_13_14"),
+                    jp.Wildcard.ANY_PARAMETER: Msr("component_group_13_14_16"),
                 },
                 "events": {
                     jp.Wildcard.ANY_PARAMETER: Msr("event"),
                 },
             },
         },
-        "component_group_13_14": {
+        "component_group_13_14_16": {
             jp.Wildcard.ANYTHING_UNTIL_NEXT_MATCH: {
                 "filters": Msr("filter", Policy.STRICT),
             },
@@ -168,7 +168,7 @@ BP_ENTITY_MS = MetaSchema(
     ],
     root_filters={
         '8_10_12': format_version_filter_creator(['1.8.0', '1.10.0', '1.12.0']),
-        '13_14': format_version_filter_creator(['1.13.0', '1.14.0']),
+        '13_14_16': format_version_filter_creator(['1.13.0', '1.14.0', '1.16.0']),
     }
 )
 BP_ITEM_MS = MetaSchema(
@@ -269,7 +269,7 @@ BP_LOOT_TABLE_MS=MetaSchema(
 )
 BP_RECIPE_MS=MetaSchema(
     meta_schema={
-        "12_14": {
+        "12_14_16": {
             "format_version": Msr(None, Policy.STRICT),
             "minecraft:recipe_shaped": {
                 "key": {
@@ -281,7 +281,7 @@ BP_RECIPE_MS=MetaSchema(
     },
     blacklist=[],
     root_filters={
-        '12_14': format_version_filter_creator(['1.12', '1.14']),
+        '12_14_16': format_version_filter_creator(['1.12', '1.14', '1.16']),
     }
 )
 BP_SPAWN_RULE_MS=MetaSchema(
@@ -499,12 +499,12 @@ RP_ENTITY_MS=MetaSchema(
                         jp.Wildcard.ANY_ITEM: {
                             jp.Wildcard.ANY_PARAMETER: Msr("render_controller")
                         }
-                    }
-                },
-                "scripts": {
-                    "animate": {
-                        jp.Wildcard.ANY_ITEM: {
-                            jp.Wildcard.ANY_PARAMETER: Msr("condition")
+                    },
+                    "scripts": {
+                        "animate": {
+                            jp.Wildcard.ANY_ITEM: {
+                                jp.Wildcard.ANY_PARAMETER: Msr("condition")
+                            }
                         }
                     }
                 }

@@ -93,7 +93,7 @@
 								"minecraft:particle_initial_speed": {
 									"type": ["array", "integer", "number", "string"],
 									"items": {
-										"type": ["number", "string"]
+										"type": ["integer", "number", "string"]
 									}
 								},
 								"minecraft:particle_motion_dynamic": {
@@ -464,6 +464,28 @@
 										},
 										"sleep_time": {
 											"type": ["number", "string"]
+										}
+									}
+								},
+								"minecraft:emitter_initialization": {
+									"type": ["object"],
+									"properties": {
+										"creation_expression": {
+											"type": ["string"]
+										}
+									}
+								},
+								"minecraft:emitter_shape_disc": {
+									"type": ["object"],
+									"properties": {
+										"radius": {
+											"type": ["string"]
+										},
+										"direction": {
+											"type": ["array"],
+											"items": {
+												"type": ["number"]
+											}
 										}
 									}
 								}

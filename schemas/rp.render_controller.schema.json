@@ -328,6 +328,23 @@
 				},
 				"ignore_lighting": {
 					"type": ["boolean"]
+				},
+				"on_fire_color": {
+					"type": ["object"],
+					"properties": {
+						"r": {
+							"type": ["number"]
+						},
+						"g": {
+							"type": ["number"]
+						},
+						"b": {
+							"type": ["number"]
+						},
+						"a": {
+							"type": ["number"]
+						}
+					}
 				}
 			}
 		},

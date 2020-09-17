@@ -81,6 +81,17 @@
 											}
 										}
 									}
+								},
+								"functions": {
+									"type": ["array"],
+									"items": {
+										"type": ["object"],
+										"properties": {
+											"function": {
+												"type": ["string"]
+											}
+										}
+									}
 								}
 							}
 						}

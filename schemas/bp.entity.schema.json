@@ -4,16 +4,16 @@
 			"$ref": "#/definitions/8_10_12"
 		},
 		{
-			"$ref": "#/definitions/13_14"
+			"$ref": "#/definitions/13_14_16"
 		}
 	],
 	"definitions": {
-		"13_14": {
+		"13_14_16": {
 			"type": ["object"],
 			"properties": {
 				"format_version": {
 					"type": ["string"],
-					"enum": ["1.13.0", "1.14.0"]
+					"enum": ["1.13.0", "1.14.0", "1.16.0"]
 				},
 				"minecraft:entity": {
 					"type": ["object"],
@@ -24,11 +24,11 @@
 						"component_groups": {
 							"type": ["object"],
 							"additionalProperties": {
-								"$ref": "#/definitions/component_group_13_14"
+								"$ref": "#/definitions/component_group_13_14_16"
 							}
 						},
 						"components": {
-							"$ref": "#/definitions/component_group_13_14"
+							"$ref": "#/definitions/component_group_13_14_16"
 						},
 						"events": {
 							"type": ["object"],
@@ -80,7 +80,7 @@
 		"description_config": {
 			"type": ["string"]
 		},
-		"component_group_13_14": {
+		"component_group_13_14_16": {
 			"type": ["object"],
 			"properties": {
 				"minecraft:behavior.avoid_mob_type": {
@@ -114,6 +114,9 @@
 									},
 									"max_flee": {
 										"type": ["integer"]
+									},
+									"check_if_outnumbered": {
+										"type": ["boolean"]
 									}
 								}
 							}
@@ -129,6 +132,34 @@
 						},
 						"ignore_visibility": {
 							"type": ["boolean"]
+						},
+						"remove_target": {
+							"type": ["boolean"]
+						},
+						"avoid_mob_sound": {
+							"type": ["string"]
+						},
+						"sound_interval": {
+							"type": ["object"],
+							"properties": {
+								"range_min": {
+									"type": ["number"]
+								},
+								"range_max": {
+									"type": ["number"]
+								}
+							}
+						},
+						"on_escape_event": {
+							"type": ["object"],
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"target": {
+									"type": ["string"]
+								}
+							}
 						}
 					}
 				},
@@ -317,6 +348,15 @@
 									},
 									"swing": {
 										"type": ["boolean"]
+									},
+									"barter": {
+										"type": ["boolean"]
+									},
+									"admire": {
+										"type": ["boolean"]
+									},
+									"cooldown_after_being_attacked": {
+										"type": ["integer"]
 									}
 								}
 							},
@@ -461,6 +501,17 @@
 						},
 						"remove_child_entities": {
 							"type": ["boolean"]
+						},
+						"despawn_from_distance": {
+							"type": ["object"],
+							"properties": {
+								"min_distance": {
+									"type": ["integer"]
+								},
+								"max_distance": {
+									"type": ["integer"]
+								}
+							}
 						}
 					}
 				},
@@ -468,7 +519,7 @@
 					"type": ["object"],
 					"properties": {
 						"damage": {
-							"type": ["integer", "number", "object"],
+							"type": ["array", "integer", "number", "object"],
 							"properties": {
 								"range_min": {
 									"type": ["integer"]
@@ -476,6 +527,9 @@
 								"range_max": {
 									"type": ["integer"]
 								}
+							},
+							"items": {
+								"type": ["integer"]
 							}
 						},
 						"effect_name": {
@@ -619,6 +673,12 @@
 							"type": ["boolean"]
 						},
 						"avoid_sun": {
+							"type": ["boolean"]
+						},
+						"can_path_over_lava": {
+							"type": ["boolean"]
+						},
+						"can_walk_in_lava": {
 							"type": ["boolean"]
 						}
 					}
@@ -790,6 +850,9 @@
 										},
 										"power_multiplier": {
 											"type": ["number"]
+										},
+										"filter": {
+											"type": ["string"]
 										}
 									}
 								},
@@ -861,6 +924,9 @@
 						},
 						"uncertaintyMultiplier": {
 							"type": ["integer"]
+						},
+						"angle_offset": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -1037,6 +1103,9 @@
 						},
 						"require_complete_path": {
 							"type": ["boolean"]
+						},
+						"cooldown_time": {
+							"type": ["integer", "number"]
 						}
 					}
 				},
@@ -1061,7 +1130,7 @@
 										"$ref": "#/definitions/filter"
 									},
 									"max_dist": {
-										"type": ["integer"]
+										"type": ["integer", "number"]
 									},
 									"must_see": {
 										"type": ["boolean"]
@@ -1286,6 +1355,52 @@
 						},
 						"filters": {
 							"$ref": "#/definitions/filter"
+						},
+						"entities": {
+							"type": ["array", "object"],
+							"properties": {
+								"min_wait_time": {
+									"type": ["integer"]
+								},
+								"max_wait_time": {
+									"type": ["integer"]
+								},
+								"spawn_sound": {
+									"type": ["string"]
+								},
+								"spawn_item": {
+									"type": ["string"]
+								},
+								"filters": {
+									"$ref": "#/definitions/filter"
+								}
+							},
+							"items": {
+								"type": ["object"],
+								"properties": {
+									"min_wait_time": {
+										"type": ["integer"]
+									},
+									"max_wait_time": {
+										"type": ["integer"]
+									},
+									"spawn_entity": {
+										"type": ["string"]
+									},
+									"spawn_event": {
+										"type": ["string"]
+									},
+									"single_use": {
+										"type": ["boolean"]
+									},
+									"num_to_spawn": {
+										"type": ["integer"]
+									},
+									"should_leash": {
+										"type": ["boolean"]
+									}
+								}
+							}
 						}
 					}
 				},
@@ -1304,10 +1419,10 @@
 					"type": ["object"],
 					"properties": {
 						"attack_interval_min": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						},
 						"attack_interval_max": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						},
 						"attack_radius": {
 							"type": ["integer", "number"]
@@ -1332,6 +1447,12 @@
 						},
 						"attack_interval": {
 							"type": ["integer"]
+						},
+						"attack_radius_min": {
+							"type": ["integer"]
+						},
+						"target_in_sight_time": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -1588,7 +1709,7 @@
 										"type": ["integer"]
 									},
 									"rotate_rider_by": {
-										"type": ["integer"]
+										"type": ["integer", "string"]
 									}
 								}
 							},
@@ -1657,6 +1778,9 @@
 							"items": {
 								"type": ["number"]
 							}
+						},
+						"damage_reach": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -1957,7 +2081,7 @@
 							"type": ["integer"]
 						},
 						"speed_multiplier": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						}
 					}
 				},
@@ -2047,7 +2171,7 @@
 									"type": ["string"]
 								},
 								"value": {
-									"type": ["integer"]
+									"type": ["integer", "string"]
 								}
 							}
 						},
@@ -2091,6 +2215,9 @@
 							}
 						},
 						"causes_pregnancy": {
+							"type": ["boolean"]
+						},
+						"require_full_health": {
 							"type": ["boolean"]
 						}
 					}
@@ -2149,6 +2276,29 @@
 							"items": {
 								"type": ["string"]
 							}
+						},
+						"angry_sound": {
+							"type": ["string"]
+						},
+						"sound_interval": {
+							"type": ["object"],
+							"properties": {
+								"range_min": {
+									"type": ["number"]
+								},
+								"range_max": {
+									"type": ["number"]
+								}
+							}
+						},
+						"broadcast_anger_on_attack": {
+							"type": ["boolean"]
+						},
+						"broadcast_anger_on_being_attacked": {
+							"type": ["boolean"]
+						},
+						"filters": {
+							"$ref": "#/definitions/filter"
 						}
 					}
 				},
@@ -2159,7 +2309,7 @@
 							"type": ["integer"]
 						},
 						"speed_multiplier": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"force": {
 							"type": ["boolean"]
@@ -2169,6 +2319,20 @@
 						},
 						"prefer_water": {
 							"type": ["boolean"]
+						},
+						"panic_sound": {
+							"type": ["string"]
+						},
+						"sound_interval": {
+							"type": ["object"],
+							"properties": {
+								"range_min": {
+									"type": ["number"]
+								},
+								"range_max": {
+									"type": ["number"]
+								}
+							}
 						}
 					}
 				},
@@ -2292,6 +2456,20 @@
 						},
 						"can_get_scared": {
 							"type": ["boolean"]
+						},
+						"tempt_sound": {
+							"type": ["string"]
+						},
+						"sound_interval": {
+							"type": ["object"],
+							"properties": {
+								"range_min": {
+									"type": ["number"]
+								},
+								"range_max": {
+									"type": ["number"]
+								}
+							}
 						}
 					}
 				},
@@ -2402,6 +2580,9 @@
 						},
 						"avoid_sun": {
 							"type": ["boolean"]
+						},
+						"can_pass_doors": {
+							"type": ["boolean"]
 						}
 					}
 				},
@@ -2434,7 +2615,7 @@
 					}
 				},
 				"minecraft:fire_immune": {
-					"type": ["boolean"]
+					"type": ["boolean", "object"]
 				},
 				"minecraft:is_stackable": {
 					"type": ["object"]
@@ -2702,6 +2883,27 @@
 						},
 						"sneak_speed_multiplier": {
 							"type": ["number"]
+						},
+						"cooldown_time": {
+							"type": ["number"]
+						},
+						"x_max_rotation": {
+							"type": ["number"]
+						},
+						"y_max_head_rotation": {
+							"type": ["number"]
+						},
+						"max_distance": {
+							"type": ["number"]
+						},
+						"max_sneak_range": {
+							"type": ["number"]
+						},
+						"max_sprint_range": {
+							"type": ["number"]
+						},
+						"reach_multiplier": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -2834,6 +3036,9 @@
 						},
 						"y_dist": {
 							"type": ["integer"]
+						},
+						"avoid_surface": {
+							"type": ["boolean"]
 						}
 					}
 				},
@@ -3535,6 +3740,12 @@
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						},
+						"idle_time": {
+							"type": ["number"]
+						},
+						"success_rate": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -3548,9 +3759,12 @@
 							"type": ["number"]
 						},
 						"interval": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						},
 						"look_ahead": {
+							"type": ["number"]
+						},
+						"wander_time": {
 							"type": ["number"]
 						}
 					}
@@ -3761,6 +3975,21 @@
 									},
 									"craft_into": {
 										"type": ["string"]
+									},
+									"admire": {
+										"type": ["boolean"]
+									},
+									"stored_in_inventory": {
+										"type": ["boolean"]
+									},
+									"consume_item": {
+										"type": ["boolean"]
+									},
+									"pickup_limit": {
+										"type": ["integer"]
+									},
+									"barter": {
+										"type": ["boolean"]
 									}
 								}
 							}
@@ -3830,6 +4059,18 @@
 						},
 						"speed_multiplier": {
 							"type": ["number"]
+						},
+						"pickup_based_on_chance": {
+							"type": ["boolean"]
+						},
+						"can_pickup_any_item": {
+							"type": ["boolean"]
+						},
+						"cooldown_after_being_attacked": {
+							"type": ["number"]
+						},
+						"can_pickup_to_hand_or_equipment": {
+							"type": ["boolean"]
 						}
 					}
 				},
@@ -3932,6 +4173,20 @@
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						},
+						"must_reach": {
+							"type": ["boolean"]
+						},
+						"attack_chance": {
+							"type": ["number"]
+						},
+						"entity_types": {
+							"type": ["object"],
+							"properties": {
+								"filters": {
+									"$ref": "#/definitions/filter"
+								}
+							}
 						}
 					}
 				},
@@ -4042,6 +4297,12 @@
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						},
+						"jump_chance_percentage": {
+							"type": ["number"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -4058,6 +4319,15 @@
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						},
+						"add_random_time_range": {
+							"type": ["integer"]
+						},
+						"turn_range": {
+							"type": ["integer"]
+						},
+						"min_change_direction_time": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -4066,6 +4336,9 @@
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -4368,6 +4641,9 @@
 					"properties": {
 						"can_path_over_water": {
 							"type": ["boolean"]
+						},
+						"can_path_from_air": {
+							"type": ["boolean"]
 						}
 					}
 				},
@@ -4406,6 +4682,18 @@
 						},
 						"goal_radius": {
 							"type": ["number"]
+						},
+						"radius_change": {
+							"type": ["number"]
+						},
+						"radius_adjustment_chance": {
+							"type": ["number"]
+						},
+						"height_adjustment_chance": {
+							"type": ["number"]
+						},
+						"angle_change": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -4422,6 +4710,9 @@
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						},
+						"mount_speed_multiplier": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -4528,6 +4819,12 @@
 						},
 						"require_complete_path": {
 							"type": ["boolean"]
+						},
+						"stomp_range_multiplier": {
+							"type": ["number"]
+						},
+						"no_damage_range_multiplier": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -4638,6 +4935,15 @@
 											}
 										}
 									}
+								},
+								"test": {
+									"type": ["string"]
+								},
+								"operator": {
+									"type": ["string"]
+								},
+								"value": {
+									"type": ["number"]
 								}
 							}
 						},
@@ -4645,6 +4951,9 @@
 							"type": ["string"]
 						},
 						"require_all": {
+							"type": ["boolean"]
+						},
+						"relative_range": {
 							"type": ["boolean"]
 						}
 					}
@@ -4747,6 +5056,18 @@
 						},
 						"sound_event": {
 							"type": ["string"]
+						},
+						"attack_once": {
+							"type": ["boolean"]
+						},
+						"require_complete_path": {
+							"type": ["boolean"]
+						},
+						"random_stop_interval": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -4873,6 +5194,26 @@
 								},
 								"target": {
 									"type": ["string"]
+								}
+							}
+						},
+						"success_chance": {
+							"type": ["string"]
+						},
+						"time_until_eat": {
+							"type": ["number"]
+						},
+						"eat_and_replace_block_pairs": {
+							"type": ["array"],
+							"items": {
+								"type": ["object"],
+								"properties": {
+									"eat_block": {
+										"type": ["string"]
+									},
+									"replace_block": {
+										"type": ["string"]
+									}
 								}
 							}
 						}
@@ -5090,6 +5431,9 @@
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
 						}
 					}
 				},
@@ -5493,6 +5837,402 @@
 							"type": ["integer"]
 						}
 					}
+				},
+				"minecraft:behavior.swim_with_entity": {
+					"type": ["object"],
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"success_rate": {
+							"type": ["number"]
+						},
+						"chance_to_stop": {
+							"type": ["number"]
+						},
+						"state_check_interval": {
+							"type": ["number"]
+						},
+						"catch_up_threshold": {
+							"type": ["number"]
+						},
+						"match_direction_threshold": {
+							"type": ["number"]
+						},
+						"catch_up_multiplier": {
+							"type": ["number"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
+						},
+						"search_range": {
+							"type": ["number"]
+						},
+						"stop_distance": {
+							"type": ["number"]
+						},
+						"entity_types": {
+							"type": ["array"],
+							"items": {
+								"type": ["object"],
+								"properties": {
+									"filters": {
+										"$ref": "#/definitions/filter"
+									}
+								}
+							}
+						}
+					}
+				},
+				"minecraft:equip_item": {
+					"type": ["object"]
+				},
+				"minecraft:behavior.equip_item": {
+					"type": ["object"],
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						}
+					}
+				},
+				"minecraft:attack_cooldown": {
+					"type": ["object"],
+					"properties": {
+						"attack_cooldown_time": {
+							"type": ["array"],
+							"items": {
+								"type": ["number"]
+							}
+						},
+						"attack_cooldown_complete_event": {
+							"type": ["object"],
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"target": {
+									"type": ["string"]
+								}
+							}
+						}
+					}
+				},
+				"minecraft:custom_hit_test": {
+					"type": ["object"],
+					"properties": {
+						"hitboxes": {
+							"type": ["array"],
+							"items": {
+								"type": ["object"],
+								"properties": {
+									"width": {
+										"type": ["number"]
+									},
+									"height": {
+										"type": ["number"]
+									},
+									"pivot": {
+										"type": ["array"],
+										"items": {
+											"type": ["integer", "number"]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"minecraft:group_size": {
+					"type": ["object"],
+					"properties": {
+						"radius": {
+							"type": ["integer"]
+						},
+						"filters": {
+							"$ref": "#/definitions/filter"
+						}
+					}
+				},
+				"minecraft:behavior.avoid_block": {
+					"type": ["object"],
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"tick_interval": {
+							"type": ["integer"]
+						},
+						"search_range": {
+							"type": ["integer"]
+						},
+						"search_height": {
+							"type": ["integer"]
+						},
+						"walk_speed_modifier": {
+							"type": ["integer"]
+						},
+						"sprint_speed_modifier": {
+							"type": ["integer", "number"]
+						},
+						"avoid_block_sound": {
+							"type": ["string"]
+						},
+						"sound_interval": {
+							"type": ["object"],
+							"properties": {
+								"range_min": {
+									"type": ["number"]
+								},
+								"range_max": {
+									"type": ["number"]
+								}
+							}
+						},
+						"target_selection_method": {
+							"type": ["string"]
+						},
+						"target_blocks": {
+							"type": ["array"],
+							"items": {
+								"type": ["string"]
+							}
+						},
+						"on_escape": {
+							"type": ["array"],
+							"items": {
+								"type": ["object"],
+								"properties": {
+									"event": {
+										"type": ["string"]
+									},
+									"target": {
+										"type": ["string"]
+									}
+								}
+							}
+						}
+					}
+				},
+				"minecraft:npc": {
+					"type": ["object"],
+					"properties": {
+						"npc_data": {
+							"type": ["object"],
+							"properties": {
+								"portrait_offsets": {
+									"type": ["object"],
+									"properties": {
+										"translate": {
+											"type": ["array"],
+											"items": {
+												"type": ["integer"]
+											}
+										},
+										"scale": {
+											"type": ["array"],
+											"items": {
+												"type": ["number"]
+											}
+										}
+									}
+								},
+								"picker_offsets": {
+									"type": ["object"],
+									"properties": {
+										"translate": {
+											"type": ["array"],
+											"items": {
+												"type": ["integer"]
+											}
+										},
+										"scale": {
+											"type": ["array"],
+											"items": {
+												"type": ["number"]
+											}
+										}
+									}
+								},
+								"skin_list": {
+									"type": ["array"],
+									"items": {
+										"type": ["object"],
+										"properties": {
+											"variant": {
+												"type": ["integer"]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"minecraft:barter": {
+					"type": ["object"],
+					"properties": {
+						"barter_table": {
+							"type": ["string"]
+						},
+						"cooldown_after_being_attacked": {
+							"type": ["integer"]
+						}
+					}
+				},
+				"minecraft:celebrate_hunt": {
+					"type": ["object"],
+					"properties": {
+						"celebration_targets": {
+							"type": ["object"],
+							"properties": {
+								"all_of": {
+									"type": ["array"],
+									"items": {
+										"type": ["object"],
+										"properties": {
+											"test": {
+												"type": ["string"]
+											},
+											"value": {
+												"type": ["string"]
+											}
+										}
+									}
+								}
+							}
+						},
+						"broadcast": {
+							"type": ["boolean"]
+						},
+						"duration": {
+							"type": ["integer"]
+						},
+						"celebrate_sound": {
+							"type": ["string"]
+						},
+						"sound_interval": {
+							"type": ["object"],
+							"properties": {
+								"range_min": {
+									"type": ["number"]
+								},
+								"range_max": {
+									"type": ["number"]
+								}
+							}
+						},
+						"radius": {
+							"type": ["integer"]
+						}
+					}
+				},
+				"minecraft:admire_item": {
+					"type": ["object"],
+					"properties": {
+						"duration": {
+							"type": ["integer"]
+						},
+						"cooldown_after_being_attacked": {
+							"type": ["integer"]
+						}
+					}
+				},
+				"minecraft:behavior.admire_item": {
+					"type": ["object"],
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"admire_item_sound": {
+							"type": ["string"]
+						},
+						"sound_interval": {
+							"type": ["object"],
+							"properties": {
+								"range_min": {
+									"type": ["number"]
+								},
+								"range_max": {
+									"type": ["number"]
+								}
+							}
+						},
+						"on_admire_item_start": {
+							"type": ["object"],
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"target": {
+									"type": ["string"]
+								}
+							}
+						},
+						"on_admire_item_stop": {
+							"type": ["object"],
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"target": {
+									"type": ["string"]
+								}
+							}
+						}
+					}
+				},
+				"minecraft:behavior.barter": {
+					"type": ["object"],
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						}
+					}
+				},
+				"minecraft:lava_movement": {
+					"type": ["object"],
+					"properties": {
+						"value": {
+							"type": ["number"]
+						}
+					}
+				},
+				"minecraft:behavior.rise_to_liquid_level": {
+					"type": ["object"],
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"liquid_y_offset": {
+							"type": ["number"]
+						},
+						"rise_delta": {
+							"type": ["number"]
+						},
+						"sink_delta": {
+							"type": ["number"]
+						}
+					}
+				},
+				"minecraft:behavior.move_to_lava": {
+					"type": ["object"],
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"search_range": {
+							"type": ["integer"]
+						},
+						"search_height": {
+							"type": ["integer"]
+						},
+						"goal_radius": {
+							"type": ["number"]
+						},
+						"search_count": {
+							"type": ["integer"]
+						}
+					}
 				}
 			}
 		},
@@ -5507,7 +6247,7 @@
 				},
 				"test": {
 					"type": ["string"],
-					"enum": ["is_family", "has_tag", "has_equipment", "distance_to_nearest_player", "has_damage", "has_component", "is_riding", "on_ground", "in_lava", "has_mob_effect", "is_in_village", "rider_count", "is_mark_variant", "has_target", "is_avoiding_mobs", "is_difficulty", "is_block", "is_daytime", "is_weather", "has_biome_tag", "in_water_or_rain", "in_water", "is_brightness", "is_snow_covered", "is_underground", "is_biome", "is_game_rule", "is_color", "trusts", "is_sneaking", "is_sleeping", "is_underwater", "is_leashed", "in_caravan", "is_variant", "has_ability", "is_temperature_value", "hourly_clock_time", "is_skin_id", "has_trade_supply", "is_visible"]
+					"enum": ["is_family", "has_tag", "has_equipment", "distance_to_nearest_player", "has_damage", "has_component", "is_riding", "on_ground", "in_lava", "has_mob_effect", "is_in_village", "rider_count", "is_mark_variant", "has_target", "is_avoiding_mobs", "is_difficulty", "is_block", "is_daytime", "is_weather", "has_biome_tag", "in_water_or_rain", "in_water", "is_brightness", "is_snow_covered", "is_underground", "is_biome", "is_game_rule", "is_color", "trusts", "is_sneaking", "is_sleeping", "is_underwater", "is_leashed", "in_caravan", "is_variant", "has_ability", "is_temperature_value", "hourly_clock_time", "is_skin_id", "has_trade_supply", "is_visible", "weather", "weather_at_position", "in_nether", "has_container_open", "has_ranged_weapon", "is_persistent", "inactivity_timer", "random_chance"]
 				},
 				"subject": {
 					"type": ["string"],
@@ -5535,7 +6275,7 @@
 				},
 				"domain": {
 					"type": ["string"],
-					"examples": ["hand", "head", "domobspawning", "tntexplodes"]
+					"examples": ["hand", "head", "domobspawning", "tntexplodes", "torso", "leg", "feet"]
 				},
 				"operator": {
 					"type": ["string"],
@@ -5605,6 +6345,9 @@
 				},
 				"filters": {
 					"$ref": "#/definitions/filter"
+				},
+				"trigger": {
+					"type": ["string"]
 				}
 			}
 		},
