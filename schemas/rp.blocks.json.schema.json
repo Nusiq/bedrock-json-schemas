@@ -9,85 +9,102 @@
 			"type": ["object"],
 			"additionalProperties": {
 				"$ref": "#/definitions/block"
+			},
+			"properties": {
+				"format_version": {
+					"type": ["array"],
+					"items": {
+						"type": ["integer"]
+					}
+				}
 			}
 		},
 		"block": {
-			"type": ["array", "object"],
-			"items": {
-				"type": ["integer"]
-			},
+			"type": ["object"],
 			"properties": {
-				"textures": {
+				"brightness_gamma": {
+					"type": ["integer", "number"]
+				},
+				"carried_textures": {
 					"type": ["object", "string"],
 					"properties": {
-						"up": {
-							"type": ["string"]
-						},
 						"down": {
 							"type": ["string"]
 						},
-						"side": {
+						"east": {
 							"type": ["string"]
 						},
 						"north": {
 							"type": ["string"]
 						},
+						"side": {
+							"type": ["string"]
+						},
 						"south": {
+							"type": ["string"]
+						},
+						"up": {
 							"type": ["string"]
 						},
 						"west": {
 							"type": ["string"]
+						}
+					}
+				},
+				"isotropic": {
+					"type": ["boolean", "object"],
+					"properties": {
+						"down": {
+							"type": ["boolean"]
+						},
+						"up": {
+							"type": ["boolean"]
 						},
 						"east": {
-							"type": ["string"]
+							"type": ["boolean"]
+						},
+						"sides": {
+							"type": ["boolean"]
+						},
+						"north": {
+							"type": ["boolean"]
+						},
+						"south": {
+							"type": ["boolean"]
+						},
+						"west": {
+							"type": ["boolean"]
 						}
 					}
 				},
 				"sound": {
 					"type": ["string"]
 				},
-				"isotropic": {
-					"type": ["boolean", "object"],
-					"properties": {
-						"up": {
-							"type": ["boolean"]
-						},
-						"down": {
-							"type": ["boolean"]
-						}
-					}
-				},
-				"carried_textures": {
+				"textures": {
 					"type": ["object", "string"],
 					"properties": {
-						"up": {
-							"type": ["string"]
-						},
 						"down": {
 							"type": ["string"]
 						},
-						"side": {
+						"east": {
 							"type": ["string"]
 						},
 						"north": {
 							"type": ["string"]
 						},
+						"side": {
+							"type": ["string"]
+						},
 						"south": {
+							"type": ["string"]
+						},
+						"up": {
 							"type": ["string"]
 						},
 						"west": {
 							"type": ["string"]
-						},
-						"east": {
-							"type": ["string"]
 						}
 					}
-				},
-				"brightness_gamma": {
-					"type": ["number"]
-				},
-				"sounds": {
-					"type": ["string"]
 				}
 			}
 		}

@@ -640,11 +640,14 @@ RP_MODEL_MS=MetaSchema(
 RP_BLOCKS_JSON_FILE_MS=MetaSchema(
     meta_schema={
         'root': {
+            'format_version': Msr(None, Policy.NONE),
             jp.Wildcard.ANY_PARAMETER: Msr('block')
         },
         'block': {}
     },
-    blacklist=[],
+    blacklist=[
+        [jp.Wildcard.ANY_PARAMETER, "sounds"],
+    ],
     root_filters={
         'root': lambda data: True
     }

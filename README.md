@@ -102,6 +102,12 @@ Just add this to your configuration in the `settings.json` for VS Code.
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.render_controller.schema.json"
         },
+        {
+            "fileMatch": [
+                "resource_packs/*/blocks.json"
+            ],
+            "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.blocks.json.schema.json"
+        },
     ],
 ```
 
