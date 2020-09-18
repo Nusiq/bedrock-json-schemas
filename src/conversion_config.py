@@ -77,6 +77,10 @@ RP_BLOCKS_JSON_FILE_CFG=ExportConfig(
     export_path='../schemas/rp.blocks.json.schema.json',
     pattern='blocks.json',
 )
+RP_SOUND_JSON_FILE_CFG=ExportConfig(
+    export_path='../schemas/rp.sounds.json.schema.json',
+    pattern='sounds.json',
+)
 
 def format_version_filter_creator(
     versions: tp.List[str]
@@ -647,6 +651,72 @@ RP_BLOCKS_JSON_FILE_MS=MetaSchema(
     },
     blacklist=[
         [jp.Wildcard.ANY_PARAMETER, "sounds"],
+    ],
+    root_filters={
+        'root': lambda data: True
+    }
+)
+RP_SOUNDS_JSON_FILE_MS=MetaSchema(
+    meta_schema={
+        'root': {
+            'block_sounds': {
+                jp.Wildcard.ANY_PARAMETER: Msr('block_sounds_block')
+            },
+            "entity_sounds": {
+                'defaults': {
+                    "events": {
+                        jp.Wildcard.ANY_PARAMETER: Msr('event')
+                    }
+                },
+                'entities': {
+                    jp.Wildcard.ANY_PARAMETER: Msr('entity_sounds_entity')
+                }
+            },
+            "individual_event_sounds": {
+                'events': {
+                    jp.Wildcard.ANY_PARAMETER: Msr('event')
+                }
+            },
+            "interactive_sounds": {
+                'block_sounds': {
+                    jp.Wildcard.ANY_PARAMETER: Msr('interactive_block_sounds_block')
+                },
+                "entity_sounds": {
+                    'defaults': {
+                        "events": {
+                            jp.Wildcard.ANY_PARAMETER: Msr('event')
+                        }
+                    },
+                    'entities': {
+                        jp.Wildcard.ANY_PARAMETER: Msr('interactive_entity_sounds_entity')
+                    }
+                },
+            }
+        },
+        "block_sounds_block": {
+            "events": {
+                jp.Wildcard.ANY_PARAMETER: Msr('event')
+            }
+        },
+        'entity_sounds_entity': {
+            "events": {
+                jp.Wildcard.ANY_PARAMETER: Msr('event')
+            }
+        },
+        "interactive_block_sounds_block": {
+            "events": {
+                jp.Wildcard.ANY_PARAMETER: Msr('event')
+            }
+        },
+        'interactive_entity_sounds_entity': {
+            "events": {
+                jp.Wildcard.ANY_PARAMETER: Msr('event')
+            }
+        },
+        'event': {}
+    },
+    blacklist=[
+        ['interactive_sounds', 'block_sounds', jp.Wildcard.ANY_PARAMETER, 'events', 'fall', 'sounds']
     ],
     root_filters={
         'root': lambda data: True

@@ -36,6 +36,7 @@ from conversion_config import (
     RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,
     RP_MODEL_MS, RP_MODEL_CFG,
     RP_BLOCKS_JSON_FILE_MS, RP_BLOCKS_JSON_FILE_CFG,
+    RP_SOUNDS_JSON_FILE_MS, RP_SOUND_JSON_FILE_CFG
 )
 
 class CreateSchemaInput(object):
@@ -109,6 +110,7 @@ rp_schema_inputs = [
     CreateSchemaInput(RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,),
     CreateSchemaInput(RP_MODEL_MS, RP_MODEL_CFG,),
     CreateSchemaInput(RP_BLOCKS_JSON_FILE_MS, RP_BLOCKS_JSON_FILE_CFG),
+    CreateSchemaInput(RP_SOUNDS_JSON_FILE_MS, RP_SOUND_JSON_FILE_CFG),
 ]
 
 
