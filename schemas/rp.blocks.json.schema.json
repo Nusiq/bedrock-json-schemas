@@ -1,0 +1,95 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/root"
+		}
+	],
+	"definitions": {
+		"root": {
+			"type": ["object"],
+			"additionalProperties": {
+				"$ref": "#/definitions/block"
+			}
+		},
+		"block": {
+			"type": ["array", "object"],
+			"items": {
+				"type": ["integer"]
+			},
+			"properties": {
+				"textures": {
+					"type": ["object", "string"],
+					"properties": {
+						"up": {
+							"type": ["string"]
+						},
+						"down": {
+							"type": ["string"]
+						},
+						"side": {
+							"type": ["string"]
+						},
+						"north": {
+							"type": ["string"]
+						},
+						"south": {
+							"type": ["string"]
+						},
+						"west": {
+							"type": ["string"]
+						},
+						"east": {
+							"type": ["string"]
+						}
+					}
+				},
+				"sound": {
+					"type": ["string"]
+				},
+				"isotropic": {
+					"type": ["boolean", "object"],
+					"properties": {
+						"up": {
+							"type": ["boolean"]
+						},
+						"down": {
+							"type": ["boolean"]
+						}
+					}
+				},
+				"carried_textures": {
+					"type": ["object", "string"],
+					"properties": {
+						"up": {
+							"type": ["string"]
+						},
+						"down": {
+							"type": ["string"]
+						},
+						"side": {
+							"type": ["string"]
+						},
+						"north": {
+							"type": ["string"]
+						},
+						"south": {
+							"type": ["string"]
+						},
+						"west": {
+							"type": ["string"]
+						},
+						"east": {
+							"type": ["string"]
+						}
+					}
+				},
+				"brightness_gamma": {
+					"type": ["number"]
+				},
+				"sounds": {
+					"type": ["string"]
+				}
+			}
+		}
+	}
+}

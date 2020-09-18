@@ -73,6 +73,10 @@ RP_MODEL_CFG=ExportConfig(
     export_path='../schemas/rp.model.schema.json',
     pattern='models/**.json',
 )
+RP_BLOCKS_JSON_FILE_CFG=ExportConfig(
+    export_path='../schemas/rp.blocks.json.schema.json',
+    pattern='blocks.json',
+)
 
 def format_version_filter_creator(
     versions: tp.List[str]
@@ -631,5 +635,17 @@ RP_MODEL_MS=MetaSchema(
     root_filters={
         '8_10': format_version_filter_creator(['1.8.0', '1.10.0']),
         '12': format_version_filter_creator(['1.12.0']),
+    }
+)
+RP_BLOCKS_JSON_FILE_MS=MetaSchema(
+    meta_schema={
+        'root': {
+            jp.Wildcard.ANY_PARAMETER: Msr('block')
+        },
+        'block': {}
+    },
+    blacklist=[],
+    root_filters={
+        'root': lambda data: True
     }
 )

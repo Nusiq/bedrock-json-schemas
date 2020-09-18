@@ -1,8 +1,8 @@
 import os
 from zipfile import ZipFile
 
-BP_PATH = '../packs/behavior-packs'
-RP_PATH = '../packs/resource-packs'
+BP_PATH = '../packs/behavior_packs'
+RP_PATH = '../packs/resource_packs'
 TMP_PATH = '../.tmp'
 
 import typing as tp
@@ -17,7 +17,6 @@ from collections import defaultdict
 
 from conversion_config import (
     MetaSchema, ExportConfig,
-
     # Behaviorpack
     BP_ENTITY_MS, BP_ENTITY_CFG,
     BP_ITEM_MS, BP_ITEM_CFG,
@@ -36,6 +35,7 @@ from conversion_config import (
     RP_PARTICLE_MS, RP_PARTICLE_CFG,
     RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,
     RP_MODEL_MS, RP_MODEL_CFG,
+    RP_BLOCKS_JSON_FILE_MS, RP_BLOCKS_JSON_FILE_CFG,
 )
 
 class CreateSchemaInput(object):
@@ -108,6 +108,7 @@ rp_schema_inputs = [
     CreateSchemaInput(RP_PARTICLE_MS, RP_PARTICLE_CFG,),
     CreateSchemaInput(RP_RENDER_CONTROLLER_MS, RP_RENDER_CONTROLLER_CFG,),
     CreateSchemaInput(RP_MODEL_MS, RP_MODEL_CFG,),
+    CreateSchemaInput(RP_BLOCKS_JSON_FILE_MS, RP_BLOCKS_JSON_FILE_CFG),
 ]
 
 
