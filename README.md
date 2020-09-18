@@ -12,93 +12,93 @@ Just add this to your configuration in the `settings.json` for VS Code.
         // BEHAVIORPACK
         {
             "fileMatch": [
-                "entities/**.json"
+                "behavior_packs/*/entities/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.entity.schema.json"
         },
         {
             "fileMatch": [
-                "items/**.json"
+                "behavior_packs/*/items/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.item.schema.json"
         },
         {
             "fileMatch": [
-                "animation_controllers/**.json"
+                "behavior_packs/*/animation_controllers/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.animation_controller.schema.json"
         },
         {
             "fileMatch": [
-                "animations/**.json"
+                "behavior_packs/*/animations/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.animation.schema.json"
         },
         {
             "fileMatch": [
-                "loot_tables/**.json"
+                "behavior_packs/*/loot_tables/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.loot_table.schema.json"
         },
         {
             "fileMatch": [
-                "recipes/**.json"
+                "behavior_packs/*/recipes/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.recipe.schema.json"
         },
         {
             "fileMatch": [
-                "spawn_rules/**.json"
+                "behavior_packs/*/spawn_rules/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.spawn_rules.schema.json"
         },
         {
             "fileMatch": [
-                "trading/**.json"
+                "behavior_packs/*/trading/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/bp.trading.schema.json"
         },
 
         // RESOURCEPACK
-        // {
-        //     "fileMatch": [  //PATTERN COLISION
-        //         "animation_controllers/**.json"
-        //     ],
-        //     "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.animation_controller.schema.json"
-        // },
-        // {
-        //     "fileMatch": [  //PATTERN COLISION
-        //         "animations/**.json"
-        //     ],
-        //     "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.animation.schema.json"
-        // },
         {
             "fileMatch": [
-                "models/**.json"
+                "resource_packs/*/animation_controllers/**.json"
+            ],
+            "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.animation_controller.schema.json"
+        },
+        {
+            "fileMatch": [
+                "resource_packs/*/animations/**.json"
+            ],
+            "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.animation.schema.json"
+        },
+        {
+            "fileMatch": [
+                "resource_packs/*/models/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.model.schema.json"
         },
         {
             "fileMatch": [
-                "attachables/**.json"
+                "resource_packs/*/attachables/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.attachable.schema.json"
         },
         {
             "fileMatch": [
-                "entity/**.json"
+                "resource_packs/*/entity/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.entity.schema.json"
         },
         {
             "fileMatch": [
-                "particles/**.json"
+                "resource_packs/*/particles/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.particle.schema.json"
         },
         {
             "fileMatch": [
-                "render_controllers/**.json"
+                "resource_packs/*/render_controllers/**.json"
             ],
             "url": "https://raw.githubusercontent.com/Nusiq/bedrock-json-schemas/master/schemas/rp.render_controller.schema.json"
         },
