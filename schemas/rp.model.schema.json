@@ -9,426 +9,414 @@
 	],
 	"definitions": {
 		"12": {
-			"type": ["object"],
 			"properties": {
 				"format_version": {
-					"type": ["string"],
-					"enum": ["1.12.0"]
+					"enum": ["1.12.0"],
+					"type": ["string"]
 				},
 				"minecraft:geometry": {
-					"type": ["array"],
 					"items": {
 						"$ref": "#/definitions/entity_12"
-					}
+					},
+					"type": ["array"]
 				}
-			}
+			},
+			"type": ["object"]
+		},
+		"8_10": {
+			"additionalProperties": {
+				"$ref": "#/definitions/entity_8_10"
+			},
+			"properties": {
+				"format_version": {
+					"$ref": "#/definitions/format_version_8_10"
+				}
+			},
+			"type": ["object"]
 		},
 		"entity_12": {
-			"type": ["object"],
 			"properties": {
+				"bones": {
+					"items": {
+						"properties": {
+							"cubes": {
+								"items": {
+									"properties": {
+										"inflate": {
+											"type": ["number"]
+										},
+										"mirror": {
+											"type": ["boolean"]
+										},
+										"origin": {
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"pivot": {
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"rotation": {
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"size": {
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"uv": {
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"properties": {
+												"down": {
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"east": {
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"north": {
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"south": {
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"up": {
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"west": {
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												}
+											},
+											"type": ["array", "object"]
+										}
+									},
+									"type": ["object"]
+								},
+								"type": ["array"]
+							},
+							"debug": {
+								"type": ["boolean"]
+							},
+							"inflate": {
+								"type": ["number"]
+							},
+							"locators": {
+								"additionalProperties": {
+									"$ref": "#/definitions/locator_12"
+								},
+								"type": ["object"]
+							},
+							"mirror": {
+								"type": ["boolean"]
+							},
+							"name": {
+								"type": ["string"]
+							},
+							"parent": {
+								"type": ["string"]
+							},
+							"pivot": {
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
+							},
+							"poly_mesh": {
+								"properties": {
+									"normalized_uvs": {
+										"type": ["boolean"]
+									},
+									"normals": {
+										"items": {
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									},
+									"polys": {
+										"items": {
+											"items": {
+												"items": {
+													"type": ["number"]
+												},
+												"type": ["array"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									},
+									"positions": {
+										"items": {
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									},
+									"uvs": {
+										"items": {
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									}
+								},
+								"type": ["object"]
+							},
+							"render_group_id": {
+								"type": ["integer"]
+							},
+							"rotation": {
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
+							},
+							"texture_meshes": {
+								"items": {
+									"properties": {
+										"local_pivot": {
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"position": {
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"rotation": {
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"scale": {
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"texture": {
+											"type": ["string"]
+										}
+									},
+									"type": ["object"]
+								},
+								"type": ["array"]
+							}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				},
+				"cape": {
+					"type": ["string"]
+				},
 				"description": {
-					"type": ["object"],
 					"properties": {
 						"identifier": {
 							"type": ["string"]
 						},
-						"texture_width": {
-							"type": ["integer", "number"]
-						},
 						"texture_height": {
 							"type": ["integer", "number"]
 						},
-						"visible_bounds_width": {
+						"texture_width": {
 							"type": ["integer", "number"]
 						},
 						"visible_bounds_height": {
 							"type": ["integer", "number"]
 						},
 						"visible_bounds_offset": {
-							"type": ["array"],
 							"items": {
 								"type": ["integer", "number"]
-							}
+							},
+							"type": ["array"]
+						},
+						"visible_bounds_width": {
+							"type": ["integer", "number"]
 						}
-					}
-				},
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		},
+		"entity_8_10": {
+			"properties": {
 				"bones": {
-					"type": ["array"],
 					"items": {
-						"type": ["object"],
 						"properties": {
-							"name": {
-								"type": ["string"]
-							},
-							"pivot": {
-								"type": ["array"],
+							"bind_pose_rotation": {
 								"items": {
 									"type": ["integer", "number"]
-								}
-							},
-							"rotation": {
-								"type": ["array"],
-								"items": {
-									"type": ["integer", "number"]
-								}
-							},
-							"mirror": {
-								"type": ["boolean"]
+								},
+								"type": ["array"]
 							},
 							"cubes": {
-								"type": ["array"],
 								"items": {
-									"type": ["object"],
 									"properties": {
-										"origin": {
-											"type": ["array"],
-											"items": {
-												"type": ["integer", "number"]
-											}
-										},
-										"size": {
-											"type": ["array"],
-											"items": {
-												"type": ["integer", "number"]
-											}
-										},
-										"uv": {
-											"type": ["array", "object"],
-											"items": {
-												"type": ["integer", "number"]
-											},
-											"properties": {
-												"north": {
-													"type": ["object"],
-													"properties": {
-														"uv": {
-															"type": ["array"],
-															"items": {
-																"type": ["integer", "number"]
-															}
-														},
-														"uv_size": {
-															"type": ["array"],
-															"items": {
-																"type": ["number"]
-															}
-														},
-														"material_instance": {
-															"type": ["string"]
-														}
-													}
-												},
-												"south": {
-													"type": ["object"],
-													"properties": {
-														"uv": {
-															"type": ["array"],
-															"items": {
-																"type": ["integer", "number"]
-															}
-														},
-														"uv_size": {
-															"type": ["array"],
-															"items": {
-																"type": ["integer", "number"]
-															}
-														},
-														"material_instance": {
-															"type": ["string"]
-														}
-													}
-												},
-												"east": {
-													"type": ["object"],
-													"properties": {
-														"uv": {
-															"type": ["array"],
-															"items": {
-																"type": ["integer", "number"]
-															}
-														},
-														"uv_size": {
-															"type": ["array"],
-															"items": {
-																"type": ["number"]
-															}
-														},
-														"material_instance": {
-															"type": ["string"]
-														}
-													}
-												},
-												"west": {
-													"type": ["object"],
-													"properties": {
-														"uv": {
-															"type": ["array"],
-															"items": {
-																"type": ["integer", "number"]
-															}
-														},
-														"uv_size": {
-															"type": ["array"],
-															"items": {
-																"type": ["number"]
-															}
-														},
-														"material_instance": {
-															"type": ["string"]
-														}
-													}
-												},
-												"up": {
-													"type": ["object"],
-													"properties": {
-														"uv": {
-															"type": ["array"],
-															"items": {
-																"type": ["integer", "number"]
-															}
-														},
-														"uv_size": {
-															"type": ["array"],
-															"items": {
-																"type": ["number"]
-															}
-														},
-														"material_instance": {
-															"type": ["string"]
-														}
-													}
-												},
-												"down": {
-													"type": ["object"],
-													"properties": {
-														"uv": {
-															"type": ["array"],
-															"items": {
-																"type": ["integer", "number"]
-															}
-														},
-														"uv_size": {
-															"type": ["array"],
-															"items": {
-																"type": ["number"]
-															}
-														},
-														"material_instance": {
-															"type": ["string"]
-														}
-													}
-												}
-											}
+										"inflate": {
+											"type": ["number"]
 										},
 										"mirror": {
 											"type": ["boolean"]
 										},
-										"inflate": {
-											"type": ["number"]
-										},
-										"pivot": {
-											"type": ["array"],
+										"origin": {
 											"items": {
 												"type": ["integer", "number"]
-											}
+											},
+											"type": ["array"]
 										},
-										"rotation": {
-											"type": ["array"],
+										"size": {
 											"items": {
 												"type": ["integer", "number"]
-											}
+											},
+											"type": ["array"]
+										},
+										"uv": {
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
 										}
-									}
-								}
-							},
-							"locators": {
-								"type": ["object"],
-								"additionalProperties": {
-									"$ref": "#/definitions/locator_12"
-								}
-							},
-							"parent": {
-								"type": ["string"]
+									},
+									"type": ["object"]
+								},
+								"type": ["array"]
 							},
 							"inflate": {
 								"type": ["number"]
 							},
-							"debug": {
+							"locators": {
+								"additionalProperties": {
+									"$ref": "#/definitions/locator_8_10"
+								},
+								"type": ["object"]
+							},
+							"mirror": {
 								"type": ["boolean"]
 							},
-							"render_group_id": {
-								"type": ["integer"]
-							},
-							"texture_meshes": {
-								"type": ["array"],
-								"items": {
-									"type": ["object"],
-									"properties": {
-										"texture": {
-											"type": ["string"]
-										},
-										"position": {
-											"type": ["array"],
-											"items": {
-												"type": ["number"]
-											}
-										},
-										"local_pivot": {
-											"type": ["array"],
-											"items": {
-												"type": ["number"]
-											}
-										},
-										"rotation": {
-											"type": ["array"],
-											"items": {
-												"type": ["number"]
-											}
-										},
-										"scale": {
-											"type": ["array"],
-											"items": {
-												"type": ["number"]
-											}
-										}
-									}
-								}
-							},
-							"poly_mesh": {
-								"type": ["object"],
-								"properties": {
-									"normalized_uvs": {
-										"type": ["boolean"]
-									},
-									"positions": {
-										"type": ["array"],
-										"items": {
-											"type": ["array"],
-											"items": {
-												"type": ["number"]
-											}
-										}
-									},
-									"normals": {
-										"type": ["array"],
-										"items": {
-											"type": ["array"],
-											"items": {
-												"type": ["number"]
-											}
-										}
-									},
-									"uvs": {
-										"type": ["array"],
-										"items": {
-											"type": ["array"],
-											"items": {
-												"type": ["number"]
-											}
-										}
-									},
-									"polys": {
-										"type": ["array"],
-										"items": {
-											"type": ["array"],
-											"items": {
-												"type": ["array"],
-												"items": {
-													"type": ["number"]
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"cape": {
-					"type": ["string"]
-				}
-			}
-		},
-		"8_10": {
-			"type": ["object"],
-			"properties": {
-				"format_version": {
-					"$ref": "#/definitions/format_version_8_10"
-				}
-			},
-			"additionalProperties": {
-				"$ref": "#/definitions/entity_8_10"
-			}
-		},
-		"format_version_8_10": {
-			"type": ["string"]
-		},
-		"entity_8_10": {
-			"type": ["object"],
-			"properties": {
-				"texturewidth": {
-					"type": ["integer"]
-				},
-				"textureheight": {
-					"type": ["integer"]
-				},
-				"visible_bounds_width": {
-					"type": ["integer", "number"]
-				},
-				"visible_bounds_height": {
-					"type": ["integer", "number"]
-				},
-				"visible_bounds_offset": {
-					"type": ["array"],
-					"items": {
-						"type": ["integer", "number"]
-					}
-				},
-				"bones": {
-					"type": ["array"],
-					"items": {
-						"type": ["object"],
-						"properties": {
 							"name": {
 								"type": ["string"]
-							},
-							"pivot": {
-								"type": ["array"],
-								"items": {
-									"type": ["integer", "number"]
-								}
-							},
-							"cubes": {
-								"type": ["array"],
-								"items": {
-									"type": ["object"],
-									"properties": {
-										"origin": {
-											"type": ["array"],
-											"items": {
-												"type": ["integer", "number"]
-											}
-										},
-										"size": {
-											"type": ["array"],
-											"items": {
-												"type": ["integer", "number"]
-											}
-										},
-										"uv": {
-											"type": ["array"],
-											"items": {
-												"type": ["integer", "number"]
-											}
-										},
-										"mirror": {
-											"type": ["boolean"]
-										},
-										"inflate": {
-											"type": ["number"]
-										}
-									}
-								}
 							},
 							"neverRender": {
 								"type": ["boolean"]
@@ -436,66 +424,78 @@
 							"parent": {
 								"type": ["string"]
 							},
-							"mirror": {
-								"type": ["boolean"]
-							},
-							"bind_pose_rotation": {
-								"type": ["array"],
+							"pivot": {
 								"items": {
 									"type": ["integer", "number"]
-								}
-							},
-							"rotation": {
-								"type": ["array"],
-								"items": {
-									"type": ["integer", "number"]
-								}
+								},
+								"type": ["array"]
 							},
 							"reset": {
 								"type": ["boolean"]
 							},
-							"inflate": {
-								"type": ["number"]
-							},
-							"locators": {
-								"type": ["object"],
-								"additionalProperties": {
-									"$ref": "#/definitions/locator_8_10"
-								}
+							"rotation": {
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
 							}
-						}
-					}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				},
+				"textureheight": {
+					"type": ["integer"]
+				},
+				"texturewidth": {
+					"type": ["integer"]
+				},
+				"visible_bounds_height": {
+					"type": ["integer", "number"]
+				},
+				"visible_bounds_offset": {
+					"items": {
+						"type": ["integer", "number"]
+					},
+					"type": ["array"]
+				},
+				"visible_bounds_width": {
+					"type": ["integer", "number"]
 				}
-			}
+			},
+			"type": ["object"]
+		},
+		"format_version_8_10": {
+			"type": ["string"]
 		},
 		"locator_12": {
-			"type": ["array", "object"],
 			"items": {
 				"type": ["integer", "number"]
 			},
 			"properties": {
-				"offset": {
-					"type": ["array"],
-					"items": {
-						"type": ["number"]
-					}
-				},
-				"rotation": {
-					"type": ["array"],
-					"items": {
-						"type": ["number"]
-					}
-				},
 				"ignore_inherited_scale": {
 					"type": ["boolean"]
+				},
+				"offset": {
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array"]
+				},
+				"rotation": {
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array"]
 				}
-			}
+			},
+			"type": ["array", "object"]
 		},
 		"locator_8_10": {
-			"type": ["array"],
 			"items": {
 				"type": ["integer", "number"]
-			}
+			},
+			"type": ["array"]
 		}
 	}
 }

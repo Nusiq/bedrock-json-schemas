@@ -6,41 +6,56 @@
 	],
 	"definitions": {
 		"10": {
-			"type": ["object"],
 			"properties": {
-				"format_version": {
-					"type": ["string"],
-					"enum": ["1.10.0"]
-				},
 				"animation_controllers": {
-					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/controller"
-					}
-				}
-			}
-		},
-		"controller": {
-			"type": ["object"],
-			"properties": {
-				"states": {
-					"type": ["object"],
-					"additionalProperties": {
-						"$ref": "#/definitions/state"
-					}
+					},
+					"type": ["object"]
 				},
-				"initial_state": {
+				"format_version": {
+					"enum": ["1.10.0"],
 					"type": ["string"]
 				}
-			}
+			},
+			"type": ["object"]
+		},
+		"animation": {
+			"type": ["string"]
+		},
+		"controller": {
+			"properties": {
+				"initial_state": {
+					"type": ["string"]
+				},
+				"states": {
+					"additionalProperties": {
+						"$ref": "#/definitions/state"
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
 		},
 		"state": {
-			"type": ["object"],
 			"properties": {
-				"particle_effects": {
-					"type": ["array"],
+				"animations": {
 					"items": {
-						"type": ["object"],
+						"additionalProperties": {
+							"$ref": "#/definitions/animation"
+						},
+						"type": ["object", "string"]
+					},
+					"type": ["array"]
+				},
+				"blend_transition": {
+					"type": ["number"]
+				},
+				"blend_via_shortest_path": {
+					"type": ["boolean"]
+				},
+				"particle_effects": {
+					"items": {
 						"properties": {
 							"effect": {
 								"type": ["string"]
@@ -48,39 +63,24 @@
 							"locator": {
 								"type": ["string"]
 							}
-						}
-					}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
 				},
 				"transitions": {
-					"type": ["array"],
 					"items": {
-						"type": ["object"],
 						"additionalProperties": {
 							"$ref": "#/definitions/transition"
-						}
-					}
-				},
-				"animations": {
-					"type": ["array"],
-					"items": {
-						"type": ["object", "string"],
-						"additionalProperties": {
-							"$ref": "#/definitions/animation"
-						}
-					}
-				},
-				"blend_transition": {
-					"type": ["number"]
-				},
-				"blend_via_shortest_path": {
-					"type": ["boolean"]
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
 				}
-			}
+			},
+			"type": ["object"]
 		},
 		"transition": {
-			"type": ["string"]
-		},
-		"animation": {
 			"type": ["string"]
 		}
 	}

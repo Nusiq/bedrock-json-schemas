@@ -120,7 +120,7 @@ if __name__ == "__main__":
 
     for inp in bp_schema_inputs:
         with open(inp.export_config.export_path, 'w') as f:
-            json.dump(inp.schema, f, cls=CompactEncoder)
+            json.dump(inp.schema, f, sort_keys=True, cls=CompactEncoder)
 
     # GENERATING RESOURCEPACK SCHEMAS
     print('GENERATING RESOURCEPACK SCHEMAS')
@@ -129,4 +129,4 @@ if __name__ == "__main__":
 
     for inp in rp_schema_inputs:
         with open(inp.export_config.export_path, 'w') as f:
-            json.dump(inp.schema, f, cls=CompactEncoder)
+            json.dump(inp.schema, f, sort_keys=True, cls=CompactEncoder)

@@ -47,7 +47,11 @@ class CompactEncoder(json.JSONEncoder):
                 yield f"{ind}{{}}"
             else:
                 body = []
-                for k, v in obj.items():
+                if self.sort_keys is True:
+                    obj_iter = sorted(iter(obj.items()))
+                else:
+                    obj_iter = obj.items()
+                for k, v in obj_iter:
                     body.extend([
                         f'{j[:self.indent]}"{k}": {j[self.indent:]}'
                         for j in self.iterencode(v)

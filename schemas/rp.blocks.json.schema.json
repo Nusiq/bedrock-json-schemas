@@ -5,28 +5,12 @@
 		}
 	],
 	"definitions": {
-		"root": {
-			"type": ["object"],
-			"additionalProperties": {
-				"$ref": "#/definitions/block"
-			},
-			"properties": {
-				"format_version": {
-					"type": ["array"],
-					"items": {
-						"type": ["integer"]
-					}
-				}
-			}
-		},
 		"block": {
-			"type": ["object"],
 			"properties": {
 				"brightness_gamma": {
 					"type": ["integer", "number"]
 				},
 				"carried_textures": {
-					"type": ["object", "string"],
 					"properties": {
 						"down": {
 							"type": ["string"]
@@ -49,39 +33,39 @@
 						"west": {
 							"type": ["string"]
 						}
-					}
+					},
+					"type": ["object", "string"]
 				},
 				"isotropic": {
-					"type": ["boolean", "object"],
 					"properties": {
 						"down": {
 							"type": ["boolean"]
 						},
-						"up": {
+						"east": {
 							"type": ["boolean"]
 						},
-						"east": {
+						"north": {
 							"type": ["boolean"]
 						},
 						"sides": {
 							"type": ["boolean"]
 						},
-						"north": {
+						"south": {
 							"type": ["boolean"]
 						},
-						"south": {
+						"up": {
 							"type": ["boolean"]
 						},
 						"west": {
 							"type": ["boolean"]
 						}
-					}
+					},
+					"type": ["boolean", "object"]
 				},
 				"sound": {
 					"type": ["string"]
 				},
 				"textures": {
-					"type": ["object", "string"],
 					"properties": {
 						"down": {
 							"type": ["string"]
@@ -104,9 +88,25 @@
 						"west": {
 							"type": ["string"]
 						}
-					}
+					},
+					"type": ["object", "string"]
 				}
-			}
+			},
+			"type": ["object"]
+		},
+		"root": {
+			"additionalProperties": {
+				"$ref": "#/definitions/block"
+			},
+			"properties": {
+				"format_version": {
+					"items": {
+						"type": ["integer"]
+					},
+					"type": ["array"]
+				}
+			},
+			"type": ["object"]
 		}
 	}
 }

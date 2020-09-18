@@ -6,62 +6,62 @@
 	],
 	"definitions": {
 		"10": {
-			"type": ["object"],
 			"properties": {
-				"format_version": {
-					"type": ["string"],
-					"enum": ["1.10.0"]
-				},
 				"animation_controllers": {
-					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/controller"
-					}
+					},
+					"type": ["object"]
+				},
+				"format_version": {
+					"enum": ["1.10.0"],
+					"type": ["string"]
 				}
-			}
+			},
+			"type": ["object"]
 		},
 		"controller": {
-			"type": ["object"],
 			"properties": {
 				"states": {
-					"type": ["object"],
 					"additionalProperties": {
 						"$ref": "#/definitions/state"
-					}
+					},
+					"type": ["object"]
 				}
-			}
+			},
+			"type": ["object"]
 		},
 		"state": {
-			"type": ["object"],
 			"properties": {
-				"transitions": {
-					"type": ["array"],
+				"animations": {
 					"items": {
-						"type": ["object"],
-						"additionalProperties": {
-							"$ref": "#/definitions/transition"
-						}
-					}
+						"type": ["string"]
+					},
+					"type": ["array"]
 				},
 				"on_entry": {
-					"type": ["array"],
 					"items": {
 						"type": ["string"]
-					}
-				},
-				"animations": {
-					"type": ["array"],
-					"items": {
-						"type": ["string"]
-					}
+					},
+					"type": ["array"]
 				},
 				"on_exit": {
-					"type": ["array"],
 					"items": {
 						"type": ["string"]
-					}
+					},
+					"type": ["array"]
+				},
+				"transitions": {
+					"items": {
+						"additionalProperties": {
+							"$ref": "#/definitions/transition"
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
 				}
-			}
+			},
+			"type": ["object"]
 		},
 		"transition": {
 			"type": ["string"]
