@@ -86,6 +86,9 @@
 								"functions": {
 									"items": {
 										"properties": {
+											"author": {
+												"type": ["string"]
+											},
 											"base_cost": {
 												"type": ["integer"]
 											},
@@ -95,10 +98,27 @@
 											"block_state": {
 												"type": ["string"]
 											},
+											"count": {
+												"properties": {
+													"max": {
+														"type": ["integer"]
+													},
+													"min": {
+														"type": ["integer"]
+													}
+												},
+												"type": ["object"]
+											},
+											"data": {
+												"type": ["integer"]
+											},
 											"destination": {
 												"type": ["string"]
 											},
 											"function": {
+												"type": ["string"]
+											},
+											"id": {
 												"type": ["string"]
 											},
 											"levels": {
@@ -112,11 +132,20 @@
 												},
 												"type": ["object"]
 											},
+											"pages": {
+												"items": {
+													"type": ["string"]
+												},
+												"type": ["array"]
+											},
 											"per_level_cost": {
 												"type": ["integer"]
 											},
 											"per_level_random_cost": {
 												"type": ["integer"]
+											},
+											"title": {
+												"type": ["string"]
 											},
 											"treasure": {
 												"type": ["boolean"]

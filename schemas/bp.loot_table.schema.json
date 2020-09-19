@@ -86,6 +86,9 @@
 							"function": {
 								"type": ["string"]
 							},
+							"id": {
+								"type": ["string"]
+							},
 							"levels": {
 								"properties": {
 									"max": {

@@ -46,55 +46,8 @@
 									"type": ["string"]
 								},
 								"particle_effects": {
-									"properties": {
-										"explode": {
-											"type": ["string"]
-										},
-										"glow": {
-											"type": ["string"]
-										},
-										"icon": {
-											"type": ["string"]
-										},
-										"laser_pink": {
-											"type": ["string"]
-										},
-										"nectar_dripping": {
-											"type": ["string"]
-										},
-										"speeder_fire": {
-											"type": ["string"]
-										},
-										"speeder_hud_reaload": {
-											"type": ["string"]
-										},
-										"speeder_locked": {
-											"type": ["string"]
-										},
-										"speeder_projectile_explosion": {
-											"type": ["string"]
-										},
-										"speeder_projectile_particle": {
-											"type": ["string"]
-										},
-										"speeder_projectile_trail": {
-											"type": ["string"]
-										},
-										"speeder_smoke": {
-											"type": ["string"]
-										},
-										"spell": {
-											"type": ["string"]
-										},
-										"stun_particles": {
-											"type": ["string"]
-										},
-										"target_marker": {
-											"type": ["string"]
-										},
-										"travel_location_selector": {
-											"type": ["string"]
-										}
+									"additionalProperties": {
+										"$ref": "#/definitions/particle_effect"
 									},
 									"type": ["object"]
 								},
@@ -141,6 +94,12 @@
 										"scale": {
 											"type": ["string"]
 										}
+									},
+									"type": ["object"]
+								},
+								"sound_effects": {
+									"additionalProperties": {
+										"$ref": "#/definitions/sound_effect"
 									},
 									"type": ["object"]
 								},
@@ -223,16 +182,8 @@
 									"type": ["string"]
 								},
 								"particle_effects": {
-									"properties": {
-										"charged_flames": {
-											"type": ["string"]
-										},
-										"spell": {
-											"type": ["string"]
-										},
-										"wing_dust": {
-											"type": ["string"]
-										}
+									"additionalProperties": {
+										"$ref": "#/definitions/particle_effect"
 									},
 									"type": ["object"]
 								},
@@ -321,7 +272,13 @@
 		"material": {
 			"type": ["string"]
 		},
+		"particle_effect": {
+			"type": ["string"]
+		},
 		"render_controller": {
+			"type": ["string"]
+		},
+		"sound_effect": {
 			"type": ["string"]
 		},
 		"texture": {

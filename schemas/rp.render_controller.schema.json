@@ -8,7 +8,7 @@
 		"8_10": {
 			"properties": {
 				"format_version": {
-					"enum": ["1.10.0", "1.8.0", "1.10"],
+					"enum": ["1.10.0", "1.8.0", "1.10.1", "1.10"],
 					"type": ["string"]
 				},
 				"render_controllers": {
@@ -37,6 +37,9 @@
 				"type": ["string"]
 			},
 			"type": ["array"]
+		},
+		"material_name": {
+			"type": ["string"]
 		},
 		"render_controller": {
 			"properties": {
@@ -94,67 +97,8 @@
 				},
 				"materials": {
 					"items": {
-						"properties": {
-							"*": {
-								"type": ["string"]
-							},
-							"*Saddle*": {
-								"type": ["string"]
-							},
-							"Mane": {
-								"type": ["string"]
-							},
-							"TailA": {
-								"type": ["string"]
-							},
-							"body": {
-								"type": ["string"]
-							},
-							"bodyLayer_*": {
-								"type": ["string"]
-							},
-							"glow": {
-								"type": ["string"]
-							},
-							"green": {
-								"type": ["string"]
-							},
-							"hat": {
-								"type": ["string"]
-							},
-							"head": {
-								"type": ["string"]
-							},
-							"head*": {
-								"type": ["string"]
-							},
-							"leftarm": {
-								"type": ["string"]
-							},
-							"leftleg": {
-								"type": ["string"]
-							},
-							"leg*": {
-								"type": ["string"]
-							},
-							"light": {
-								"type": ["string"]
-							},
-							"recolor": {
-								"type": ["string"]
-							},
-							"red": {
-								"type": ["string"]
-							},
-							"rightarm": {
-								"type": ["string"]
-							},
-							"rightleg": {
-								"type": ["string"]
-							},
-							"yellow": {
-								"type": ["string"]
-							}
+						"additionalProperties": {
+							"$ref": "#/definitions/material_name"
 						},
 						"type": ["object"]
 					},

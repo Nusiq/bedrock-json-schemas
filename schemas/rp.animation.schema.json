@@ -35,10 +35,22 @@
 					"type": ["object"]
 				},
 				"loop": {
-					"type": ["boolean"]
+					"type": ["boolean", "string"]
 				},
 				"override_previous_animation": {
 					"type": ["boolean"]
+				},
+				"particle_effects": {
+					"additionalProperties": {
+						"$ref": "#/definitions/particle_effect"
+					},
+					"type": ["object"]
+				},
+				"sound_effects": {
+					"additionalProperties": {
+						"$ref": "#/definitions/sound_effect"
+					},
+					"type": ["object"]
 				}
 			},
 			"type": ["object"]
@@ -79,6 +91,36 @@
 						"type": ["integer", "number", "string"]
 					},
 					"type": ["array", "integer", "number", "object", "string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"particle_effect": {
+			"items": {
+				"properties": {
+					"effect": {
+						"type": ["string"]
+					},
+					"locator": {
+						"type": ["string"]
+					}
+				},
+				"type": ["object"]
+			},
+			"properties": {
+				"effect": {
+					"type": ["string"]
+				},
+				"locator": {
+					"type": ["string"]
+				}
+			},
+			"type": ["array", "object"]
+		},
+		"sound_effect": {
+			"properties": {
+				"effect": {
+					"type": ["string"]
 				}
 			},
 			"type": ["object"]

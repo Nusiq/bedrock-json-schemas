@@ -8,7 +8,7 @@
 		"8_10": {
 			"properties": {
 				"format_version": {
-					"enum": ["1.10", "1.8.0", "1.10.0"],
+					"enum": ["1.8.0", "1.10.0", "1.10"],
 					"type": ["string"]
 				},
 				"minecraft:attachable": {

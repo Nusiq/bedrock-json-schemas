@@ -32,12 +32,12 @@
 				},
 				"pitch": {
 					"items": {
-						"type": ["number"]
+						"type": ["integer", "number"]
 					},
 					"type": ["array", "number"]
 				},
 				"volume": {
-					"type": ["number"]
+					"type": ["integer", "number"]
 				}
 			},
 			"type": ["object"]
@@ -62,7 +62,7 @@
 					"items": {
 						"type": ["integer", "number"]
 					},
-					"type": ["array", "number"]
+					"type": ["array", "integer", "number"]
 				},
 				"sound": {
 					"type": ["string"]

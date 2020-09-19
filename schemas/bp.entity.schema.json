@@ -72,6 +72,9 @@
 			},
 			"type": ["object"]
 		},
+		"animate_condition": {
+			"type": ["string"]
+		},
 		"component_group_13_14_16": {
 			"properties": {
 				"minecraft:addrider": {
@@ -252,29 +255,10 @@
 							"type": ["integer"]
 						},
 						"damage_range": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"entity_filter": {
-							"properties": {
-								"any_of": {
-									"items": {
-										"properties": {
-											"subject": {
-												"type": ["string"]
-											},
-											"test": {
-												"type": ["string"]
-											},
-											"value": {
-												"type": ["string"]
-											}
-										},
-										"type": ["object"]
-									},
-									"type": ["array"]
-								}
-							},
-							"type": ["object"]
+							"$ref": "#/definitions/filter"
 						}
 					},
 					"type": ["object"]
@@ -492,7 +476,21 @@
 								},
 								"type": ["object"]
 							},
-							"type": ["array"]
+							"properties": {
+								"filters": {
+									"$ref": "#/definitions/filter"
+								},
+								"max_dist": {
+									"type": ["integer"]
+								},
+								"max_flee": {
+									"type": ["integer"]
+								},
+								"sprint_speed_multiplier": {
+									"type": ["number"]
+								}
+							},
+							"type": ["array", "object"]
 						},
 						"ignore_visibility": {
 							"type": ["boolean"]
@@ -773,7 +771,7 @@
 				"minecraft:behavior.delayed_attack": {
 					"properties": {
 						"attack_duration": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"attack_once": {
 							"type": ["boolean"]
@@ -788,7 +786,7 @@
 							"type": ["integer"]
 						},
 						"reach_multiplier": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"require_complete_path": {
 							"type": ["boolean"]
@@ -797,7 +795,7 @@
 							"type": ["string"]
 						},
 						"speed_multiplier": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"track_target": {
 							"type": ["boolean"]
@@ -1089,7 +1087,7 @@
 							"type": ["boolean"]
 						},
 						"within_radius": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -1246,7 +1244,7 @@
 				"minecraft:behavior.go_home": {
 					"properties": {
 						"goal_radius": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"interval": {
 							"type": ["integer"]
@@ -1377,6 +1375,17 @@
 							"type": ["boolean"]
 						},
 						"entity_types": {
+							"items": {
+								"properties": {
+									"filters": {
+										"$ref": "#/definitions/filter"
+									},
+									"max_dist": {
+										"type": ["integer"]
+									}
+								},
+								"type": ["object"]
+							},
 							"properties": {
 								"filters": {
 									"$ref": "#/definitions/filter"
@@ -1385,7 +1394,7 @@
 									"type": ["integer"]
 								}
 							},
-							"type": ["object"]
+							"type": ["array", "object"]
 						},
 						"hurt_owner": {
 							"type": ["boolean"]
@@ -1445,7 +1454,7 @@
 							"type": ["object"]
 						},
 						"duration": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						},
 						"knockback_damage": {
 							"type": ["integer"]
@@ -2024,6 +2033,9 @@
 						"attack_interval_min": {
 							"type": ["number"]
 						},
+						"attack_owner": {
+							"type": ["boolean"]
+						},
 						"entity_types": {
 							"items": {
 								"properties": {
@@ -2036,10 +2048,31 @@
 									"max_dist": {
 										"type": ["integer", "number"]
 									},
+									"must_reach": {
+										"type": ["boolean"]
+									},
 									"must_see": {
 										"type": ["boolean"]
 									},
+									"must_see_forget_duration": {
+										"type": ["integer"]
+									},
+									"set_persistent": {
+										"type": ["boolean"]
+									},
+									"sprint_speed_multiplier": {
+										"type": ["number"]
+									},
+									"target_search_height": {
+										"type": ["integer"]
+									},
+									"walk_speed_multiplier": {
+										"type": ["number"]
+									},
 									"within_default": {
+										"type": ["integer"]
+									},
+									"within_radius": {
 										"type": ["integer"]
 									}
 								},
@@ -2081,6 +2114,9 @@
 						},
 						"within_radius": {
 							"type": ["integer", "number"]
+						},
+						"within_range": {
+							"type": ["integer"]
 						}
 					},
 					"type": ["object"]
@@ -2298,6 +2334,11 @@
 					"type": ["object"]
 				},
 				"minecraft:behavior.player_ride_tamed": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						}
+					},
 					"type": ["object"]
 				},
 				"minecraft:behavior.raid_garden": {
@@ -2307,6 +2348,9 @@
 								"type": ["string"]
 							},
 							"type": ["array"]
+						},
+						"eat_delay": {
+							"type": ["integer"]
 						},
 						"goal_radius": {
 							"type": ["number"]
@@ -2528,6 +2572,9 @@
 							"type": ["integer", "number"]
 						},
 						"priority": {
+							"type": ["integer"]
+						},
+						"ranged_fov": {
 							"type": ["integer"]
 						},
 						"speed_multiplier": {
@@ -3061,7 +3108,7 @@
 													"type": ["number"]
 												},
 												"delay_per_summon": {
-													"type": ["number"]
+													"type": ["integer", "number"]
 												},
 												"entity_lifespan": {
 													"type": ["number"]
@@ -3478,6 +3525,9 @@
 						"breathes_lava": {
 							"type": ["boolean"]
 						},
+						"breathes_solids": {
+							"type": ["boolean"]
+						},
 						"breathes_water": {
 							"type": ["boolean"]
 						},
@@ -3770,6 +3820,14 @@
 					"type": ["object"]
 				},
 				"minecraft:damage_sensor": {
+					"items": {
+						"properties": {
+							"deals_damage": {
+								"type": ["boolean"]
+							}
+						},
+						"type": ["object"]
+					},
 					"properties": {
 						"triggers": {
 							"items": {
@@ -3787,6 +3845,9 @@
 											},
 											"filters": {
 												"$ref": "#/definitions/filter"
+											},
+											"target": {
+												"type": ["string"]
 											}
 										},
 										"type": ["object"]
@@ -3825,7 +3886,7 @@
 							"type": ["array", "object"]
 						}
 					},
-					"type": ["object"]
+					"type": ["array", "object"]
 				},
 				"minecraft:despawn": {
 					"properties": {
@@ -3901,114 +3962,7 @@
 							"type": ["string"]
 						},
 						"event_filters": {
-							"properties": {
-								"any_of": {
-									"items": {
-										"properties": {
-											"all_of": {
-												"items": {
-													"properties": {
-														"none_of": {
-															"properties": {
-																"subject": {
-																	"type": ["string"]
-																},
-																"test": {
-																	"type": ["string"]
-																},
-																"value": {
-																	"type": ["string"]
-																}
-															},
-															"type": ["object"]
-														},
-														"subject": {
-															"type": ["string"]
-														},
-														"test": {
-															"type": ["string"]
-														},
-														"value": {
-															"type": ["string"]
-														}
-													},
-													"type": ["object"]
-												},
-												"type": ["array"]
-											},
-											"subject": {
-												"type": ["string"]
-											},
-											"test": {
-												"type": ["string"]
-											},
-											"value": {
-												"type": ["string"]
-											}
-										},
-										"type": ["object"]
-									},
-									"type": ["array"]
-								},
-								"none_of": {
-									"items": {
-										"properties": {
-											"all_of": {
-												"items": {
-													"properties": {
-														"none_of": {
-															"properties": {
-																"subject": {
-																	"type": ["string"]
-																},
-																"test": {
-																	"type": ["string"]
-																},
-																"value": {
-																	"type": ["string"]
-																}
-															},
-															"type": ["object"]
-														},
-														"subject": {
-															"type": ["string"]
-														},
-														"test": {
-															"type": ["string"]
-														},
-														"value": {
-															"type": ["string"]
-														}
-													},
-													"type": ["object"]
-												},
-												"type": ["array"]
-											},
-											"subject": {
-												"type": ["string"]
-											},
-											"test": {
-												"type": ["string"]
-											},
-											"value": {
-												"type": ["string"]
-											}
-										},
-										"type": ["object"]
-									},
-									"type": ["array"]
-								},
-								"operator": {
-									"type": ["string"]
-								},
-								"test": {
-									"type": ["string"]
-								},
-								"value": {
-									"type": ["number"]
-								}
-							},
-							"type": ["object"]
+							"$ref": "#/definitions/filter"
 						},
 						"minimum_count": {
 							"type": ["integer"]
@@ -4027,6 +3981,17 @@
 				},
 				"minecraft:environment_sensor": {
 					"properties": {
+						"on_environment": {
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"filters": {
+									"$ref": "#/definitions/filter"
+								}
+							},
+							"type": ["object"]
+						},
 						"triggers": {
 							"items": {
 								"properties": {
@@ -4150,7 +4115,7 @@
 							"type": ["boolean"]
 						},
 						"power": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -4239,7 +4204,7 @@
 				"minecraft:foot_size": {
 					"properties": {
 						"value": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -4473,7 +4438,15 @@
 				"minecraft:insomnia": {
 					"properties": {
 						"days_until_insomnia": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:instant_despawn": {
+					"properties": {
+						"remove_child_entities": {
+							"type": ["boolean"]
 						}
 					},
 					"type": ["object"]
@@ -4511,11 +4484,17 @@
 									},
 									"on_interact": {
 										"properties": {
+											"cooldown": {
+												"type": ["integer"]
+											},
 											"event": {
 												"type": ["string"]
 											},
 											"filters": {
 												"$ref": "#/definitions/filter"
+											},
+											"play_sounds": {
+												"type": ["string"]
 											},
 											"target": {
 												"type": ["string"]
@@ -4605,6 +4584,9 @@
 							"type": ["string"]
 						},
 						"inventory_size": {
+							"type": ["integer"]
+						},
+						"priority": {
 							"type": ["integer"]
 						},
 						"private": {
@@ -4765,7 +4747,7 @@
 				"minecraft:mark_variant": {
 					"properties": {
 						"value": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -4779,26 +4761,7 @@
 							"type": ["integer"]
 						},
 						"entity_filter": {
-							"properties": {
-								"any_of": {
-									"items": {
-										"properties": {
-											"subject": {
-												"type": ["string"]
-											},
-											"test": {
-												"type": ["string"]
-											},
-											"value": {
-												"type": ["string"]
-											}
-										},
-										"type": ["object"]
-									},
-									"type": ["array"]
-								}
-							},
-							"type": ["object"]
+							"$ref": "#/definitions/filter"
 						},
 						"mob_effect": {
 							"type": ["string"]
@@ -4820,7 +4783,7 @@
 									"type": ["number"]
 								}
 							},
-							"type": ["number", "object"]
+							"type": ["integer", "number", "object"]
 						}
 					},
 					"type": ["object"]
@@ -5351,10 +5314,10 @@
 						"hit_sound": {
 							"type": ["string"]
 						},
-						"interia": {
+						"inertia": {
 							"type": ["number"]
 						},
-						"liquid_interia": {
+						"liquid_inertia": {
 							"type": ["number"]
 						},
 						"offset": {
@@ -5370,6 +5333,9 @@
 								},
 								"impact_damage": {
 									"properties": {
+										"catch_fire": {
+											"type": ["boolean"]
+										},
 										"damage": {
 											"items": {
 												"type": ["integer"]
@@ -5544,6 +5510,9 @@
 				},
 				"minecraft:rideable": {
 					"properties": {
+						"controlling_seat": {
+							"type": ["integer"]
+						},
 						"crouching_skip_interact": {
 							"type": ["boolean"]
 						},
@@ -5572,7 +5541,7 @@
 							"items": {
 								"properties": {
 									"lock_rider_rotation": {
-										"type": ["integer"]
+										"type": ["integer", "number"]
 									},
 									"max_rider_count": {
 										"type": ["integer"]
@@ -5598,7 +5567,7 @@
 								},
 								"position": {
 									"items": {
-										"type": ["number"]
+										"type": ["integer", "number"]
 									},
 									"type": ["array"]
 								}
@@ -5965,7 +5934,7 @@
 				"minecraft:target_nearby_sensor": {
 					"properties": {
 						"inside_range": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"must_see": {
 							"type": ["boolean"]
@@ -6004,7 +5973,7 @@
 							"type": ["object"]
 						},
 						"outside_range": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -6036,6 +6005,11 @@
 					"type": ["object"]
 				},
 				"minecraft:tick_world": {
+					"properties": {
+						"radius": {
+							"type": ["integer"]
+						}
+					},
 					"type": ["object"]
 				},
 				"minecraft:timer": {
@@ -6212,7 +6186,7 @@
 				"minecraft:variant": {
 					"properties": {
 						"value": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -6230,10 +6204,63 @@
 		},
 		"component_group_8_10_12": {
 			"properties": {
+				"minecraft:ageable": {
+					"properties": {
+						"duration": {
+							"type": ["integer"]
+						},
+						"feedItems": {
+							"items": {
+								"properties": {
+									"growth": {
+										"type": ["number"]
+									},
+									"item": {
+										"type": ["string"]
+									}
+								},
+								"type": ["object"]
+							},
+							"type": ["array"]
+						},
+						"grow_up": {
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"target": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						}
+					},
+					"type": ["object"]
+				},
 				"minecraft:angry": {
 					"properties": {
+						"broadcastAnger": {
+							"type": ["boolean"]
+						},
+						"broadcastRange": {
+							"type": ["integer"]
+						},
+						"broadcast_anger": {
+							"type": ["boolean"]
+						},
+						"broadcast_range": {
+							"type": ["integer"]
+						},
 						"calm_event": {
-							"type": ["string"]
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"target": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object", "string"]
 						},
 						"duration": {
 							"type": ["integer"]
@@ -6244,7 +6271,7 @@
 				"minecraft:attack": {
 					"properties": {
 						"damage": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -6261,10 +6288,207 @@
 										"type": ["integer"]
 									},
 									"sprint_speed_multiplier": {
-										"type": ["number"]
+										"type": ["integer", "number"]
 									},
 									"walk_speed_multiplier": {
-										"type": ["number"]
+										"type": ["integer", "number"]
+									}
+								},
+								"type": ["object"]
+							},
+							"properties": {
+								"filters": {
+									"$ref": "#/definitions/filter"
+								},
+								"max_dist": {
+									"type": ["integer"]
+								},
+								"max_flee": {
+									"type": ["integer"]
+								},
+								"sprint_speed_multiplier": {
+									"type": ["number"]
+								}
+							},
+							"type": ["array", "object"]
+						},
+						"ignore_visibility": {
+							"type": ["boolean"]
+						},
+						"max_dist": {
+							"type": ["number"]
+						},
+						"priority": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.breed": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.charge_attack": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.charge_held_item": {
+					"properties": {
+						"items": {
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						},
+						"priority": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.circle_around_anchor": {
+					"properties": {
+						"goal_radius": {
+							"type": ["number"]
+						},
+						"height_above_target_range": {
+							"items": {
+								"type": ["number"]
+							},
+							"type": ["array"]
+						},
+						"height_change_chance": {
+							"type": ["integer"]
+						},
+						"height_offset_range": {
+							"items": {
+								"type": ["number"]
+							},
+							"type": ["array"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"radius_change_chance": {
+							"type": ["integer"]
+						},
+						"radius_range": {
+							"items": {
+								"type": ["number"]
+							},
+							"type": ["array"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.delayed_attack": {
+					"properties": {
+						"attack_duration": {
+							"type": ["integer", "number"]
+						},
+						"hit_delay_pct": {
+							"type": ["number"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"reach_multiplier": {
+							"type": ["integer", "number"]
+						},
+						"sound_event": {
+							"type": ["string"]
+						},
+						"speed_multiplier": {
+							"type": ["integer", "number"]
+						},
+						"track_target": {
+							"type": ["boolean"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.eat_block": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.float": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.float_wander": {
+					"properties": {
+						"float_duration": {
+							"items": {
+								"type": ["number"]
+							},
+							"type": ["array"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"random_reselect": {
+							"type": ["boolean"]
+						},
+						"xz_dist": {
+							"type": ["integer"]
+						},
+						"y_dist": {
+							"type": ["integer"]
+						},
+						"y_offset": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.follow_parent": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.go_home": {
+					"properties": {
+						"interval": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.hurt_by_target": {
+					"properties": {
+						"entity_types": {
+							"items": {
+								"properties": {
+									"filters": {
+										"$ref": "#/definitions/filter"
+									},
+									"max_dist": {
+										"type": ["integer"]
 									}
 								},
 								"type": ["object"]
@@ -6277,10 +6501,81 @@
 					},
 					"type": ["object"]
 				},
-				"minecraft:behavior.hurt_by_target": {
+				"minecraft:behavior.knockback_roar": {
 					"properties": {
+						"attack_time": {
+							"type": ["number"]
+						},
+						"damage_filters": {
+							"properties": {
+								"operator": {
+									"type": ["string"]
+								},
+								"subject": {
+									"type": ["string"]
+								},
+								"test": {
+									"type": ["string"]
+								},
+								"value": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"duration": {
+							"type": ["number"]
+						},
+						"knockback_damage": {
+							"type": ["integer"]
+						},
+						"knockback_filters": {
+							"properties": {
+								"operator": {
+									"type": ["string"]
+								},
+								"subject": {
+									"type": ["string"]
+								},
+								"test": {
+									"type": ["string"]
+								},
+								"value": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"knockback_range": {
+							"type": ["integer"]
+						},
+						"knockback_strength": {
+							"type": ["integer"]
+						},
+						"on_roar_end": {
+							"properties": {
+								"event": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.look_at_entity": {
+					"properties": {
+						"filters": {
+							"$ref": "#/definitions/filter"
+						},
+						"look_distance": {
+							"type": ["number"]
+						},
 						"priority": {
 							"type": ["integer"]
+						},
+						"probability": {
+							"type": ["number"]
 						}
 					},
 					"type": ["object"]
@@ -6288,15 +6583,21 @@
 				"minecraft:behavior.look_at_player": {
 					"properties": {
 						"look_distance": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						},
 						"priority": {
 							"type": ["integer"]
 						},
 						"probability": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
+						},
+						"target_distance": {
+							"type": ["number"]
 						}
 					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.look_at_trading_player": {
 					"type": ["object"]
 				},
 				"minecraft:behavior.melee_attack": {
@@ -6305,10 +6606,78 @@
 							"type": ["integer"]
 						},
 						"speed_multiplier": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
+						},
+						"target_dist": {
+							"type": ["number"]
 						},
 						"track_target": {
 							"type": ["boolean"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.mount_pathing": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
+						},
+						"target_dist": {
+							"type": ["integer", "number"]
+						},
+						"track_target": {
+							"type": ["boolean"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.move_to_block": {
+					"properties": {
+						"goal_radius": {
+							"type": ["number"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"search_height": {
+							"type": ["integer"]
+						},
+						"search_range": {
+							"type": ["integer"]
+						},
+						"target_blocks": {
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						},
+						"target_offset": {
+							"items": {
+								"type": ["integer", "number"]
+							},
+							"type": ["array"]
+						},
+						"tick_interval": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.move_towards_restriction": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.move_towards_target": {
+					"properties": {
+						"within_radius": {
+							"type": ["integer"]
 						}
 					},
 					"type": ["object"]
@@ -6328,6 +6697,9 @@
 								"type": ["object"]
 							},
 							"type": ["array"]
+						},
+						"must_reach": {
+							"type": ["boolean"]
 						},
 						"must_see": {
 							"type": ["boolean"]
@@ -6356,13 +6728,70 @@
 					},
 					"type": ["object"]
 				},
+				"minecraft:behavior.panic": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
+				},
 				"minecraft:behavior.player_ride_tamed": {
 					"type": ["object"]
 				},
 				"minecraft:behavior.random_look_around": {
 					"properties": {
+						"look_distance": {
+							"type": ["number"]
+						},
 						"priority": {
 							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.random_stroll": {
+					"properties": {
+						"priority": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["integer", "number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.ranged_attack": {
+					"properties": {
+						"attack_interval_max": {
+							"type": ["integer"]
+						},
+						"attack_interval_min": {
+							"type": ["integer"]
+						},
+						"attack_radius": {
+							"type": ["integer", "number"]
+						},
+						"burst_interval": {
+							"type": ["number"]
+						},
+						"burst_shots": {
+							"type": ["integer"]
+						},
+						"charge_charged_trigger": {
+							"type": ["number"]
+						},
+						"charge_shoot_trigger": {
+							"type": ["integer", "number"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
 						}
 					},
 					"type": ["object"]
@@ -6384,10 +6813,46 @@
 					},
 					"type": ["object"]
 				},
+				"minecraft:behavior.tempt": {
+					"properties": {
+						"items": {
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"speed_multiplier": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:behavior.trade_interest": {
+					"properties": {
+						"within_radius": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
 				"minecraft:behavior.trade_with_player": {
 					"properties": {
 						"priority": {
 							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:break_blocks": {
+					"properties": {
+						"breakable_blocks": {
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
 						}
 					},
 					"type": ["object"]
@@ -6418,7 +6883,49 @@
 					},
 					"type": ["object"]
 				},
+				"minecraft:breedable": {
+					"properties": {
+						"breedItems": {
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						},
+						"breedsWith": {
+							"properties": {
+								"babyType": {
+									"type": ["string"]
+								},
+								"breed_event": {
+									"properties": {
+										"event": {
+											"type": ["string"]
+										},
+										"target": {
+											"type": ["string"]
+										}
+									},
+									"type": ["object"]
+								},
+								"mateType": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"requireTame": {
+							"type": ["boolean"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:burns_in_daylight": {
+					"type": ["boolean"]
+				},
 				"minecraft:can_climb": {
+					"type": ["object"]
+				},
+				"minecraft:can_fly": {
 					"type": ["object"]
 				},
 				"minecraft:collision_box": {
@@ -6461,10 +6968,27 @@
 						"type": ["object"]
 					},
 					"properties": {
+						"deals_damage": {
+							"type": ["boolean"]
+						},
 						"triggers": {
 							"properties": {
+								"cause": {
+									"type": ["string"]
+								},
 								"deals_damage": {
 									"type": ["boolean"]
+								},
+								"on_damage": {
+									"properties": {
+										"event": {
+											"type": ["string"]
+										},
+										"filters": {
+											"$ref": "#/definitions/filter"
+										}
+									},
+									"type": ["object"]
 								}
 							},
 							"type": ["object"]
@@ -6512,9 +7036,39 @@
 					"properties": {
 						"event": {
 							"type": ["string"]
+						},
+						"on_environment": {
+							"properties": {
+								"event": {
+									"type": ["string"]
+								},
+								"filters": {
+									"$ref": "#/definitions/filter"
+								}
+							},
+							"type": ["object"]
 						}
 					},
 					"type": ["array", "object"]
+				},
+				"minecraft:equipment": {
+					"properties": {
+						"table": {
+							"type": ["string"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:experience_reward": {
+					"properties": {
+						"on_bred": {
+							"type": ["string"]
+						},
+						"on_death": {
+							"type": ["string"]
+						}
+					},
+					"type": ["object"]
 				},
 				"minecraft:explode": {
 					"properties": {
@@ -6559,7 +7113,7 @@
 					"type": ["object"]
 				},
 				"minecraft:fire_immune": {
-					"type": ["boolean"]
+					"type": ["boolean", "object"]
 				},
 				"minecraft:follow_range": {
 					"properties": {
@@ -6656,6 +7210,9 @@
 					},
 					"type": ["object"]
 				},
+				"minecraft:is_stunned": {
+					"type": ["object"]
+				},
 				"minecraft:is_tamed": {
 					"type": ["object"]
 				},
@@ -6692,7 +7249,7 @@
 				"minecraft:movement": {
 					"properties": {
 						"value": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]
@@ -6714,12 +7271,41 @@
 				"minecraft:nameable": {
 					"type": ["object"]
 				},
+				"minecraft:navigation.float": {
+					"properties": {
+						"can_path_over_water": {
+							"type": ["boolean"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:navigation.generic": {
+					"type": ["object"]
+				},
 				"minecraft:navigation.walk": {
 					"properties": {
+						"avoid_damage_blocks": {
+							"type": ["boolean"]
+						},
+						"avoid_portals": {
+							"type": ["boolean"]
+						},
+						"avoid_sun": {
+							"type": ["boolean"]
+						},
+						"avoid_water": {
+							"type": ["boolean"]
+						},
 						"can_break_doors": {
 							"type": ["boolean"]
 						},
+						"can_open_doors": {
+							"type": ["boolean"]
+						},
 						"can_pass_doors": {
+							"type": ["boolean"]
+						},
+						"can_path_over_water": {
 							"type": ["boolean"]
 						},
 						"can_walk": {
@@ -6727,6 +7313,17 @@
 						},
 						"is_amphibious": {
 							"type": ["boolean"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:on_friendly_anger": {
+					"properties": {
+						"event": {
+							"type": ["string"]
+						},
+						"target": {
+							"type": ["string"]
 						}
 					},
 					"type": ["object"]
@@ -6740,6 +7337,28 @@
 							"type": ["string"]
 						}
 					},
+					"type": ["object"]
+				},
+				"minecraft:on_hurt_by_player": {
+					"properties": {
+						"event": {
+							"type": ["string"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:on_target_acquired": {
+					"properties": {
+						"event": {
+							"type": ["string"]
+						},
+						"target": {
+							"type": ["string"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:persistent": {
 					"type": ["object"]
 				},
 				"minecraft:physics": {
@@ -7072,6 +7691,36 @@
 					},
 					"type": ["object"]
 				},
+				"minecraft:ravager_blocked": {
+					"properties": {
+						"knockback_strength": {
+							"type": ["number"]
+						},
+						"reaction_choices": {
+							"items": {
+								"properties": {
+									"value": {
+										"properties": {
+											"event": {
+												"type": ["string"]
+											},
+											"target": {
+												"type": ["string"]
+											}
+										},
+										"type": ["object"]
+									},
+									"weight": {
+										"type": ["integer"]
+									}
+								},
+								"type": ["object"]
+							},
+							"type": ["array"]
+						}
+					},
+					"type": ["object"]
+				},
 				"minecraft:rideable": {
 					"properties": {
 						"interact_text": {
@@ -7124,6 +7773,31 @@
 					"properties": {
 						"value": {
 							"type": ["integer", "number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:scale_by_age": {
+					"properties": {
+						"end_scale": {
+							"type": ["number"]
+						},
+						"start_scale": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:shooter": {
+					"properties": {
+						"aux_val": {
+							"type": ["integer"]
+						},
+						"def": {
+							"type": ["string"]
+						},
+						"type": {
+							"type": ["string"]
 						}
 					},
 					"type": ["object"]
@@ -7202,7 +7876,7 @@
 				"minecraft:target_nearby_sensor": {
 					"properties": {
 						"inside_range": {
-							"type": ["number"]
+							"type": ["integer", "number"]
 						},
 						"must_see": {
 							"type": ["boolean"]
@@ -7217,6 +7891,25 @@
 								}
 							},
 							"type": ["object"]
+						},
+						"on_outside_range": {
+							"properties": {
+								"event": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"outside_range": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:tick_world": {
+					"properties": {
+						"radius": {
+							"type": ["integer"]
 						}
 					},
 					"type": ["object"]
@@ -7272,6 +7965,14 @@
 						}
 					},
 					"type": ["object"]
+				},
+				"minecraft:water_movement": {
+					"properties": {
+						"drag_factor": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
 				}
 			},
 			"type": ["object"]
@@ -7280,7 +7981,7 @@
 			"properties": {
 				"animations": {
 					"additionalProperties": {
-						"$ref": "#/definitions/description_config"
+						"$ref": "#/definitions/full_animation_name"
 					},
 					"type": ["object"]
 				},
@@ -7303,7 +8004,10 @@
 					"properties": {
 						"animate": {
 							"items": {
-								"type": ["string"]
+								"additionalProperties": {
+									"$ref": "#/definitions/animate_condition"
+								},
+								"type": ["object", "string"]
 							},
 							"type": ["array"]
 						}
@@ -7312,9 +8016,6 @@
 				}
 			},
 			"type": ["object"]
-		},
-		"description_config": {
-			"type": ["string"]
 		},
 		"event": {
 			"properties": {
@@ -7407,6 +8108,23 @@
 					"examples": ["hand", "head", "domobspawning", "tntexplodes", "torso", "leg", "feet"],
 					"type": ["string"]
 				},
+				"none_of": {
+					"items": {
+						"$ref": "#/definitions/filter"
+					},
+					"properties": {
+						"subject": {
+							"type": ["string"]
+						},
+						"test": {
+							"type": ["string"]
+						},
+						"value": {
+							"type": ["string"]
+						}
+					},
+					"type": ["array", "object"]
+				},
 				"operator": {
 					"enum": ["!=", ">", "=", "<", ">=", "<=", "==", "equals", "not"],
 					"type": ["string"]
@@ -7415,14 +8133,14 @@
 					"type": ["string"]
 				},
 				"subject": {
-					"enum": ["other", "self", "target", "player", "block"],
+					"enum": ["other", "self", "target", "player", "damager", "block"],
 					"type": ["string"]
 				},
 				"target": {
 					"type": ["string"]
 				},
 				"test": {
-					"enum": ["is_family", "has_tag", "has_equipment", "distance_to_nearest_player", "has_damage", "has_component", "is_riding", "on_ground", "in_lava", "has_mob_effect", "is_in_village", "rider_count", "is_mark_variant", "has_target", "is_avoiding_mobs", "is_difficulty", "is_block", "is_daytime", "is_weather", "has_biome_tag", "in_water_or_rain", "in_water", "is_brightness", "is_snow_covered", "is_underground", "is_biome", "is_game_rule", "is_color", "trusts", "is_sneaking", "is_sleeping", "is_underwater", "is_leashed", "in_caravan", "is_variant", "has_ability", "is_temperature_value", "hourly_clock_time", "is_skin_id", "has_trade_supply", "is_visible", "weather", "weather_at_position", "in_nether", "has_container_open", "has_ranged_weapon", "is_persistent", "inactivity_timer", "random_chance"],
+					"enum": ["is_family", "has_tag", "has_equipment", "distance_to_nearest_player", "has_damage", "has_component", "is_riding", "on_ground", "in_lava", "has_mob_effect", "is_in_village", "rider_count", "is_mark_variant", "has_target", "is_avoiding_mobs", "is_sneaking", "is_daytime", "is_brightness", "is_snow_covered", "is_underground", "is_biome", "is_leashed", "in_caravan", "has_trade_supply", "hourly_clock_time", "is_visible", "is_underwater", "in_water", "in_water_or_rain", "light_level", "has_biome_tag", "is_skin_id", "is_difficulty", "is_block", "is_weather", "is_game_rule", "is_color", "trusts", "is_sleeping", "is_variant", "has_ability", "is_temperature_value", "weather", "weather_at_position", "in_nether", "has_container_open", "has_ranged_weapon", "is_persistent", "inactivity_timer", "random_chance"],
 					"type": ["string"]
 				},
 				"value": {
@@ -7430,6 +8148,9 @@
 				}
 			},
 			"type": ["array", "object"]
+		},
+		"full_animation_name": {
+			"type": ["string"]
 		}
 	}
 }

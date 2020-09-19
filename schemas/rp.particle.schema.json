@@ -141,12 +141,21 @@
 									"properties": {
 										"direction": {
 											"items": {
-												"type": ["number"]
+												"type": ["integer", "number"]
+											},
+											"type": ["array", "string"]
+										},
+										"offset": {
+											"items": {
+												"type": ["integer", "number", "string"]
 											},
 											"type": ["array"]
 										},
 										"radius": {
-											"type": ["string"]
+											"type": ["integer", "number", "string"]
+										},
+										"surface_only": {
+											"type": ["boolean"]
 										}
 									},
 									"type": ["object"]
@@ -212,7 +221,7 @@
 										},
 										"size": {
 											"items": {
-												"type": ["number", "string"]
+												"type": ["integer", "number", "string"]
 											},
 											"type": ["array"]
 										},
@@ -288,13 +297,13 @@
 											},
 											"properties": {
 												"gradient": {
-													"items": {
-														"items": {
-															"type": ["integer", "number", "string"]
-														},
-														"type": ["array", "string"]
+													"additionalProperties": {
+														"$ref": "#/definitions/tinting_color"
 													},
-													"type": ["array"]
+													"items": {
+														"$ref": "#/definitions/tinting_color"
+													},
+													"type": ["array", "object"]
 												},
 												"interpolant": {
 													"type": ["string"]
@@ -304,6 +313,12 @@
 										}
 									},
 									"type": ["object"]
+								},
+								"minecraft:particle_expire_if_in_blocks": {
+									"items": {
+										"type": ["string"]
+									},
+									"type": ["array"]
 								},
 								"minecraft:particle_expire_if_not_in_blocks": {
 									"items": {
@@ -470,6 +485,12 @@
 							},
 							"type": ["object"]
 						},
+						"curves": {
+							"additionalProperties": {
+								"$ref": "#/definitions/curve"
+							},
+							"type": ["object"]
+						},
 						"description": {
 							"properties": {
 								"basic_render_parameters": {
@@ -501,6 +522,52 @@
 			},
 			"type": ["object"]
 		},
+		"curve": {
+			"properties": {
+				"horizontal_range": {
+					"type": ["integer", "string"]
+				},
+				"input": {
+					"type": ["string"]
+				},
+				"nodes": {
+					"additionalProperties": {
+						"$ref": "#/definitions/curve_node"
+					},
+					"items": {
+						"type": ["integer", "number"]
+					},
+					"type": ["array", "object"]
+				},
+				"type": {
+					"type": ["string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"curve_node": {
+			"properties": {
+				"left_slope": {
+					"type": ["number"]
+				},
+				"left_value": {
+					"type": ["number"]
+				},
+				"right_slope": {
+					"type": ["number"]
+				},
+				"right_value": {
+					"type": ["number"]
+				},
+				"slope": {
+					"type": ["number"]
+				},
+				"value": {
+					"type": ["integer", "number"]
+				}
+			},
+			"type": ["object"]
+		},
 		"event": {
 			"properties": {
 				"particle_effect": {
@@ -527,6 +594,12 @@
 		},
 		"timestamp": {
 			"type": ["string"]
+		},
+		"tinting_color": {
+			"items": {
+				"type": ["integer", "number", "string"]
+			},
+			"type": ["array", "string"]
 		}
 	}
 }

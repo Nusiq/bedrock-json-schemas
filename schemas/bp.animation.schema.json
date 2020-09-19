@@ -1,11 +1,11 @@
 {
 	"anyOf": [
 		{
-			"$ref": "#/definitions/10"
+			"$ref": "#/definitions/8_10"
 		}
 	],
 	"definitions": {
-		"10": {
+		"8_10": {
 			"properties": {
 				"animations": {
 					"additionalProperties": {
@@ -14,7 +14,7 @@
 					"type": ["object"]
 				},
 				"format_version": {
-					"enum": ["1.10.0"],
+					"enum": ["1.10.0", "1.8.0"],
 					"type": ["string"]
 				}
 			},
@@ -23,7 +23,7 @@
 		"animation": {
 			"properties": {
 				"animation_length": {
-					"type": ["number"]
+					"type": ["integer", "number"]
 				},
 				"loop": {
 					"type": ["boolean"]
@@ -38,7 +38,7 @@
 			"type": ["object"]
 		},
 		"timestamp": {
-			"type": ["array"]
+			"type": ["array", "string"]
 		}
 	}
 }

@@ -49,10 +49,16 @@
 					"type": ["array"]
 				},
 				"blend_transition": {
-					"type": ["number"]
+					"type": ["integer", "number"]
 				},
 				"blend_via_shortest_path": {
 					"type": ["boolean"]
+				},
+				"on_entry": {
+					"items": {
+						"type": ["string"]
+					},
+					"type": ["array"]
 				},
 				"particle_effects": {
 					"items": {

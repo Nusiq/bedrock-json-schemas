@@ -135,6 +135,8 @@ BP_ENTITY_MS = MetaSchema(
         "component_group_13_14_16": {
             jp.Wildcard.ANYTHING_UNTIL_NEXT_MATCH: {
                 "filters": Msr("filter", Policy.STRICT),
+                "entity_filter": Msr("filter", Policy.STRICT),
+                "event_filters": Msr("filter", Policy.STRICT),
             },
         },
         # Common for all version
@@ -156,17 +158,28 @@ BP_ENTITY_MS = MetaSchema(
             "any_of": {
                 jp.Wildcard.ANY_ITEM: Msr("filter", Policy.STRICT)
             },
+            "none_of": {
+                jp.Wildcard.ANY_ITEM: Msr("filter", Policy.STRICT)
+            },
             "test": Msr(None, Policy.STRICT),
             "operator": Msr(None, Policy.STRICT),
             "subject": Msr(None, Policy.STRICT),
             "domain": Msr(None, Policy.EXAMPLE)
         },
         "description": {
+            "scripts": {
+                "animate": {
+                    jp.Wildcard.ANY_ITEM: {
+                        jp.Wildcard.ANY_PARAMETER: Msr("animate_condition")
+                    }
+                }
+            },
             "animations": {
-                jp.Wildcard.ANY_PARAMETER: Msr("description_config")
+                jp.Wildcard.ANY_PARAMETER: Msr("full_animation_name")
             }
         },
-        "description_config": {}
+        "full_animation_name": {},
+        "animate_condition": {},
     },
     blacklist=[
         ["minecraft:entity", "minecraft:physics"],
@@ -181,13 +194,13 @@ BP_ENTITY_MS = MetaSchema(
 )
 BP_ITEM_MS = MetaSchema(
     meta_schema={
-        "10_14_16": {
+        "10_12_14_16": {
             "format_version": Msr(None, Policy.STRICT)
         }
     },
     blacklist=[],
     root_filters={
-        '10_14_16': format_version_filter_creator(['1.10', '1.14', '1.16']),
+        '10_12_14_16': format_version_filter_creator(['1.10', '1.10.0', '1.12.0', '1.14', '1.16']),
     }
 )
 BP_ANIMATION_CONTROLLER_MS=MetaSchema(
@@ -225,8 +238,7 @@ BP_ANIMATION_CONTROLLER_MS=MetaSchema(
 )
 BP_ANIMATION_MS=MetaSchema(
     meta_schema={
-        # 1.10.0
-        "10": {
+        "8_10": {
             "format_version": Msr(None, Policy.STRICT),
             "animations": {
                 jp.Wildcard.ANY_PARAMETER: Msr("animation")
@@ -249,7 +261,7 @@ BP_ANIMATION_MS=MetaSchema(
         ]
     ],
     root_filters={
-        '10': format_version_filter_creator(['1.10.0'])
+        '8_10': format_version_filter_creator(['1.10.0', '1.8.0'])
     }
 )
 BP_LOOT_TABLE_MS=MetaSchema(
@@ -388,6 +400,12 @@ RP_ANIMATION_MS=MetaSchema(
         "animation": {
             "bones": {
                 jp.Wildcard.ANY_PARAMETER: Msr("bone")
+            },
+            "sound_effects": {
+                jp.Wildcard.ANY_PARAMETER: Msr("sound_effect")
+            },
+            "particle_effects": {
+                jp.Wildcard.ANY_PARAMETER: Msr("particle_effect")
             }
         },
         "bone": {
@@ -401,6 +419,8 @@ RP_ANIMATION_MS=MetaSchema(
                 jp.Wildcard.ANY_PARAMETER: Msr("timestamp")
             }
         },
+        "sound_effect": {},
+        "particle_effect": {},
         "timestamp": {},
     },
     blacklist=[],
@@ -475,12 +495,15 @@ RP_ENTITY_MS=MetaSchema(
                         jp.Wildcard.ANY_ITEM: {
                             jp.Wildcard.ANY_PARAMETER: Msr("render_controller")
                         }
-                    }
-                },
-                "scripts": {
-                    "animate": {
-                        jp.Wildcard.ANY_ITEM: {
-                            jp.Wildcard.ANY_PARAMETER: Msr("condition")
+                    },
+                    "particle_effects": {
+                        jp.Wildcard.ANY_PARAMETER: Msr('particle_effect')
+                    },
+                    "scripts": {
+                        "animate": {
+                            jp.Wildcard.ANY_ITEM: {
+                                jp.Wildcard.ANY_PARAMETER: Msr("condition")
+                            }
                         }
                     }
                 }
@@ -508,6 +531,12 @@ RP_ENTITY_MS=MetaSchema(
                             jp.Wildcard.ANY_PARAMETER: Msr("render_controller")
                         }
                     },
+                    "particle_effects": {
+                        jp.Wildcard.ANY_PARAMETER: Msr('particle_effect')
+                    },
+                    "sound_effects": {
+                        jp.Wildcard.ANY_PARAMETER: Msr('sound_effect')
+                    },
                     "scripts": {
                         "animate": {
                             jp.Wildcard.ANY_ITEM: {
@@ -519,6 +548,8 @@ RP_ENTITY_MS=MetaSchema(
             }
         },
         # Common for all versions
+        'particle_effect': {},
+        'sound_effect': {},
         "material": {},
         "texture": {},
         "geometry_item": {},
@@ -539,6 +570,9 @@ RP_PARTICLE_MS=MetaSchema(
         "10": {
             "format_version": Msr(None, Policy.STRICT),
             "particle_effect": {
+                "curves": {
+                    jp.Wildcard.ANY_PARAMETER: Msr("curve")
+                },
                 "events": {
                     jp.Wildcard.ANY_PARAMETER: Msr("event")
                 },
@@ -547,10 +581,24 @@ RP_PARTICLE_MS=MetaSchema(
                         "timeline": {
                             jp.Wildcard.ANY_PARAMETER: Msr("timestamp")
                         }
+                    },
+                    "minecraft:particle_appearance_tinting": {
+                        "color": {
+                            "gradient": {
+                                jp.Wildcard.ANYTHING: Msr("tinting_color")
+                            }
+                        }
                     }
                 }
             }
         },
+        "curve": {
+            "nodes": {
+                jp.Wildcard.ANY_PARAMETER: Msr('curve_node')
+            }
+        },
+        'curve_node': {},
+        "tinting_color": {},
         "event": {},
         "timestamp": {},
     },
@@ -584,10 +632,16 @@ RP_RENDER_CONTROLLER_MS=MetaSchema(
                     jp.Wildcard.ANY_PARAMETER: Msr("array_geometry")
                 },
             },
+            "materials": {
+                jp.Wildcard.ANY_ITEM: {
+                    jp.Wildcard.ANY_PARAMETER: Msr('material_name')
+                }
+            },
             "part_visibility": {
                 jp.Wildcard.ANY_PARAMETER: Msr("part_visibility_item")
             },
         },
+        'material_name': {},
         "array_material": {},
         "array_texture": {},
         "array_geometry": {},
@@ -595,7 +649,7 @@ RP_RENDER_CONTROLLER_MS=MetaSchema(
     },
     blacklist=[],
     root_filters={
-        '8_10': format_version_filter_creator(['1.8.0', '1.10.0', '1.10']),
+        '8_10': format_version_filter_creator(['1.8.0', '1.10.0', '1.10', '1.10.1']),
     }
 )
 RP_MODEL_MS=MetaSchema(

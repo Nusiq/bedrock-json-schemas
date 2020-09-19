@@ -43,7 +43,7 @@
 								"items": {
 									"properties": {
 										"inflate": {
-											"type": ["number"]
+											"type": ["integer", "number"]
 										},
 										"mirror": {
 											"type": ["boolean"]
