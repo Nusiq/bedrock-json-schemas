@@ -1,0 +1,46 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8_10"
+		}
+	],
+	"definitions": {
+		"8_10": {
+			"additionalProperties": false,
+			"properties": {
+				"animations": {
+					"additionalProperties": {
+						"$ref": "#/definitions/animation"
+					},
+					"type": ["object"]
+				},
+				"format_version": {
+					"enum": ["1.10.0", "1.8.0"],
+					"type": ["string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"animation": {
+			"additionalProperties": false,
+			"properties": {
+				"animation_length": {
+					"type": ["integer", "number"]
+				},
+				"loop": {
+					"type": ["boolean"]
+				},
+				"timeline": {
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		},
+		"timestamp": {
+			"type": ["array", "string"]
+		}
+	}
+}

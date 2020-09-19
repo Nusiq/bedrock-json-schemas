@@ -1,0 +1,167 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/10_12_14_16"
+		}
+	],
+	"definitions": {
+		"10_12_14_16": {
+			"additionalProperties": false,
+			"properties": {
+				"format_version": {
+					"enum": ["1.12.0", "1.10.0", "1.10", "1.16", "1.14"],
+					"type": ["string"]
+				},
+				"minecraft:item": {
+					"additionalProperties": false,
+					"properties": {
+						"components": {
+							"additionalProperties": false,
+							"properties": {
+								"minecraft:block": {
+									"type": ["string"]
+								},
+								"minecraft:camera": {
+									"additionalProperties": false,
+									"properties": {
+										"black_bars_duration": {
+											"type": ["number"]
+										},
+										"black_bars_screen_ratio": {
+											"type": ["number"]
+										},
+										"picture_duration": {
+											"type": ["number"]
+										},
+										"shutter_duration": {
+											"type": ["number"]
+										},
+										"slide_away_duration": {
+											"type": ["number"]
+										}
+									},
+									"type": ["object"]
+								},
+								"minecraft:foil": {
+									"type": ["boolean"]
+								},
+								"minecraft:food": {
+									"additionalProperties": false,
+									"properties": {
+										"can_always_eat": {
+											"type": ["boolean"]
+										},
+										"cooldown_time": {
+											"type": ["integer"]
+										},
+										"cooldown_type": {
+											"type": ["string"]
+										},
+										"effects": {
+											"additionalProperties": false,
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"amplifier": {
+														"type": ["integer"]
+													},
+													"chance": {
+														"type": ["number"]
+													},
+													"duration": {
+														"type": ["integer"]
+													},
+													"name": {
+														"type": ["string"]
+													}
+												},
+												"type": ["object"]
+											},
+											"type": ["array"]
+										},
+										"is_meat": {
+											"type": ["boolean"]
+										},
+										"nutrition": {
+											"type": ["integer"]
+										},
+										"on_use_action": {
+											"type": ["string"]
+										},
+										"on_use_range": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer"]
+											},
+											"type": ["array"]
+										},
+										"remove_effects": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["string"]
+											},
+											"type": ["array"]
+										},
+										"saturation_modifier": {
+											"type": ["string"]
+										},
+										"using_converts_to": {
+											"type": ["string"]
+										}
+									},
+									"type": ["object"]
+								},
+								"minecraft:hand_equipped": {
+									"type": ["boolean"]
+								},
+								"minecraft:max_damage": {
+									"type": ["integer"]
+								},
+								"minecraft:max_stack_size": {
+									"type": ["integer"]
+								},
+								"minecraft:seed": {
+									"additionalProperties": false,
+									"properties": {
+										"crop_result": {
+											"type": ["string"]
+										},
+										"plant_at": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["string"]
+											},
+											"type": ["array", "string"]
+										}
+									},
+									"type": ["object"]
+								},
+								"minecraft:stacked_by_data": {
+									"type": ["boolean"]
+								},
+								"minecraft:use_duration": {
+									"type": ["integer"]
+								}
+							},
+							"type": ["object"]
+						},
+						"description": {
+							"additionalProperties": false,
+							"properties": {
+								"category": {
+									"type": ["string"]
+								},
+								"identifier": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						}
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		}
+	}
+}

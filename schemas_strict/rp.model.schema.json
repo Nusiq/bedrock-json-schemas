@@ -1,0 +1,567 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8_10"
+		},
+		{
+			"$ref": "#/definitions/12"
+		}
+	],
+	"definitions": {
+		"12": {
+			"additionalProperties": false,
+			"properties": {
+				"format_version": {
+					"enum": ["1.12.0"],
+					"type": ["string"]
+				},
+				"minecraft:geometry": {
+					"additionalProperties": false,
+					"items": {
+						"$ref": "#/definitions/entity_12"
+					},
+					"type": ["array"]
+				}
+			},
+			"type": ["object"]
+		},
+		"8_10": {
+			"additionalProperties": {
+				"$ref": "#/definitions/entity_8_10"
+			},
+			"properties": {
+				"format_version": {
+					"$ref": "#/definitions/format_version_8_10"
+				}
+			},
+			"type": ["object"]
+		},
+		"entity_12": {
+			"additionalProperties": false,
+			"properties": {
+				"bones": {
+					"additionalProperties": false,
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"cubes": {
+								"additionalProperties": false,
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"inflate": {
+											"type": ["integer", "number"]
+										},
+										"mirror": {
+											"type": ["boolean"]
+										},
+										"origin": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"pivot": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"rotation": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"size": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"uv": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"properties": {
+												"down": {
+													"additionalProperties": false,
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"east": {
+													"additionalProperties": false,
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"north": {
+													"additionalProperties": false,
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"south": {
+													"additionalProperties": false,
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"up": {
+													"additionalProperties": false,
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												},
+												"west": {
+													"additionalProperties": false,
+													"properties": {
+														"material_instance": {
+															"type": ["string"]
+														},
+														"uv": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["integer", "number"]
+															},
+															"type": ["array"]
+														},
+														"uv_size": {
+															"additionalProperties": false,
+															"items": {
+																"type": ["number"]
+															},
+															"type": ["array"]
+														}
+													},
+													"type": ["object"]
+												}
+											},
+											"type": ["array", "object"]
+										}
+									},
+									"type": ["object"]
+								},
+								"type": ["array"]
+							},
+							"debug": {
+								"type": ["boolean"]
+							},
+							"inflate": {
+								"type": ["number"]
+							},
+							"locators": {
+								"additionalProperties": {
+									"$ref": "#/definitions/locator_12"
+								},
+								"type": ["object"]
+							},
+							"mirror": {
+								"type": ["boolean"]
+							},
+							"name": {
+								"type": ["string"]
+							},
+							"parent": {
+								"type": ["string"]
+							},
+							"pivot": {
+								"additionalProperties": false,
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
+							},
+							"poly_mesh": {
+								"additionalProperties": false,
+								"properties": {
+									"normalized_uvs": {
+										"type": ["boolean"]
+									},
+									"normals": {
+										"additionalProperties": false,
+										"items": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									},
+									"polys": {
+										"additionalProperties": false,
+										"items": {
+											"additionalProperties": false,
+											"items": {
+												"additionalProperties": false,
+												"items": {
+													"type": ["number"]
+												},
+												"type": ["array"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									},
+									"positions": {
+										"additionalProperties": false,
+										"items": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									},
+									"uvs": {
+										"additionalProperties": false,
+										"items": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"type": ["array"]
+									}
+								},
+								"type": ["object"]
+							},
+							"render_group_id": {
+								"type": ["integer"]
+							},
+							"rotation": {
+								"additionalProperties": false,
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
+							},
+							"texture_meshes": {
+								"additionalProperties": false,
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"local_pivot": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"position": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"rotation": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"scale": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["number"]
+											},
+											"type": ["array"]
+										},
+										"texture": {
+											"type": ["string"]
+										}
+									},
+									"type": ["object"]
+								},
+								"type": ["array"]
+							}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				},
+				"cape": {
+					"type": ["string"]
+				},
+				"description": {
+					"additionalProperties": false,
+					"properties": {
+						"identifier": {
+							"type": ["string"]
+						},
+						"texture_height": {
+							"type": ["integer", "number"]
+						},
+						"texture_width": {
+							"type": ["integer", "number"]
+						},
+						"visible_bounds_height": {
+							"type": ["integer", "number"]
+						},
+						"visible_bounds_offset": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["integer", "number"]
+							},
+							"type": ["array"]
+						},
+						"visible_bounds_width": {
+							"type": ["integer", "number"]
+						}
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		},
+		"entity_8_10": {
+			"additionalProperties": false,
+			"properties": {
+				"bones": {
+					"additionalProperties": false,
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"bind_pose_rotation": {
+								"additionalProperties": false,
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
+							},
+							"cubes": {
+								"additionalProperties": false,
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"inflate": {
+											"type": ["number"]
+										},
+										"mirror": {
+											"type": ["boolean"]
+										},
+										"origin": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"size": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										},
+										"uv": {
+											"additionalProperties": false,
+											"items": {
+												"type": ["integer", "number"]
+											},
+											"type": ["array"]
+										}
+									},
+									"type": ["object"]
+								},
+								"type": ["array"]
+							},
+							"inflate": {
+								"type": ["number"]
+							},
+							"locators": {
+								"additionalProperties": {
+									"$ref": "#/definitions/locator_8_10"
+								},
+								"type": ["object"]
+							},
+							"mirror": {
+								"type": ["boolean"]
+							},
+							"name": {
+								"type": ["string"]
+							},
+							"neverRender": {
+								"type": ["boolean"]
+							},
+							"parent": {
+								"type": ["string"]
+							},
+							"pivot": {
+								"additionalProperties": false,
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
+							},
+							"reset": {
+								"type": ["boolean"]
+							},
+							"rotation": {
+								"additionalProperties": false,
+								"items": {
+									"type": ["integer", "number"]
+								},
+								"type": ["array"]
+							}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				},
+				"textureheight": {
+					"type": ["integer"]
+				},
+				"texturewidth": {
+					"type": ["integer"]
+				},
+				"visible_bounds_height": {
+					"type": ["integer", "number"]
+				},
+				"visible_bounds_offset": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["integer", "number"]
+					},
+					"type": ["array"]
+				},
+				"visible_bounds_width": {
+					"type": ["integer", "number"]
+				}
+			},
+			"type": ["object"]
+		},
+		"format_version_8_10": {
+			"type": ["string"]
+		},
+		"locator_12": {
+			"additionalProperties": false,
+			"items": {
+				"type": ["integer", "number"]
+			},
+			"properties": {
+				"ignore_inherited_scale": {
+					"type": ["boolean"]
+				},
+				"offset": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array"]
+				},
+				"rotation": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array"]
+				}
+			},
+			"type": ["array", "object"]
+		},
+		"locator_8_10": {
+			"additionalProperties": false,
+			"items": {
+				"type": ["integer", "number"]
+			},
+			"type": ["array"]
+		}
+	}
+}

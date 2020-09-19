@@ -1,0 +1,284 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/root"
+		}
+	],
+	"definitions": {
+		"root": {
+			"additionalProperties": false,
+			"properties": {
+				"tiers": {
+					"additionalProperties": false,
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"groups": {
+								"additionalProperties": false,
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"num_to_select": {
+											"type": ["integer"]
+										},
+										"trades": {
+											"$ref": "#/definitions/trade"
+										}
+									},
+									"type": ["object"]
+								},
+								"type": ["array"]
+							},
+							"total_exp_required": {
+								"type": ["integer"]
+							},
+							"trades": {
+								"$ref": "#/definitions/trade"
+							}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				}
+			},
+			"type": ["object"]
+		},
+		"trade": {
+			"additionalProperties": false,
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"gives": {
+						"additionalProperties": false,
+						"items": {
+							"additionalProperties": false,
+							"properties": {
+								"choice": {
+									"additionalProperties": false,
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"functions": {
+												"additionalProperties": false,
+												"items": {
+													"additionalProperties": false,
+													"properties": {
+														"block_state": {
+															"type": ["string"]
+														},
+														"function": {
+															"type": ["string"]
+														},
+														"values": {
+															"additionalProperties": false,
+															"properties": {
+																"max": {
+																	"type": ["integer"]
+																},
+																"min": {
+																	"type": ["integer"]
+																}
+															},
+															"type": ["object"]
+														}
+													},
+													"type": ["object"]
+												},
+												"type": ["array"]
+											},
+											"item": {
+												"type": ["string"]
+											},
+											"quantity": {
+												"type": ["integer"]
+											}
+										},
+										"type": ["object"]
+									},
+									"type": ["array"]
+								},
+								"functions": {
+									"additionalProperties": false,
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"author": {
+												"type": ["string"]
+											},
+											"base_cost": {
+												"type": ["integer"]
+											},
+											"base_random_cost": {
+												"type": ["integer"]
+											},
+											"block_state": {
+												"type": ["string"]
+											},
+											"count": {
+												"additionalProperties": false,
+												"properties": {
+													"max": {
+														"type": ["integer"]
+													},
+													"min": {
+														"type": ["integer"]
+													}
+												},
+												"type": ["object"]
+											},
+											"data": {
+												"type": ["integer"]
+											},
+											"destination": {
+												"type": ["string"]
+											},
+											"function": {
+												"type": ["string"]
+											},
+											"id": {
+												"type": ["string"]
+											},
+											"levels": {
+												"additionalProperties": false,
+												"properties": {
+													"max": {
+														"type": ["integer"]
+													},
+													"min": {
+														"type": ["integer"]
+													}
+												},
+												"type": ["object"]
+											},
+											"pages": {
+												"additionalProperties": false,
+												"items": {
+													"type": ["string"]
+												},
+												"type": ["array"]
+											},
+											"per_level_cost": {
+												"type": ["integer"]
+											},
+											"per_level_random_cost": {
+												"type": ["integer"]
+											},
+											"title": {
+												"type": ["string"]
+											},
+											"treasure": {
+												"type": ["boolean"]
+											},
+											"values": {
+												"additionalProperties": false,
+												"properties": {
+													"max": {
+														"type": ["integer"]
+													},
+													"min": {
+														"type": ["integer"]
+													}
+												},
+												"type": ["object"]
+											}
+										},
+										"type": ["object"]
+									},
+									"type": ["array"]
+								},
+								"item": {
+									"type": ["string"]
+								},
+								"quantity": {
+									"additionalProperties": false,
+									"properties": {
+										"max": {
+											"type": ["integer"]
+										},
+										"min": {
+											"type": ["integer"]
+										}
+									},
+									"type": ["integer", "object"]
+								}
+							},
+							"type": ["object"]
+						},
+						"type": ["array"]
+					},
+					"max_uses": {
+						"type": ["integer"]
+					},
+					"reward_exp": {
+						"type": ["boolean"]
+					},
+					"trader_exp": {
+						"type": ["integer"]
+					},
+					"wants": {
+						"additionalProperties": false,
+						"items": {
+							"additionalProperties": false,
+							"properties": {
+								"choice": {
+									"additionalProperties": false,
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"item": {
+												"type": ["string"]
+											},
+											"price_multiplier": {
+												"type": ["number"]
+											},
+											"quantity": {
+												"type": ["integer"]
+											}
+										},
+										"type": ["object"]
+									},
+									"type": ["array"]
+								},
+								"functions": {
+									"additionalProperties": false,
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"function": {
+												"type": ["string"]
+											}
+										},
+										"type": ["object"]
+									},
+									"type": ["array"]
+								},
+								"item": {
+									"type": ["string"]
+								},
+								"price_multiplier": {
+									"type": ["integer", "number"]
+								},
+								"quantity": {
+									"additionalProperties": false,
+									"properties": {
+										"max": {
+											"type": ["integer"]
+										},
+										"min": {
+											"type": ["integer"]
+										}
+									},
+									"type": ["integer", "object"]
+								}
+							},
+							"type": ["object"]
+						},
+						"type": ["array"]
+					}
+				},
+				"type": ["object"]
+			},
+			"type": ["array"]
+		}
+	}
+}

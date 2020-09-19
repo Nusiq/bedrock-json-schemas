@@ -1,0 +1,159 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8"
+		}
+	],
+	"definitions": {
+		"8": {
+			"additionalProperties": false,
+			"properties": {
+				"animations": {
+					"additionalProperties": {
+						"$ref": "#/definitions/animation"
+					},
+					"type": ["object"]
+				},
+				"format_version": {
+					"enum": ["1.8.0"],
+					"type": ["string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"animation": {
+			"additionalProperties": false,
+			"properties": {
+				"anim_time_update": {
+					"type": ["string"]
+				},
+				"animation_length": {
+					"type": ["integer", "number"]
+				},
+				"bones": {
+					"additionalProperties": {
+						"$ref": "#/definitions/bone"
+					},
+					"type": ["object"]
+				},
+				"loop": {
+					"type": ["boolean", "string"]
+				},
+				"override_previous_animation": {
+					"type": ["boolean"]
+				},
+				"particle_effects": {
+					"additionalProperties": {
+						"$ref": "#/definitions/particle_effect"
+					},
+					"type": ["object"]
+				},
+				"sound_effects": {
+					"additionalProperties": {
+						"$ref": "#/definitions/sound_effect"
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		},
+		"bone": {
+			"additionalProperties": false,
+			"properties": {
+				"position": {
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					},
+					"items": {
+						"type": ["integer", "number", "string"]
+					},
+					"type": ["array", "object"]
+				},
+				"relative_to": {
+					"additionalProperties": false,
+					"properties": {
+						"rotation": {
+							"type": ["string"]
+						}
+					},
+					"type": ["object"]
+				},
+				"rotation": {
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					},
+					"items": {
+						"type": ["integer", "number", "string"]
+					},
+					"type": ["array", "object"]
+				},
+				"scale": {
+					"additionalProperties": {
+						"$ref": "#/definitions/timestamp"
+					},
+					"items": {
+						"type": ["integer", "number", "string"]
+					},
+					"type": ["array", "integer", "number", "object", "string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"particle_effect": {
+			"additionalProperties": false,
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"effect": {
+						"type": ["string"]
+					},
+					"locator": {
+						"type": ["string"]
+					}
+				},
+				"type": ["object"]
+			},
+			"properties": {
+				"effect": {
+					"type": ["string"]
+				},
+				"locator": {
+					"type": ["string"]
+				}
+			},
+			"type": ["array", "object"]
+		},
+		"sound_effect": {
+			"additionalProperties": false,
+			"properties": {
+				"effect": {
+					"type": ["string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"timestamp": {
+			"additionalProperties": false,
+			"items": {
+				"type": ["integer", "number", "string"]
+			},
+			"properties": {
+				"post": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number", "string"]
+					},
+					"type": ["array"]
+				},
+				"pre": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number", "string"]
+					},
+					"type": ["array"]
+				}
+			},
+			"type": ["array", "object"]
+		}
+	}
+}

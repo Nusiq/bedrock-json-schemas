@@ -1,0 +1,80 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/10"
+		}
+	],
+	"definitions": {
+		"10": {
+			"additionalProperties": false,
+			"properties": {
+				"animation_controllers": {
+					"additionalProperties": {
+						"$ref": "#/definitions/controller"
+					},
+					"type": ["object"]
+				},
+				"format_version": {
+					"enum": ["1.10.0"],
+					"type": ["string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"controller": {
+			"additionalProperties": false,
+			"properties": {
+				"initial_state": {
+					"type": ["string"]
+				},
+				"states": {
+					"additionalProperties": {
+						"$ref": "#/definitions/state"
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		},
+		"state": {
+			"additionalProperties": false,
+			"properties": {
+				"animations": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["string"]
+					},
+					"type": ["array"]
+				},
+				"on_entry": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["string"]
+					},
+					"type": ["array"]
+				},
+				"on_exit": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["string"]
+					},
+					"type": ["array"]
+				},
+				"transitions": {
+					"additionalProperties": false,
+					"items": {
+						"additionalProperties": {
+							"$ref": "#/definitions/transition"
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				}
+			},
+			"type": ["object"]
+		},
+		"transition": {
+			"type": ["string"]
+		}
+	}
+}

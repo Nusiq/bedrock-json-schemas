@@ -52,7 +52,7 @@ class CreateSchemaInput(object):
 
 def create_schemas(
     source_path: str, inputs: tp.List[CreateSchemaInput],
-    tmp_path: str
+    tmp_path: str, strict=False
 ):
     tmp_created = False  # True if temporary files were created
 
@@ -80,7 +80,8 @@ def create_schemas(
                         if not create_schema_definitions(
                             source=source,
                             target=inp.schema,
-                            meta_schema=inp.meta_schema
+                            meta_schema=inp.meta_schema,
+                            strict=strict
                         ):
                             raise Exception(f'Missing schema root for file: {source_path} :: {fp}')
     finally:  # Remove temporary files if something went wrong
@@ -131,4 +132,26 @@ if __name__ == "__main__":
 
     for inp in rp_schema_inputs:
         with open(inp.export_config.export_path, 'w') as f:
+            json.dump(inp.schema, f, sort_keys=True, cls=CompactEncoder)
+
+    # GENERATING BEHAVIORPACK SCHEMAS STRICT
+    print('GENERATING STRICT BEHAVIORPACK SCHEMAS')
+    for dir_ in os.listdir(BP_PATH):
+        create_schemas(
+            os.path.join(BP_PATH, dir_), bp_schema_inputs, TMP_PATH,
+            strict=True)
+
+    for inp in bp_schema_inputs:
+        with open(inp.export_config.export_path_strict, 'w') as f:
+            json.dump(inp.schema, f, sort_keys=True, cls=CompactEncoder)
+
+    # GENERATING RESOURCEPACK SCHEMAS STRICT
+    print('GENERATING STRICT RESOURCEPACK SCHEMAS')
+    for dir_ in os.listdir(RP_PATH):
+        create_schemas(
+            os.path.join(RP_PATH, dir_), rp_schema_inputs, TMP_PATH,
+            strict=True)
+
+    for inp in rp_schema_inputs:
+        with open(inp.export_config.export_path_strict, 'w') as f:
             json.dump(inp.schema, f, sort_keys=True, cls=CompactEncoder)

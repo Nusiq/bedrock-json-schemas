@@ -1,0 +1,117 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/root"
+		}
+	],
+	"definitions": {
+		"block": {
+			"additionalProperties": false,
+			"properties": {
+				"brightness_gamma": {
+					"type": ["integer", "number"]
+				},
+				"carried_textures": {
+					"additionalProperties": false,
+					"properties": {
+						"down": {
+							"type": ["string"]
+						},
+						"east": {
+							"type": ["string"]
+						},
+						"north": {
+							"type": ["string"]
+						},
+						"side": {
+							"type": ["string"]
+						},
+						"south": {
+							"type": ["string"]
+						},
+						"up": {
+							"type": ["string"]
+						},
+						"west": {
+							"type": ["string"]
+						}
+					},
+					"type": ["object", "string"]
+				},
+				"isotropic": {
+					"additionalProperties": false,
+					"properties": {
+						"down": {
+							"type": ["boolean"]
+						},
+						"east": {
+							"type": ["boolean"]
+						},
+						"north": {
+							"type": ["boolean"]
+						},
+						"sides": {
+							"type": ["boolean"]
+						},
+						"south": {
+							"type": ["boolean"]
+						},
+						"up": {
+							"type": ["boolean"]
+						},
+						"west": {
+							"type": ["boolean"]
+						}
+					},
+					"type": ["boolean", "object"]
+				},
+				"sound": {
+					"type": ["string"]
+				},
+				"textures": {
+					"additionalProperties": false,
+					"properties": {
+						"down": {
+							"type": ["string"]
+						},
+						"east": {
+							"type": ["string"]
+						},
+						"north": {
+							"type": ["string"]
+						},
+						"side": {
+							"type": ["string"]
+						},
+						"south": {
+							"type": ["string"]
+						},
+						"up": {
+							"type": ["string"]
+						},
+						"west": {
+							"type": ["string"]
+						}
+					},
+					"type": ["object", "string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"root": {
+			"additionalProperties": {
+				"$ref": "#/definitions/block"
+			},
+			"properties": {
+				"format_version": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["integer"]
+					},
+					"type": ["array"]
+				}
+			},
+			"type": ["object"]
+		}
+	}
+}

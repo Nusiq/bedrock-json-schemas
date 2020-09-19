@@ -1,0 +1,108 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/8_10"
+		}
+	],
+	"definitions": {
+		"8_10": {
+			"additionalProperties": false,
+			"properties": {
+				"format_version": {
+					"enum": ["1.8.0", "1.10.0", "1.10"],
+					"type": ["string"]
+				},
+				"minecraft:attachable": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"additionalProperties": false,
+							"properties": {
+								"animations": {
+									"additionalProperties": {
+										"$ref": "#/definitions/animation"
+									},
+									"type": ["object"]
+								},
+								"geometry": {
+									"additionalProperties": false,
+									"properties": {
+										"bow_pulling_0": {
+											"type": ["string"]
+										},
+										"bow_pulling_1": {
+											"type": ["string"]
+										},
+										"bow_pulling_2": {
+											"type": ["string"]
+										},
+										"default": {
+											"type": ["string"]
+										}
+									},
+									"type": ["object"]
+								},
+								"identifier": {
+									"type": ["string"]
+								},
+								"item": {
+									"additionalProperties": {
+										"$ref": "#/definitions/item_item"
+									},
+									"type": ["object"]
+								},
+								"materials": {
+									"additionalProperties": {
+										"$ref": "#/definitions/material"
+									},
+									"type": ["object"]
+								},
+								"render_controllers": {
+									"additionalProperties": false,
+									"items": {
+										"type": ["string"]
+									},
+									"type": ["array"]
+								},
+								"scripts": {
+									"additionalProperties": {
+										"$ref": "#/definitions/script"
+									},
+									"type": ["object"]
+								},
+								"textures": {
+									"additionalProperties": {
+										"$ref": "#/definitions/texture"
+									},
+									"type": ["object"]
+								}
+							},
+							"type": ["object"]
+						}
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		},
+		"animation": {
+			"type": ["string"]
+		},
+		"item_item": {
+			"type": ["string"]
+		},
+		"material": {
+			"type": ["string"]
+		},
+		"script": {
+			"additionalProperties": false,
+			"items": {
+				"type": ["string"]
+			},
+			"type": ["array", "string"]
+		},
+		"texture": {
+			"type": ["string"]
+		}
+	}
+}

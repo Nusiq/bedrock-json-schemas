@@ -1,0 +1,230 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/root"
+		}
+	],
+	"definitions": {
+		"block_sounds_block": {
+			"additionalProperties": false,
+			"properties": {
+				"events": {
+					"additionalProperties": {
+						"$ref": "#/definitions/event"
+					},
+					"type": ["object"]
+				},
+				"pitch": {
+					"type": ["number"]
+				},
+				"volume": {
+					"type": ["number"]
+				}
+			},
+			"type": ["object"]
+		},
+		"entity_sounds_entity": {
+			"additionalProperties": false,
+			"properties": {
+				"events": {
+					"additionalProperties": {
+						"$ref": "#/definitions/event"
+					},
+					"type": ["object"]
+				},
+				"pitch": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["integer", "number"]
+					},
+					"type": ["array", "number"]
+				},
+				"volume": {
+					"type": ["integer", "number"]
+				}
+			},
+			"type": ["object"]
+		},
+		"event": {
+			"additionalProperties": false,
+			"properties": {
+				"default": {
+					"additionalProperties": false,
+					"properties": {
+						"pitch": {
+							"type": ["number"]
+						},
+						"sound": {
+							"type": ["string"]
+						},
+						"volume": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object", "string"]
+				},
+				"pitch": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["integer", "number"]
+					},
+					"type": ["array", "integer", "number"]
+				},
+				"sound": {
+					"type": ["string"]
+				},
+				"volume": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array", "integer", "number"]
+				},
+				"wood": {
+					"type": ["string"]
+				}
+			},
+			"type": ["object", "string"]
+		},
+		"interactive_block_sounds_block": {
+			"additionalProperties": false,
+			"properties": {
+				"events": {
+					"additionalProperties": {
+						"$ref": "#/definitions/event"
+					},
+					"type": ["object"]
+				},
+				"pitch": {
+					"type": ["number"]
+				},
+				"volume": {
+					"type": ["number"]
+				}
+			},
+			"type": ["object"]
+		},
+		"interactive_entity_sounds_entity": {
+			"additionalProperties": false,
+			"properties": {
+				"events": {
+					"additionalProperties": {
+						"$ref": "#/definitions/event"
+					},
+					"type": ["object"]
+				},
+				"pitch": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array", "number"]
+				},
+				"volume": {
+					"type": ["number"]
+				}
+			},
+			"type": ["object"]
+		},
+		"root": {
+			"additionalProperties": false,
+			"properties": {
+				"block_sounds": {
+					"additionalProperties": {
+						"$ref": "#/definitions/block_sounds_block"
+					},
+					"type": ["object"]
+				},
+				"entity_sounds": {
+					"additionalProperties": false,
+					"properties": {
+						"defaults": {
+							"additionalProperties": false,
+							"properties": {
+								"events": {
+									"additionalProperties": {
+										"$ref": "#/definitions/event"
+									},
+									"type": ["object"]
+								},
+								"pitch": {
+									"additionalProperties": false,
+									"items": {
+										"type": ["number"]
+									},
+									"type": ["array"]
+								},
+								"volume": {
+									"type": ["number"]
+								}
+							},
+							"type": ["object"]
+						},
+						"entities": {
+							"additionalProperties": {
+								"$ref": "#/definitions/entity_sounds_entity"
+							},
+							"type": ["object"]
+						}
+					},
+					"type": ["object"]
+				},
+				"individual_event_sounds": {
+					"additionalProperties": false,
+					"properties": {
+						"events": {
+							"additionalProperties": {
+								"$ref": "#/definitions/event"
+							},
+							"type": ["object"]
+						}
+					},
+					"type": ["object"]
+				},
+				"interactive_sounds": {
+					"additionalProperties": false,
+					"properties": {
+						"block_sounds": {
+							"additionalProperties": {
+								"$ref": "#/definitions/interactive_block_sounds_block"
+							},
+							"type": ["object"]
+						},
+						"entity_sounds": {
+							"additionalProperties": false,
+							"properties": {
+								"defaults": {
+									"additionalProperties": false,
+									"properties": {
+										"events": {
+											"additionalProperties": {
+												"$ref": "#/definitions/event"
+											},
+											"type": ["object"]
+										},
+										"pitch": {
+											"type": ["number"]
+										},
+										"volume": {
+											"type": ["number"]
+										}
+									},
+									"type": ["object"]
+								},
+								"entities": {
+									"additionalProperties": {
+										"$ref": "#/definitions/interactive_entity_sounds_entity"
+									},
+									"type": ["object"]
+								}
+							},
+							"type": ["object"]
+						}
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		}
+	}
+}

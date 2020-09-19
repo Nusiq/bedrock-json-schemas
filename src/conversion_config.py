@@ -6,78 +6,95 @@ Msr = MetaSchemaReference
 
 
 class ExportConfig(tp.NamedTuple):
+    export_path_strict: str
     export_path: str
     pattern: str
 
-
 # EXPORT CONFIG
 BP_ENTITY_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.entity.schema.json',
     export_path='../schemas/bp.entity.schema.json',
     pattern='entities/**.json',
 )
 BP_ITEM_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.item.schema.json',
     export_path='../schemas/bp.item.schema.json',
     pattern='items/**.json',
 )
 BP_ANIMATION_CONTROLLER_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.animation_controller.schema.json',
     export_path='../schemas/bp.animation_controller.schema.json',
     pattern='animation_controllers/**.json',
 )
 BP_ANIMATION_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.animation.schema.json',
     export_path='../schemas/bp.animation.schema.json',
     pattern='animations/**.json',
 )
 BP_LOOT_TABLE_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.loot_table.schema.json',
     export_path='../schemas/bp.loot_table.schema.json',
     pattern='loot_tables/**.json',
 )
 BP_RECIPE_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.recipe.schema.json',
     export_path='../schemas/bp.recipe.schema.json',
     pattern='recipes/**.json',
 )
 BP_SPAWN_RULE_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.spawn_rules.schema.json',
     export_path='../schemas/bp.spawn_rules.schema.json',
     pattern='spawn_rules/**.json',
 )
 BP_TRADING_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/bp.trading.schema.json',
     export_path='../schemas/bp.trading.schema.json',
     pattern='trading/**.json',
 )
 
 
 RP_ANIMATION_CONTROLLER_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.animation_controller.schema.json',
     export_path='../schemas/rp.animation_controller.schema.json',
     pattern='animation_controllers/**.json',
 )
 RP_ANIMATION_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.animation.schema.json',
     export_path='../schemas/rp.animation.schema.json',
     pattern='animations/**.json',
 )
 RP_ATTACHABLE_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.attachable.schema.json',
     export_path='../schemas/rp.attachable.schema.json',
     pattern='attachables/**.json',
 )
 RP_ENTITY_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.entity.schema.json',
     export_path='../schemas/rp.entity.schema.json',
     pattern='entity/**.json',
 )
 RP_PARTICLE_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.particle.schema.json',
     export_path='../schemas/rp.particle.schema.json',
     pattern='particles/**.json',
 )
 RP_RENDER_CONTROLLER_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.render_controller.schema.json',
     export_path='../schemas/rp.render_controller.schema.json',
     pattern='render_controllers/**.json',
 )
 RP_MODEL_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.model.schema.json',
     export_path='../schemas/rp.model.schema.json',
     pattern='models/**.json',
 )
 RP_BLOCKS_JSON_FILE_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.blocks.json.schema.json',
     export_path='../schemas/rp.blocks.json.schema.json',
     pattern='blocks.json',
 )
 RP_SOUND_JSON_FILE_CFG=ExportConfig(
+    export_path_strict='../schemas_strict/rp.sounds.json.schema.json',
     export_path='../schemas/rp.sounds.json.schema.json',
     pattern='sounds.json',
 )

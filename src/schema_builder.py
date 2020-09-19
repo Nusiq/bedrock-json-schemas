@@ -258,9 +258,9 @@ class SchemaDict(object):
     Wraper class around a dictionary with schema data. Provide easy access
     to schema properties.
     '''
-    def __init__(self, schema_dict: Dict):
+    def __init__(self, schema_dict: Dict, strict=False):
         self.schema_dict = schema_dict
-
+        self.strict = strict
         if 'definitions' not in self.schema_dict:
             self.schema_dict['definitions'] = {}
 
@@ -284,6 +284,9 @@ class SchemaDict(object):
         
         # Create / acces the defininition item
         for key in path.path:
+            if 'additionalProperties' not in curr_def and self.strict:
+                curr_def['additionalProperties'] = False
+
             if isinstance(key, str):
                 if 'properties' not in curr_def:
                     curr_def['properties'] = {}
@@ -368,10 +371,10 @@ class SchemaDict(object):
 
 
 def create_schema_definitions(
-    source: Any, target: Dict, meta_schema: MetaSchema
+    source: Any, target: Dict, meta_schema: MetaSchema, strict=False
 ) -> bool:
     '''Creates schema definition. Returns succes value'''
-    schema_dict = SchemaDict(target)
+    schema_dict = SchemaDict(target, strict=strict)
     root_name: Optional[str] = meta_schema.get_root_name(source)
     if root_name is None:
         print('Unable to select root name')

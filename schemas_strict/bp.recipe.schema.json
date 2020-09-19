@@ -1,0 +1,254 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/definitions/12_14_16"
+		}
+	],
+	"definitions": {
+		"12_14_16": {
+			"additionalProperties": false,
+			"properties": {
+				"format_version": {
+					"enum": ["1.12", "1.14", "1.16"],
+					"type": ["string"]
+				},
+				"minecraft:recipe_brewing_container": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"additionalProperties": false,
+							"properties": {
+								"identifier": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"input": {
+							"type": ["string"]
+						},
+						"output": {
+							"type": ["string"]
+						},
+						"reagent": {
+							"type": ["string"]
+						},
+						"tags": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:recipe_brewing_mix": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"additionalProperties": false,
+							"properties": {
+								"identifier": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"input": {
+							"type": ["string"]
+						},
+						"output": {
+							"type": ["string"]
+						},
+						"reagent": {
+							"type": ["string"]
+						},
+						"tags": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:recipe_furnace": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"additionalProperties": false,
+							"properties": {
+								"identifier": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"input": {
+							"type": ["string"]
+						},
+						"output": {
+							"type": ["string"]
+						},
+						"tags": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:recipe_shaped": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"additionalProperties": false,
+							"properties": {
+								"identifier": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"group": {
+							"type": ["string"]
+						},
+						"key": {
+							"additionalProperties": {
+								"$ref": "#/definitions/key_parameter"
+							},
+							"type": ["object"]
+						},
+						"pattern": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"result": {
+							"additionalProperties": false,
+							"items": {
+								"additionalProperties": false,
+								"properties": {
+									"count": {
+										"type": ["integer"]
+									},
+									"data": {
+										"type": ["integer"]
+									},
+									"item": {
+										"type": ["string"]
+									}
+								},
+								"type": ["object"]
+							},
+							"properties": {
+								"count": {
+									"type": ["integer"]
+								},
+								"data": {
+									"type": ["integer"]
+								},
+								"item": {
+									"type": ["string"]
+								}
+							},
+							"type": ["array", "object"]
+						},
+						"tags": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						}
+					},
+					"type": ["object"]
+				},
+				"minecraft:recipe_shapeless": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"additionalProperties": false,
+							"properties": {
+								"identifier": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"group": {
+							"type": ["string"]
+						},
+						"ingredients": {
+							"additionalProperties": false,
+							"items": {
+								"additionalProperties": false,
+								"properties": {
+									"count": {
+										"type": ["integer"]
+									},
+									"data": {
+										"type": ["integer"]
+									},
+									"item": {
+										"type": ["string"]
+									}
+								},
+								"type": ["object"]
+							},
+							"type": ["array"]
+						},
+						"priority": {
+							"type": ["integer"]
+						},
+						"result": {
+							"additionalProperties": false,
+							"properties": {
+								"count": {
+									"type": ["integer"]
+								},
+								"data": {
+									"type": ["integer"]
+								},
+								"item": {
+									"type": ["string"]
+								}
+							},
+							"type": ["object"]
+						},
+						"tags": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["string"]
+							},
+							"type": ["array"]
+						}
+					},
+					"type": ["object"]
+				}
+			},
+			"type": ["object"]
+		},
+		"key_parameter": {
+			"additionalProperties": false,
+			"properties": {
+				"data": {
+					"type": ["integer"]
+				},
+				"item": {
+					"type": ["string"]
+				}
+			},
+			"type": ["object"]
+		}
+	}
+}
