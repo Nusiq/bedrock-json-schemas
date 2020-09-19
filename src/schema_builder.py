@@ -342,6 +342,8 @@ class SchemaDict(object):
                 curr_def['type'].append('array')
                 curr_def['type'].sort()
         elif isinstance(obj, dict):
+            if 'additionalProperties' not in curr_def and self.strict:
+                curr_def['additionalProperties'] = False
             if 'object' not in curr_def['type']:
                 curr_def['type'].append('object')
                 curr_def['type'].sort()

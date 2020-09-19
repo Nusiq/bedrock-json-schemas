@@ -263,6 +263,7 @@
 					"type": ["object"]
 				},
 				"minecraft:annotation.open_door": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:area_attack": {
@@ -3971,9 +3972,11 @@
 					"type": ["object"]
 				},
 				"minecraft:burns_in_daylight": {
+					"additionalProperties": false,
 					"type": ["boolean", "object"]
 				},
 				"minecraft:can_climb": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:can_fly": {
@@ -3986,6 +3989,7 @@
 					"type": ["object"]
 				},
 				"minecraft:can_power_jump": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:celebrate_hunt": {
@@ -4328,6 +4332,7 @@
 					"type": ["object"]
 				},
 				"minecraft:equip_item": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:equipment": {
@@ -4439,6 +4444,7 @@
 					"type": ["object"]
 				},
 				"minecraft:fire_immune": {
+					"additionalProperties": false,
 					"type": ["boolean", "object"]
 				},
 				"minecraft:flocking": {
@@ -4732,9 +4738,11 @@
 					"type": ["object"]
 				},
 				"minecraft:hide": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:home": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:horse.jump_strength": {
@@ -4781,6 +4789,7 @@
 					"type": ["object"]
 				},
 				"minecraft:input_ground_controlled": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:insomnia": {
@@ -4955,12 +4964,15 @@
 					"type": ["object"]
 				},
 				"minecraft:is_baby": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_charged": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_chested": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_dyeable": {
@@ -4973,30 +4985,39 @@
 					"type": ["object"]
 				},
 				"minecraft:is_hidden_when_invisible": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_ignited": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_illager_captain": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_saddled": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_shaking": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_sheared": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_stackable": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_stunned": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_tamed": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:item_controllable": {
@@ -5009,6 +5030,7 @@
 					"type": ["object"]
 				},
 				"minecraft:jump.dynamic": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:jump.static": {
@@ -5111,6 +5133,7 @@
 					"type": ["object"]
 				},
 				"minecraft:managed_wandering_trader": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:mark_variant": {
@@ -5180,9 +5203,11 @@
 					"type": ["object"]
 				},
 				"minecraft:movement.fly": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:movement.generic": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:movement.glide": {
@@ -5198,6 +5223,7 @@
 					"type": ["object"]
 				},
 				"minecraft:movement.hover": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:movement.jump": {
@@ -5214,6 +5240,7 @@
 					"type": ["object"]
 				},
 				"minecraft:movement.skip": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:movement.sway": {
@@ -5628,6 +5655,7 @@
 					"type": ["object"]
 				},
 				"minecraft:persistent": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:physics": {
@@ -5754,6 +5782,7 @@
 							"additionalProperties": false,
 							"properties": {
 								"arrow_effect": {
+									"additionalProperties": false,
 									"type": ["object"]
 								},
 								"impact_damage": {
@@ -5818,6 +5847,7 @@
 									"type": ["object"]
 								},
 								"remove_on_hit": {
+									"additionalProperties": false,
 									"type": ["object"]
 								},
 								"stick_in_ground": {
@@ -5893,6 +5923,7 @@
 					"type": ["object"]
 				},
 				"minecraft:rail_movement": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:rail_sensor": {
@@ -6023,6 +6054,7 @@
 					"type": ["object"]
 				},
 				"minecraft:scaffolding_climber": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:scale": {
@@ -6145,6 +6177,7 @@
 					"type": ["object"]
 				},
 				"minecraft:sittable": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:skin_id": {
@@ -6540,6 +6573,7 @@
 					"type": ["object"]
 				},
 				"minecraft:trade_resupply": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:trade_table": {
@@ -6628,6 +6662,7 @@
 					"type": ["object"]
 				},
 				"minecraft:trust": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:trusting": {
@@ -7132,6 +7167,7 @@
 					"type": ["object"]
 				},
 				"minecraft:behavior.look_at_trading_player": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:behavior.melee_attack": {
@@ -7285,6 +7321,7 @@
 					"type": ["object"]
 				},
 				"minecraft:behavior.player_ride_tamed": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:behavior.random_look_around": {
@@ -7484,9 +7521,11 @@
 					"type": ["boolean"]
 				},
 				"minecraft:can_climb": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:can_fly": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:collision_box": {
@@ -7691,6 +7730,7 @@
 					"type": ["object"]
 				},
 				"minecraft:fire_immune": {
+					"additionalProperties": false,
 					"type": ["boolean", "object"]
 				},
 				"minecraft:follow_range": {
@@ -7718,6 +7758,7 @@
 					"type": ["object"]
 				},
 				"minecraft:input_ground_controlled": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:interact": {
@@ -7778,12 +7819,15 @@
 					"type": ["object"]
 				},
 				"minecraft:is_baby": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_chested": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_saddled": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_stackable": {
@@ -7796,15 +7840,19 @@
 					"type": ["object"]
 				},
 				"minecraft:is_stunned": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:is_tamed": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:item_hopper": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:jump.static": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:knockback_resistance": {
@@ -7844,6 +7892,7 @@
 					"type": ["object"]
 				},
 				"minecraft:movement.basic": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:movement.glide": {
@@ -7859,6 +7908,7 @@
 					"type": ["object"]
 				},
 				"minecraft:nameable": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:navigation.float": {
@@ -7871,6 +7921,7 @@
 					"type": ["object"]
 				},
 				"minecraft:navigation.generic": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:navigation.walk": {
@@ -7955,6 +8006,7 @@
 					"type": ["object"]
 				},
 				"minecraft:persistent": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:physics": {
@@ -8052,6 +8104,7 @@
 									"type": ["object"]
 								},
 								"douse_fire": {
+									"additionalProperties": false,
 									"type": ["object"]
 								},
 								"grant_xp": {
@@ -8133,6 +8186,7 @@
 									"type": ["object"]
 								},
 								"remove_on_hit": {
+									"additionalProperties": false,
 									"type": ["object"]
 								},
 								"spawn_aoe_cloud": {
@@ -8206,9 +8260,11 @@
 									"type": ["object"]
 								},
 								"teleport_owner": {
+									"additionalProperties": false,
 									"type": ["object"]
 								},
 								"thrown_potion_effect": {
+									"additionalProperties": false,
 									"type": ["object"]
 								}
 							},
@@ -8266,6 +8322,7 @@
 					"type": ["object"]
 				},
 				"minecraft:rail_movement": {
+					"additionalProperties": false,
 					"type": ["object"]
 				},
 				"minecraft:rail_sensor": {

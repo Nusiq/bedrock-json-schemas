@@ -325,6 +325,7 @@
 									"type": ["object"]
 								},
 								"minecraft:particle_appearance_lighting": {
+									"additionalProperties": false,
 									"type": ["object"]
 								},
 								"minecraft:particle_appearance_tinting": {

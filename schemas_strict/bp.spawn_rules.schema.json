@@ -190,6 +190,7 @@
 										"type": ["object"]
 									},
 									"minecraft:spawns_lava": {
+										"additionalProperties": false,
 										"type": ["object"]
 									},
 									"minecraft:spawns_on_block_filter": {
@@ -207,12 +208,15 @@
 										"type": ["array"]
 									},
 									"minecraft:spawns_on_surface": {
+										"additionalProperties": false,
 										"type": ["object"]
 									},
 									"minecraft:spawns_underground": {
+										"additionalProperties": false,
 										"type": ["object"]
 									},
 									"minecraft:spawns_underwater": {
+										"additionalProperties": false,
 										"type": ["object"]
 									},
 									"minecraft:weight": {
