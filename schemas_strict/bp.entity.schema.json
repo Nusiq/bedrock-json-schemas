@@ -4247,13 +4247,39 @@
 				"minecraft:economy_trade_table": {
 					"additionalProperties": false,
 					"properties": {
+						"convert_trades_economy": {
+							"type": ["boolean"]
+						},
+						"cured_discount": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["integer"]
+							},
+							"type": ["array"]
+						},
 						"display_name": {
 							"type": ["string"]
+						},
+						"hero_demand_discount": {
+							"type": ["integer"]
+						},
+						"max_cured_discount": {
+							"additionalProperties": false,
+							"items": {
+								"type": ["integer"]
+							},
+							"type": ["array"]
+						},
+						"nearby_cured_discount": {
+							"type": ["integer"]
 						},
 						"new_screen": {
 							"type": ["boolean"]
 						},
 						"persist_trades": {
+							"type": ["boolean"]
+						},
+						"show_trade_screen": {
 							"type": ["boolean"]
 						},
 						"table": {
@@ -6584,6 +6610,12 @@
 						},
 						"display_name": {
 							"type": ["string"]
+						},
+						"new_screen": {
+							"type": ["boolean"]
+						},
+						"persist_trades": {
+							"type": ["boolean"]
 						},
 						"table": {
 							"type": ["string"]
