@@ -81,6 +81,19 @@
 					},
 					"type": ["array"]
 				},
+				"sound_effects": {
+					"additionalProperties": false,
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"effect": {
+								"type": ["string"]
+							}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				},
 				"transitions": {
 					"additionalProperties": false,
 					"items": {

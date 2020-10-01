@@ -74,6 +74,17 @@
 					},
 					"type": ["array"]
 				},
+				"sound_effects": {
+					"items": {
+						"properties": {
+							"effect": {
+								"type": ["string"]
+							}
+						},
+						"type": ["object"]
+					},
+					"type": ["array"]
+				},
 				"transitions": {
 					"items": {
 						"additionalProperties": {
