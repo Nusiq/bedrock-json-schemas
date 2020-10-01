@@ -13,6 +13,9 @@
 				"functions": {
 					"items": {
 						"properties": {
+							"author": {
+								"type": ["string"]
+							},
 							"chance": {
 								"type": ["number"]
 							},
@@ -102,6 +105,15 @@
 							},
 							"limit": {
 								"type": ["integer"]
+							},
+							"pages": {
+								"items": {
+									"type": ["string"]
+								},
+								"type": ["array"]
+							},
+							"title": {
+								"type": ["string"]
 							},
 							"treasure": {
 								"type": ["boolean"]
