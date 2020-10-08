@@ -6829,6 +6829,21 @@
 					},
 					"type": ["object"]
 				},
+				"minecraft:ambient_sound_interval": {
+					"additionalProperties": false,
+					"properties": {
+						"event_name": {
+							"type": ["string"]
+						},
+						"range": {
+							"type": ["number"]
+						},
+						"value": {
+							"type": ["number"]
+						}
+					},
+					"type": ["object"]
+				},
 				"minecraft:angry": {
 					"additionalProperties": false,
 					"properties": {
