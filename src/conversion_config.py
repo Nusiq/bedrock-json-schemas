@@ -736,7 +736,7 @@ RP_SOUNDS_JSON_FILE_MS=MetaSchema(
             "entity_sounds": {
                 'defaults': {
                     "events": {
-                        jp.Wildcard.ANY_PARAMETER: Msr('event')
+                        jp.Wildcard.ANY_PARAMETER: Msr('event_entity_sounds_entity')
                     }
                 },
                 'entities': {
@@ -745,7 +745,7 @@ RP_SOUNDS_JSON_FILE_MS=MetaSchema(
             },
             "individual_event_sounds": {
                 'events': {
-                    jp.Wildcard.ANY_PARAMETER: Msr('event')
+                    jp.Wildcard.ANY_PARAMETER: Msr('individual_event_sounds_event')
                 }
             },
             "interactive_sounds": {
@@ -755,7 +755,7 @@ RP_SOUNDS_JSON_FILE_MS=MetaSchema(
                 "entity_sounds": {
                     'defaults': {
                         "events": {
-                            jp.Wildcard.ANY_PARAMETER: Msr('event')
+                            jp.Wildcard.ANY_PARAMETER: Msr('interactive_entity_sounds_default')
                         }
                     },
                     'entities': {
@@ -764,27 +764,33 @@ RP_SOUNDS_JSON_FILE_MS=MetaSchema(
                 },
             }
         },
+        
         "block_sounds_block": {
             "events": {
-                jp.Wildcard.ANY_PARAMETER: Msr('event')
+                jp.Wildcard.ANY_PARAMETER: Msr('block_sounds_block_event')
             }
         },
         'entity_sounds_entity': {
             "events": {
-                jp.Wildcard.ANY_PARAMETER: Msr('event')
+                jp.Wildcard.ANY_PARAMETER: Msr('event_entity_sounds_entity')
             }
         },
         "interactive_block_sounds_block": {
             "events": {
-                jp.Wildcard.ANY_PARAMETER: Msr('event')
+                jp.Wildcard.ANY_PARAMETER: Msr('event_interactive_block_sounds_block')
             }
         },
         'interactive_entity_sounds_entity': {
             "events": {
-                jp.Wildcard.ANY_PARAMETER: Msr('event')
+                jp.Wildcard.ANY_PARAMETER: Msr('event_interactive_entity_sounds_entity')
             }
         },
-        'event': {}
+        "interactive_entity_sounds_default": {},
+        "individual_event_sounds_event": {},
+        'block_sounds_block_event': {},
+        'event_entity_sounds_entity': {},
+        'event_interactive_block_sounds_block': {},
+        'event_interactive_entity_sounds_entity': {},
     },
     blacklist=[
         ['interactive_sounds', 'block_sounds', jp.Wildcard.ANY_PARAMETER, 'events', 'fall', 'sounds']

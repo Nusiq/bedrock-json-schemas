@@ -2088,6 +2088,9 @@
 							},
 							"type": ["array", "object"]
 						},
+						"max_dist": {
+							"type": ["number"]
+						},
 						"must_reach": {
 							"type": ["boolean"]
 						},
@@ -2133,7 +2136,10 @@
 										"$ref": "#/definitions/filter"
 									},
 									"max_dist": {
-										"type": ["integer"]
+										"type": ["integer", "number"]
+									},
+									"must_see": {
+										"type": ["boolean"]
 									},
 									"priority": {
 										"type": ["integer"]
@@ -2143,14 +2149,29 @@
 							},
 							"type": ["array"]
 						},
+						"max_dist": {
+							"type": ["number"]
+						},
+						"must_see": {
+							"type": ["boolean"]
+						},
+						"must_see_forget_duration": {
+							"type": ["number"]
+						},
 						"priority": {
 							"type": ["integer"]
 						},
 						"reselect_targets": {
 							"type": ["boolean"]
 						},
-						"target_search_height": {
+						"scan_interval": {
 							"type": ["integer"]
+						},
+						"target_search_height": {
+							"type": ["integer", "number"]
+						},
+						"within_radius": {
+							"type": ["number"]
 						}
 					},
 					"type": ["object"]
@@ -4217,10 +4238,10 @@
 				"minecraft:follow_range": {
 					"properties": {
 						"max": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						},
 						"value": {
-							"type": ["integer"]
+							"type": ["integer", "number"]
 						}
 					},
 					"type": ["object"]

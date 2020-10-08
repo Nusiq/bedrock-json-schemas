@@ -10,7 +10,7 @@
 			"properties": {
 				"events": {
 					"additionalProperties": {
-						"$ref": "#/definitions/event"
+						"$ref": "#/definitions/block_sounds_block_event"
 					},
 					"type": ["object"]
 				},
@@ -23,12 +23,31 @@
 			},
 			"type": ["object"]
 		},
+		"block_sounds_block_event": {
+			"additionalProperties": false,
+			"properties": {
+				"pitch": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array", "number"]
+				},
+				"sound": {
+					"type": ["string"]
+				},
+				"volume": {
+					"type": ["number"]
+				}
+			},
+			"type": ["object", "string"]
+		},
 		"entity_sounds_entity": {
 			"additionalProperties": false,
 			"properties": {
 				"events": {
 					"additionalProperties": {
-						"$ref": "#/definitions/event"
+						"$ref": "#/definitions/event_entity_sounds_entity"
 					},
 					"type": ["object"]
 				},
@@ -45,7 +64,102 @@
 			},
 			"type": ["object"]
 		},
-		"event": {
+		"event_entity_sounds_entity": {
+			"additionalProperties": false,
+			"properties": {
+				"pitch": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array", "integer", "number"]
+				},
+				"sound": {
+					"type": ["string"]
+				},
+				"volume": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array", "integer", "number"]
+				}
+			},
+			"type": ["object", "string"]
+		},
+		"event_interactive_block_sounds_block": {
+			"additionalProperties": false,
+			"properties": {
+				"pitch": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array"]
+				},
+				"sound": {
+					"type": ["string"]
+				},
+				"volume": {
+					"type": ["number"]
+				}
+			},
+			"type": ["object", "string"]
+		},
+		"event_interactive_entity_sounds_entity": {
+			"additionalProperties": false,
+			"properties": {
+				"default": {
+					"type": ["string"]
+				},
+				"wood": {
+					"type": ["string"]
+				}
+			},
+			"type": ["object"]
+		},
+		"individual_event_sounds_event": {
+			"additionalProperties": false,
+			"properties": {
+				"pitch": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["integer", "number"]
+					},
+					"type": ["array", "number"]
+				},
+				"sound": {
+					"type": ["string"]
+				},
+				"volume": {
+					"additionalProperties": false,
+					"items": {
+						"type": ["number"]
+					},
+					"type": ["array", "number"]
+				}
+			},
+			"type": ["object"]
+		},
+		"interactive_block_sounds_block": {
+			"additionalProperties": false,
+			"properties": {
+				"events": {
+					"additionalProperties": {
+						"$ref": "#/definitions/event_interactive_block_sounds_block"
+					},
+					"type": ["object"]
+				},
+				"pitch": {
+					"type": ["number"]
+				},
+				"volume": {
+					"type": ["number"]
+				}
+			},
+			"type": ["object"]
+		},
+		"interactive_entity_sounds_default": {
 			"additionalProperties": false,
 			"properties": {
 				"default": {
@@ -61,45 +175,7 @@
 							"type": ["number"]
 						}
 					},
-					"type": ["object", "string"]
-				},
-				"pitch": {
-					"additionalProperties": false,
-					"items": {
-						"type": ["integer", "number"]
-					},
-					"type": ["array", "integer", "number"]
-				},
-				"sound": {
-					"type": ["string"]
-				},
-				"volume": {
-					"additionalProperties": false,
-					"items": {
-						"type": ["number"]
-					},
-					"type": ["array", "integer", "number"]
-				},
-				"wood": {
-					"type": ["string"]
-				}
-			},
-			"type": ["object", "string"]
-		},
-		"interactive_block_sounds_block": {
-			"additionalProperties": false,
-			"properties": {
-				"events": {
-					"additionalProperties": {
-						"$ref": "#/definitions/event"
-					},
 					"type": ["object"]
-				},
-				"pitch": {
-					"type": ["number"]
-				},
-				"volume": {
-					"type": ["number"]
 				}
 			},
 			"type": ["object"]
@@ -109,7 +185,7 @@
 			"properties": {
 				"events": {
 					"additionalProperties": {
-						"$ref": "#/definitions/event"
+						"$ref": "#/definitions/event_interactive_entity_sounds_entity"
 					},
 					"type": ["object"]
 				},
@@ -143,7 +219,7 @@
 							"properties": {
 								"events": {
 									"additionalProperties": {
-										"$ref": "#/definitions/event"
+										"$ref": "#/definitions/event_entity_sounds_entity"
 									},
 									"type": ["object"]
 								},
@@ -174,7 +250,7 @@
 					"properties": {
 						"events": {
 							"additionalProperties": {
-								"$ref": "#/definitions/event"
+								"$ref": "#/definitions/individual_event_sounds_event"
 							},
 							"type": ["object"]
 						}
@@ -198,7 +274,7 @@
 									"properties": {
 										"events": {
 											"additionalProperties": {
-												"$ref": "#/definitions/event"
+												"$ref": "#/definitions/interactive_entity_sounds_default"
 											},
 											"type": ["object"]
 										},
