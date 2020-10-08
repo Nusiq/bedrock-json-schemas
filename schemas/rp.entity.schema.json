@@ -225,6 +225,14 @@
 									},
 									"type": ["object"]
 								},
+								"sound_effects": {
+									"properties": {
+										"internal_id": {
+											"type": ["string"]
+										}
+									},
+									"type": ["object"]
+								},
 								"spawn_egg": {
 									"properties": {
 										"base_color": {

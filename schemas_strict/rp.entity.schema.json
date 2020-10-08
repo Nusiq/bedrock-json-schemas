@@ -242,6 +242,15 @@
 									},
 									"type": ["object"]
 								},
+								"sound_effects": {
+									"additionalProperties": false,
+									"properties": {
+										"internal_id": {
+											"type": ["string"]
+										}
+									},
+									"type": ["object"]
+								},
 								"spawn_egg": {
 									"additionalProperties": false,
 									"properties": {
