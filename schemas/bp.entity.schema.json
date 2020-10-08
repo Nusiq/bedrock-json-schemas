@@ -6319,6 +6319,17 @@
 					},
 					"type": ["object"]
 				},
+				"minecraft:area_attack": {
+					"properties": {
+						"damage_per_tick": {
+							"type": ["integer"]
+						},
+						"damage_range": {
+							"type": ["integer"]
+						}
+					},
+					"type": ["object"]
+				},
 				"minecraft:attack": {
 					"properties": {
 						"damage": {
